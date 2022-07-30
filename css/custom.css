@@ -47,3 +47,8 @@ header{background-color: white !important;}
 .bk-item{
     border-bottom: 1px solid #ccc;
 }
+
+.mv-school-icon img{
+    max-width: 85px;
+    height: auto;
+}
