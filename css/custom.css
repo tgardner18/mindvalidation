@@ -77,3 +77,10 @@ header{background-color: white !important;}
     font-size: 1.1em;
     color: #000
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .mv-school-icon{
+    display: none;
+  }
+}
