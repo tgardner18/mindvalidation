@@ -52,3 +52,28 @@ header{background-color: white !important;}
     max-width: 85px;
     height: auto;
 }
+
+.ia-service-header{
+    font-size: 1.4em;
+    color: #000;
+    font-weight: 700;
+    text-transform: capitalize;
+    padding: 1em;
+}
+
+.mv-list{
+    font-size: 1.1em;
+}
+.mv-list li.list-group-item{
+    border: none !important;
+}
+
+.mv-list i{
+    color: #F30090 !important;
+    font-weight: 300;
+    padding-right: 6px;
+}
+.mv-dark-p{
+    font-size: 1.1em;
+    color: #000
+}
