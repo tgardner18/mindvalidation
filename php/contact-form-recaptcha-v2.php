@@ -59,7 +59,7 @@ if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'
 		$debug = 0;
 
 		// If contact form don't have the subject input, change the value of subject here
-		$subject = ( isset($_POST['subject']) ) ? $_POST['subject'] : 'Define subject in php/contact-form-recaptcha.php line 62';
+		$subject = 'Website contact form submission';
 
 		$message = '';
 
