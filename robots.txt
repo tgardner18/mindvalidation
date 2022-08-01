@@ -1,0 +1,14 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: *
+Allow: /
+
+User-agent: *
+Disallow: /ajax/
+Disallow: /css/
+Disallow: /img/
+Disallow: /js/
+Disallow: /vendor/
+
+Sitemap: https://mindvalidation.com/sitemap.xml
