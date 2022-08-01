@@ -1,0 +1,5 @@
+# Redirects from what the browser requests to what we serve
+# Redirect with a 301
+/contact/         https://mindvalidation.com/index.html#contact              301
+/services/         https://mindvalidation.com/index.html#services              301
+/about/         https://mindvalidation.com/index.html#about              301
