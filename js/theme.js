@@ -8018,8 +8018,8 @@ if( $('[data-copy-to-clipboard]').length ) {
 				buttonClass: 'scroll-to-top',
 				iconClass: 'fas fa-chevron-up',
 				delay: 1000,
-				visibleMobile: false,
-				label: false,
+				visibleMobile: true,
+				label: true,
 				easing: 'easeOutBack'
 			},
 
