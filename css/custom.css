@@ -48,8 +48,8 @@ header{background-color: white !important;}
     border-bottom: 1px solid #ccc;
 }
 
-.bk-item .no-bottom{
-    border-bottom: none;
+.no-bottom{
+    border-bottom: none !important;
 }
 
 .mv-school-icon img{

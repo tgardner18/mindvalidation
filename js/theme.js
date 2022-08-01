@@ -8019,7 +8019,7 @@ if( $('[data-copy-to-clipboard]').length ) {
 				iconClass: 'fas fa-chevron-up',
 				delay: 1000,
 				visibleMobile: true,
-				label: true,
+				label: false,
 				easing: 'easeOutBack'
 			},
 

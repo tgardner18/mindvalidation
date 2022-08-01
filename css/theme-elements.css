@@ -14125,6 +14125,7 @@ html .scroll-to-top {
 	padding: 10px 10px 35px;
 	position: fixed;
 	right: 10px;
+	font-weight: 900;
 	text-align: center;
 	text-decoration: none;
 	min-width: 50px;
