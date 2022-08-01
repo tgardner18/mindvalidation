@@ -8009,118 +8009,102 @@ if( $('[data-copy-to-clipboard]').length ) {
 	theme = theme || {};
 
 	$.extend(theme, {
+    PluginScrollToTop: {
+      defaults: {
+        wrapper: $("body"),
+        offset: 150,
+        buttonClass: "scroll-to-top",
+        iconClass: "fa-solid fa-angles-up",
+        delay: 1000,
+        visibleMobile: true,
+        label: false,
+        easing: "easeOutBack",
+      },
 
-		PluginScrollToTop: {
+      initialize: function (opts) {
+        initialized = true;
 
-			defaults: {
-				wrapper: $('body'),
-				offset: 150,
-				buttonClass: 'scroll-to-top',
-				iconClass: 'fas fa-chevron-up',
-				delay: 1000,
-				visibleMobile: true,
-				label: false,
-				easing: 'easeOutBack'
-			},
+        // Don't initialize if the page has Section Scroll
+        if ($("body[data-plugin-section-scroll]").get(0)) {
+          return;
+        }
 
-			initialize: function(opts) {
-				initialized = true;
+        this.setOptions(opts).build().events();
 
-				// Don't initialize if the page has Section Scroll
-				if( $('body[data-plugin-section-scroll]').get(0) ) {
-					return;
-				}
+        return this;
+      },
 
-				this
-					.setOptions(opts)
-					.build()
-					.events();
+      setOptions: function (opts) {
+        this.options = $.extend(true, {}, this.defaults, opts);
 
-				return this;
-			},
+        return this;
+      },
 
-			setOptions: function(opts) {
-				this.options = $.extend(true, {}, this.defaults, opts);
+      build: function () {
+        var self = this,
+          $el;
 
-				return this;
-			},
+        // Base HTML Markup
+        $el = $("<a />")
+          .addClass(self.options.buttonClass)
+          .attr({
+            href: "#",
+          })
+          .append($("<i />").addClass(self.options.iconClass));
 
-			build: function() {
-				var self = this,
-					$el;
+        // Visible Mobile
+        if (!self.options.visibleMobile) {
+          $el.addClass("hidden-mobile");
+        }
 
-				// Base HTML Markup
-				$el = $('<a />')
-					.addClass(self.options.buttonClass)
-					.attr({
-						'href': '#',
-					})
-					.append(
-						$('<i />')
-						.addClass(self.options.iconClass)
-				);
+        // Label
+        if (self.options.label) {
+          $el.append($("<span />").html(self.options.label));
+        }
 
-				// Visible Mobile
-				if (!self.options.visibleMobile) {
-					$el.addClass('hidden-mobile');
-				}
+        this.options.wrapper.append($el);
 
-				// Label
-				if (self.options.label) {
-					$el.append(
-						$('<span />').html(self.options.label)
-					);
-				}
+        this.$el = $el;
 
-				this.options.wrapper.append($el);
+        return this;
+      },
 
-				this.$el = $el;
+      events: function () {
+        var self = this,
+          _isScrolling = false;
 
-				return this;
-			},
+        // Click Element Action
+        self.$el.on("click", function (e) {
+          e.preventDefault();
+          $("html").animate(
+            {
+              scrollTop: 0,
+            },
+            self.options.delay,
+            self.options.easing
+          );
+          return false;
+        });
 
-			events: function() {
-				var self = this,
-					_isScrolling = false;
+        // Show/Hide Button on Window Scroll event.
+        $(window).scroll(function () {
+          if (!_isScrolling) {
+            _isScrolling = true;
 
-				// Click Element Action
-				self.$el.on('click', function(e) {
-					e.preventDefault();
-					$('html').animate({
-						scrollTop: 0
-					}, self.options.delay, self.options.easing);
-					return false;
-				});
+            if ($(window).scrollTop() > self.options.offset) {
+              self.$el.stop(true, true).addClass("visible");
+              _isScrolling = false;
+            } else {
+              self.$el.stop(true, true).removeClass("visible");
+              _isScrolling = false;
+            }
+          }
+        });
 
-				// Show/Hide Button on Window Scroll event.
-				$(window).scroll(function() {
-
-					if (!_isScrolling) {
-
-						_isScrolling = true;
-
-						if ($(window).scrollTop() > self.options.offset) {
-
-							self.$el.stop(true, true).addClass('visible');
-							_isScrolling = false;
-
-						} else {
-
-							self.$el.stop(true, true).removeClass('visible');
-							_isScrolling = false;
-
-						}
-
-					}
-
-				});
-
-				return this;
-			}
-
-		}
-
-	});
+        return this;
+      },
+    },
+  });
 
 }).apply(this, [window.theme, jQuery]);
 

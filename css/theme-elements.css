@@ -14118,7 +14118,7 @@ html .scroll-to-top {
 	background: #404040;
 	border-radius: 4px 4px 0 0;
 	bottom: 0;
-	color: #FFF;
+	color: #FFF !important;
 	display: block;
 	height: 9px;
 	opacity: 0;
@@ -14135,6 +14135,7 @@ html .scroll-to-top {
 
 html .scroll-to-top:hover {
 	opacity: 1;
+	color: #FFF !important;
 }
 
 html .scroll-to-top.visible {
