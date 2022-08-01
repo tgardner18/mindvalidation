@@ -20,7 +20,7 @@ require 'php-mailer/src/SMTP.php';
 require 'php-mailer/src/Exception.php';
 
 // Step 1 - Enter your email address below.
-$email = 'you@domain.com';
+$email = 'mindvalidation@gmail.com';
 
 // If the e-mail is not working, change the debug option to 2 | $debug = 2;
 $debug = 0;

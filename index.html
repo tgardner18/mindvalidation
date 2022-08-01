@@ -697,6 +697,11 @@
                           <textarea maxlength="5000" data-msg-required="Please enter your message." rows="6" class="form-control" name="message" placeholder="Your Message" required></textarea>
                         </div>
                       </div>
+					  <div class="form-row">
+						<div class="form-group col">
+							<div class="g-recaptcha" data-sitekey="6Lc6jjohAAAAAPZyKbnLpSDQnK-9JzdXYpNjsuss"></div>
+						</div>
+					</div>
                       <div class="row">
                         <div class="form-group col text-center">
                           <input type="submit" value="Send Message" class="btn btn-gradient text-3 font-weight-bold px-5 py-3" data-loading-text="Loading..." />
@@ -731,7 +736,6 @@
     <script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
     <script src="vendor/lazysizes/lazysizes.min.js"></script>
     <script src="vendor/isotope/jquery.isotope.min.js"></script>
-    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="vendor/vide/jquery.vide.min.js"></script>
     <script src="vendor/vivus/vivus.min.js"></script>
@@ -746,5 +750,7 @@
     <script src="js/custom.js"></script>
     <!-- Theme Initialization Files -->
     <script src="js/theme.init.js"></script>
+	<!-- Google Captcha -->
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </body>
 </html>
