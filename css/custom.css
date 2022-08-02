@@ -120,3 +120,7 @@ header{background-color: white !important;}
   -ms-overflow-style: auto;
   scrollbar-width: thin;
 }
+.ia-teaser{
+    font-weight: 500;
+    color: var(--primary);
+}
