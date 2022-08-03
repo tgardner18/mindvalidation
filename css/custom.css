@@ -108,16 +108,17 @@ header{background-color: white !important;}
 /* Make Scrollbar Sexy Again */
 
 ::-webkit-scrollbar{
-    width: 1em;
+    width: 1.3em;
 }
 ::-webkit-scrollbar-track{
-    background-color: #ccc;
+    background-color: #fff;
     border-radius: 100vw;
+    margin-block: .6em;
 }
 ::-webkit-scrollbar-thumb{
     background-color: #020887;
     border-radius: 100vw;
-    border: .25em solid #ccc
+    border: .25em solid #fff
 }
 ::-webkit-scrollbar-thumb:hover{
     background-color: #F30090;
