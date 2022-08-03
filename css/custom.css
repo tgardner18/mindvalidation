@@ -114,12 +114,13 @@ header{background-color: white !important;}
 /* Make Scrollbar Sexy Again */
 
 ::-webkit-scrollbar{
-    width: 1.2em;
+    width: 1.1em;
 }
 ::-webkit-scrollbar-track{
     background-color: #E6E6E6;
-    border-radius: 100vw;
-    margin-block: .3em;
+    border-top-left-radius: 100vw;
+    border-bottom-left-radius: 100vw;
+    margin-block: .1em;
 }
 ::-webkit-scrollbar-thumb{
     background-color: #020887;
