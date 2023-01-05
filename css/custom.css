@@ -110,24 +110,3 @@ header{background-color: white !important;}
     font-weight: 500;
     color: var(--primary);
 }
-
-/* Make Scrollbar Sexy Again */
-
-::-webkit-scrollbar{
-    width: 1.1em;
-}
-::-webkit-scrollbar-track{
-    background-color: #E6E6E6;
-    border-top-left-radius: 100vw;
-    border-bottom-left-radius: 100vw;
-    margin-block: .1em;
-}
-::-webkit-scrollbar-thumb{
-    background-color: #020887;
-    border-top-left-radius: 100vw;
-    border-bottom-left-radius: 100vw;
-    border: .1em solid #E6E6E6
-}
-::-webkit-scrollbar-thumb:hover{
-    background-color: #F30090;
-}
