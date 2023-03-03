@@ -114,7 +114,7 @@ header{background-color: white !important;}
 /* EDU Cards */
 .edu-img{
     margin: auto;
-    max-height: 200px;
-    object-fit: fill;
-    width: 60%;
+    max-height: 185px;
+    object-fit: contain;
+    width: auto;
 }
