@@ -121,6 +121,7 @@ header{background-color: white !important;}
 
 .bk-1{
     background-color: #f1f2f5;
+    border: 1px solid #f1f2f5 !important
 }
 .bdy-card{
     background-color: white;
