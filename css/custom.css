@@ -110,3 +110,11 @@ header{background-color: white !important;}
     font-weight: 500;
     color: var(--primary);
 }
+
+/* EDU Cards */
+.edu-img{
+    margin: auto;
+    max-height: 200px;
+    object-fit: fill;
+    width: 60%;
+}
