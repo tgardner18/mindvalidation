@@ -10,5 +10,6 @@ Disallow: /css/
 Disallow: /img/
 Disallow: /js/
 Disallow: /vendor/
+Disallow: /dev/
 
 Sitemap: https://mindvalidation.com/sitemap.xml
