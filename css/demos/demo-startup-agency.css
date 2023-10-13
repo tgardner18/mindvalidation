@@ -201,7 +201,7 @@ body {
 
 @media (min-width: 992px) {
 		#header .header-nav-main nav > ul > li > a {
-				font-size: 14px;
+				font-size: 17px;
 				padding: 0 1rem !important;
 				font-weight: 600;
 		}
