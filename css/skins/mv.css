@@ -7206,3 +7206,7 @@ html path.custom-svg-fill-color-light,
 html circle.custom-svg-fill-color-light {
 	fill: #FFF !important;
 }
+
+.grey-bg {  
+    background-color: #F5F7FA;
+}
