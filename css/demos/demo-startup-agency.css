@@ -354,3 +354,11 @@ body {
 .custom-form-style-1 textarea.form-control {
 		height: auto;
 }
+
+
+/* Custom Breakpoint for Background image */
+@media screen and (max-width: 950px){
+	.custom-section-svg .custom-section-svg-background{
+		display: none;
+	}
+}
