@@ -57,7 +57,6 @@ body {
 .custom-svg-yoga>img {
     position: relative;
     z-index: 1;
-    border-radius: 25px;
 }
 
 .custom-svg-wrapper-1 {
