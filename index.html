@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="vendor/animate/animate.compat.css" />
     <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css" />
 
+    <!-- Snowflake CDN - Remove after holidays -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowstorm/20131208/snowstorm-min.js" integrity="sha512-rMkLONrw50boYG/6Ku0E8VstfWMRn5D0dX3QZS26Mg0rspYq4EHxYOULuPbv9Be2HBbrrmN8dpPgYUeJ4bINCA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Theme CSS -->
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme-elements.css" />
@@ -47,6 +49,10 @@
         gtag('js', new Date());
 
         gtag('config', 'G-7N9GZW2N7L');
+
+        snowStorm.snowColor = '#fff'; // blue-ish snow!?
+        snowStorm.flakesMaxActive = 36; // show more snow on screen at once
+        snowStorm.useTwinkleEffect = true; // let the snow flicker in and out of view
     </script>
 
 </head>
