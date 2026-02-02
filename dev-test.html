@@ -123,6 +123,8 @@
             color: #ffffff;
             background: rgba(243, 0, 144, 0.3);
             box-shadow: 0 0 15px rgba(243, 0, 144, 0.4);
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(243, 0, 144, 0.6);
         }
 
         .nav-cta {
@@ -222,7 +224,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 30%, #2a1a2a 60%, #3d0a29 100%);
+            background: linear-gradient(180deg, #000000 0%, #000000 40%, #1a1a1a 70%, #2a1a2a 85%, #3d0a29 100%);
             padding-top: 80px;
         }
 
@@ -355,8 +357,26 @@
         .hero-tagline {
             font-size: clamp(1.2rem, 3vw, 2rem);
             color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             font-weight: 500;
+        }
+
+        .hero-subhead {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-subdescription {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
 
         .hero-services-grid {
@@ -433,15 +453,16 @@
         }
 
         .hero-service-box h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
             color: #ffffff;
+            font-weight: 700;
         }
 
         .hero-service-box p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.7;
             margin: 0;
         }
 
@@ -765,6 +786,61 @@
             margin-top: 3rem;
             position: relative;
             z-index: 1;
+        }
+
+        /* Therapy Benefits Callout */
+        .therapy-benefits-callout {
+            background: rgba(243, 0, 144, 0.08);
+            border: 2px solid rgba(243, 0, 144, 0.3);
+            border-radius: 25px;
+            padding: 3rem 2.5rem;
+            margin: 4rem auto;
+            max-width: 1100px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+
+        .therapy-benefits-callout h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .therapy-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .therapy-benefit-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent-teal);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .therapy-benefit-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .therapy-benefit-item h4 {
+            color: var(--accent-teal);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .therapy-benefit-item p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95rem;
         }
 
         .service-card {
@@ -1246,6 +1322,7 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-top: 3rem;
+            align-items: stretch;
         }
 
         .contact-card {
@@ -1258,6 +1335,8 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: visible;
+            display: flex;
+            flex-direction: column;
         }
 
         .contact-card::before {
@@ -1285,6 +1364,9 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .contact-card-inner::after {
@@ -1554,22 +1636,24 @@
             <div data-aos="fade-up" data-aos-duration="1000">
                 <h1 class="hero-main-title">Mind Validation</h1>
                 <p class="hero-tagline">Your Partner in Mental Health & Holistic Wellness</p>
+                <h2 class="hero-subhead">Find Balance. Heal With Confidence</h2>
+                <p class="hero-subdescription">Therapeutic care and mindful movement to help you feel more in control of your life, relationships, and well-being.</p>
 
                 <div class="hero-services-grid">
                     <div class="hero-service-box" data-aos="fade-up" data-aos-delay="100">
                         <div class="hero-service-icon">
                             <i class="fas fa-brain"></i>
                         </div>
-                        <h3>Mental Health Counseling</h3>
-                        <p>LCMHC specializing in CBT, DBT & trauma-focused therapy for adults and adolescents</p>
+                        <h3>Professional Therapy for Lasting Change</h3>
+                        <p>Evidence-based counseling focused on anxiety, trauma recovery, emotional regulation, and self-esteem.</p>
                     </div>
 
                     <div class="hero-service-box" data-aos="fade-up" data-aos-delay="200">
                         <div class="hero-service-icon">
                             <i class="fas fa-spa"></i>
                         </div>
-                        <h3>Yoga Classes</h3>
-                        <p>Vinyasa Yoga instruction blending movement with mindfulness</p>
+                        <h3>Yoga for the Mind-Body Connection</h3>
+                        <p>Mindful Vinyasa classes that help you strengthen your body while calming your nervous system.</p>
                     </div>
                 </div>
 
@@ -1592,9 +1676,9 @@
     <section id="about" class="section-modern">
         <div class="section-header" data-aos="fade-up">
             <span class="section-badge">About Me</span>
-            <h2 class="section-title">Kirby Gardner, LCMHC</h2>
+            <h2 class="section-title">Meet Kirby Gardner, LCMHC — Your Guide to Healing and Growth</h2>
             <p class="section-description">
-                Licensed Mental Health Counselor with specialized training in CBT, mindfulness, and holistic wellness approaches
+                With over a decade of clinical experience and specialized training in Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), and trauma-informed care, Kirby helps adults and adolescents overcome challenges like anxiety, depression, life transitions, and stress.
             </p>
         </div>
 
@@ -1604,17 +1688,21 @@
             </div>
 
             <div class="about-content" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <h3>Professional Background</h3>
+                <h3>What sets Kirby apart:</h3>
+
+                <h4>• Client-centered & compassionate care</h4>
                 <p>
-                    Kirby is a licensed mental health counselor with a specialization in mindfulness and Cognitive Behavioral Therapy (CBT). She earned her certification in CBT from the prestigious Beck Institute in Pennsylvania, under the tutelage of Judith Beck. Her training was further enriched by an appearance from Aaron Beck, the esteemed founder of CBT.
+                    You feel heard, respected, and supported.
                 </p>
 
-                <h4>Focus on Holistic Wellness</h4>
+                <h4>• Evidence-based methods that work</h4>
                 <p>
-                    Kirby's practice is centered on holistic wellness, employing strategies to assist clients in confronting life's challenges through enhanced self-awareness and the encouragement of positive behavioral modifications.
+                    Practical skills to manage emotions and build confidence.
                 </p>
+
+                <h4>• Holistic approach</h4>
                 <p>
-                    Her empathetic methodology facilitates individuals in surmounting adversities, managing stress effectively, and improving their overall well-being.
+                    Integrating mindfulness and movement to support whole-self wellness.
                 </p>
 
                 <div class="credential-badges">
@@ -1692,15 +1780,38 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Therapy Benefits Callout -->
+        <div class="therapy-benefits-callout" data-aos="fade-up" data-aos-delay="400">
+            <h3>How Therapy Can Help You</h3>
+            <div class="therapy-benefits-grid">
+                <div class="therapy-benefit-item">
+                    <h4>Anxiety & Emotional Regulation</h4>
+                    <p>Learn tools to manage thoughts and feelings so worry doesn't control your life.</p>
+                </div>
+                <div class="therapy-benefit-item">
+                    <h4>Trauma Recovery & Processing</h4>
+                    <p>Heal from past hurts with validated, gentle therapeutic approaches.</p>
+                </div>
+                <div class="therapy-benefit-item">
+                    <h4>ADHD Support & Coping Skills</h4>
+                    <p>Practical strategies to improve focus, structure, and daily functioning.</p>
+                </div>
+                <div class="therapy-benefit-item">
+                    <h4>Self-Esteem & Relationship Growth</h4>
+                    <p>Gain confidence and develop healthier patterns in connection with others.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Yoga Section - Retro Neon Design -->
     <section id="yoga" class="yoga-section">
         <div class="section-header" data-aos="fade-up">
             <span class="section-badge">Yoga Studio</span>
-            <h2 class="section-title">Vinyasa Yoga Classes</h2>
+            <h2 class="section-title">Mindful Movement Meets Therapeutic Support</h2>
             <p class="section-description">
-                Professional instruction blending movement with mindfulness for holistic wellness
+                Integrate body, breath, and presence with Vinyasa yoga designed to complement your wellness journey. Whether you are new to yoga or a seasoned practitioner, all levels are welcome in a warm, supportive environment.
             </p>
         </div>
 
@@ -1716,7 +1827,12 @@
             <div class="neon-divider" data-aos="fade-up" data-aos-delay="300"></div>
 
             <div data-aos="fade-up" data-aos-delay="350" style="max-width: 800px; margin: 2rem auto 0; color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; line-height: 1.8; text-align: center;">
-                <p>As a Yoga Alliance-registered instructor with over 200 hours of certified training, I'm honored to guide you through energizing flows that blend movement, breath, and mindfulness. Classes are designed to nourish both body and mind, with a small group size of just 8 students to ensure personalized attention in a welcoming, supportive space. No experience required; classes offer options for both beginners and seasoned practitioners.</p>
+                <h3 style="color: var(--accent-teal); font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 600;">Benefits include:</h3>
+                <ul style="list-style: none; padding: 0; text-align: left; max-width: 600px; margin: 0 auto;">
+                    <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);"><i class="fas fa-check-circle" style="color: var(--accent-teal); margin-right: 0.75rem;"></i> Improved stress resilience and relaxation</li>
+                    <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);"><i class="fas fa-check-circle" style="color: var(--accent-teal); margin-right: 0.75rem;"></i> Increased body awareness and confidence</li>
+                    <li style="padding: 0.75rem 0;"><i class="fas fa-check-circle" style="color: var(--accent-teal); margin-right: 0.75rem;"></i> A gentle community experience with personalized guidance</li>
+                </ul>
             </div>
 
             <div class="neon-features" data-aos="fade-up" data-aos-delay="400">
