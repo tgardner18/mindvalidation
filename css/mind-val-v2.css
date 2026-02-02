@@ -203,7 +203,7 @@
             overflow: hidden;
             background:
                 radial-gradient(ellipse at 50% 100%, rgba(243, 0, 144, 0.15) 0%, transparent 50%),
-                linear-gradient(0deg, #3d0a29 0%, #2a1a2a 15%, #1a1a1a 30%, #000000 60%, #000000 100%);
+                linear-gradient(0deg, #333 0%, #232323 15%, #000 30%, #000000 60%, #000000 100%);
             padding: 120px 2rem 100px;
         }
 
@@ -848,7 +848,7 @@
 
         /* Services Section */
         .services-section {
-            background: linear-gradient(180deg, var(--dark-bg) 0%, #0f0f1a 50%, var(--dark-bg) 100%);
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #000 50%, var(--dark-bg) 100%);
             padding: 6rem 2rem;
             position: relative;
             overflow: hidden;
@@ -1073,7 +1073,7 @@
 
         /* Yoga Section - Retro Neon Sign Design */
         .yoga-section {
-            background: linear-gradient(180deg, var(--dark-bg) 0%, #0f0f1a 50%, var(--dark-bg) 100%);
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #000 50%, var(--dark-bg) 100%);
             padding: 6rem 2rem;
             position: relative;
             overflow: hidden;
