@@ -14,7 +14,7 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no" />
     <!-- Web Fonts  -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Archivo+Black&family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
@@ -42,21 +42,15 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             color: #333;
             overflow-x: hidden;
             background: #fff;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Archivo Black', sans-serif;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-        }
-
-        .bebas {
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 2px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
         }
 
         /* Modern Navigation */
@@ -90,8 +84,8 @@
             align-items: center;
             gap: 0.75rem;
             font-size: 1.5rem;
-            font-weight: 900;
-            font-family: 'Archivo Black', sans-serif;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
             color: #1a1a2e;
             text-decoration: none;
         }
@@ -160,6 +154,7 @@
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
+            z-index: 1001;
         }
 
         .mobile-toggle span {
@@ -170,60 +165,93 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section */
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(8px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-8px);
+        }
+
+        /* Mobile Navigation Dropdown */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 280px;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                height: calc(100vh - 70px);
+                overflow-y: auto;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                padding: 1rem 0;
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+        }
+
+        /* Hero Section - New Design */
         .hero-section {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            background:
-                linear-gradient(135deg, transparent 0%, transparent 49%, rgba(243, 0, 144, 0.03) 49%, rgba(243, 0, 144, 0.03) 51%, transparent 51%, transparent 100%),
-                linear-gradient(45deg, transparent 0%, transparent 49%, rgba(80, 75, 253, 0.03) 49%, rgba(80, 75, 253, 0.03) 51%, transparent 51%, transparent 100%),
-                linear-gradient(135deg, #f8f9fa 0%, #e8eaf6 100%);
-            background-size: 40px 40px, 40px 40px, 100% 100%;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
             padding-top: 80px;
         }
 
-        .hero-bg-shapes {
+        /* Floral Pattern Background */
+        .hero-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(243, 0, 144, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(152, 223, 210, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(80, 75, 253, 0.03) 0%, transparent 40%);
             z-index: 0;
         }
 
-        .shape {
+        .hero-section::after {
+            content: '🌸';
             position: absolute;
-            opacity: 0.1;
-        }
-
-        .shape-1 {
-            width: 600px;
-            height: 600px;
-            background: var(--gradient-primary);
-            top: -200px;
-            right: -100px;
-            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            font-size: 100px;
+            opacity: 0.03;
+            top: 10%;
+            right: 10%;
             animation: float 20s ease-in-out infinite;
-        }
-
-        .shape-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--gradient-secondary);
-            bottom: -100px;
-            left: -100px;
-            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-            animation: float 15s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -50px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
 
         .hero-content {
@@ -234,44 +262,91 @@
             padding: 0 2rem;
         }
 
+        .hero-text-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid var(--primary-pink);
+        }
+
         .hero-badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 0.5rem 1.5rem;
-            background: rgba(243, 0, 144, 0.1);
+            background: linear-gradient(135deg, rgba(243, 0, 144, 0.1), rgba(152, 223, 210, 0.1));
             color: var(--primary-pink);
-            border: 2px solid rgba(243, 0, 144, 0.3);
+            border: 2px solid rgba(243, 0, 144, 0.2);
             border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 600;
             margin-bottom: 1.5rem;
-            box-shadow: 0 0 20px rgba(243, 0, 144, 0.2);
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(243, 0, 144, 0.3));
+            font-weight: 800;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-size: clamp(1rem, 2vw, 1.3rem);
             color: #555;
             margin-bottom: 2rem;
-            font-family: 'Inter', sans-serif;
             font-weight: 500;
         }
 
-        .hero-description {
+        .services-highlight {
+            background: linear-gradient(135deg, rgba(243, 0, 144, 0.05), rgba(152, 223, 210, 0.05));
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .service-icon-box i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .service-text h3 {
             font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: #1a1a2e;
+        }
+
+        .service-text p {
+            font-size: 0.9rem;
             color: #666;
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
+            margin: 0;
         }
 
         .hero-buttons {
@@ -287,13 +362,11 @@
             border: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             box-shadow: 0 0 20px rgba(243, 0, 144, 0.3);
         }
 
@@ -313,13 +386,11 @@
             border: 3px solid var(--primary-pink);
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             box-shadow: 0 0 20px rgba(243, 0, 144, 0.2);
         }
 
@@ -358,6 +429,12 @@
             50% { transform: translateY(-20px); }
         }
 
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
         .floating-card-1 {
             top: 10%;
             left: -50px;
@@ -378,7 +455,9 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(243, 0, 144, 0.1);
         }
 
         .section-badge {
@@ -390,18 +469,18 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-family: 'Bebas Neue', sans-serif;
         }
 
         .section-title {
             font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: #1a1a2e;
             position: relative;
             display: inline-block;
+            margin-top: 1rem;
         }
 
         .section-title::after {
@@ -423,7 +502,23 @@
             line-height: 1.8;
         }
 
-        /* About Section */
+        /* About Section with Floral Pattern */
+        #about {
+            background:
+                radial-gradient(circle at 10% 20%, rgba(243, 0, 144, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(152, 223, 210, 0.03) 0%, transparent 50%),
+                #fff;
+        }
+
+        #about::before {
+            content: '🌺';
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.04;
+            left: 5%;
+            top: 20%;
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -517,6 +612,10 @@
             color: white;
         }
 
+        .services-section .section-header {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -591,7 +690,7 @@
             margin-right: 0.75rem;
         }
 
-        /* Yoga Section */
+        /* Yoga Section with Floral Pattern */
         .yoga-section {
             background: #1a1a2e;
             padding: 6rem 2rem;
@@ -613,9 +712,23 @@
             z-index: 0;
         }
 
+        .yoga-section::after {
+            content: '🌼';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.03;
+            right: 10%;
+            bottom: 10%;
+            z-index: 0;
+        }
+
         .yoga-section > * {
             position: relative;
             z-index: 1;
+        }
+
+        .yoga-section .section-header {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
         }
 
         .yoga-content {
@@ -658,39 +771,44 @@
             display: block;
         }
 
-        .yoga-image-wrapper {
+        /* Yoga Pose SVG Container */
+        .yoga-pose-container {
             position: relative;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, rgba(152, 223, 210, 0.2), rgba(80, 75, 253, 0.2));
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
         }
 
-        .yoga-image-wrapper::before {
-            content: 'YOGA STUDIO';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            color: var(--accent-teal);
-            opacity: 0.2;
-            letter-spacing: 10px;
-            z-index: 1;
-            text-shadow:
-                0 0 20px rgba(152, 223, 210, 0.8),
-                0 0 40px rgba(152, 223, 210, 0.6);
-        }
-
-        .yoga-image-wrapper img {
-            display: block;
+        .yoga-pose-svg {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.8) contrast(1.1);
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(152, 223, 210, 0.3));
         }
 
-        /* Certifications Section */
+        /* Certifications Section with Floral Pattern */
+        #certifications {
+            background:
+                radial-gradient(circle at 85% 15%, rgba(152, 223, 210, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 15% 85%, rgba(80, 75, 253, 0.02) 0%, transparent 50%),
+                var(--light-bg);
+            position: relative;
+        }
+
+        #certifications::after {
+            content: '🌷';
+            position: absolute;
+            font-size: 90px;
+            opacity: 0.04;
+            right: 8%;
+            top: 15%;
+        }
+
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -757,6 +875,10 @@
             background: var(--dark-bg);
             padding: 6rem 2rem;
             color: white;
+        }
+
+        .contact-section .section-header {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
         }
 
         .contact-grid {
@@ -851,16 +973,12 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
             .hero-section {
                 text-align: center;
+            }
+
+            .hero-text-section {
+                padding: 2rem;
             }
 
             .hero-buttons {
@@ -869,6 +987,10 @@
 
             .floating-card {
                 display: none;
+            }
+
+            .section-modern {
+                padding: 4rem 1.5rem;
             }
         }
 
@@ -914,52 +1036,48 @@
             </div>
         </div>
     </nav>
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-bg-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-        </div>
 
+    <!-- Hero Section - New Design -->
+    <section id="home" class="hero-section">
         <div class="hero-content">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                    <span class="hero-badge">
-                        <i class="fas fa-heart"></i> Mind & Body Wellness
-                    </span>
-                    <h1 class="hero-title">Mind Validation</h1>
-                    <h2 class="hero-subtitle bebas">Mental Health Private Practice + Yoga Studio</h2>
+                    <div class="hero-text-section">
+                        <span class="hero-badge">
+                            <i class="fas fa-heart"></i> Mind & Body Wellness
+                        </span>
+                        <h1 class="hero-title">Mind Validation</h1>
+                        <p class="hero-subtitle">Your partner in mental health and holistic wellness</p>
 
-                    <div style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 20px; margin-bottom: 2rem; border-left: 4px solid var(--primary-pink);">
-                        <div style="display: grid; gap: 1rem;">
-                            <div style="display: flex; align-items: start; gap: 1rem;">
-                                <div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <i class="fas fa-brain" style="color: white; font-size: 1.2rem;"></i>
+                        <div class="services-highlight">
+                            <div class="service-item">
+                                <div class="service-icon-box">
+                                    <i class="fas fa-brain"></i>
                                 </div>
-                                <div>
-                                    <div style="font-weight: 700; font-size: 1rem; color: #1a1a2e; margin-bottom: 0.25rem;">Licensed Mental Health Counseling</div>
-                                    <div style="font-size: 0.9rem; color: #666;">CBT, DBT, mindfulness & trauma-focused therapy</div>
+                                <div class="service-text">
+                                    <h3>Licensed Mental Health Counseling</h3>
+                                    <p>LCMHC specializing in CBT, DBT & trauma-focused therapy</p>
                                 </div>
                             </div>
-                            <div style="display: flex; align-items: start; gap: 1rem;">
-                                <div style="width: 40px; height: 40px; background: var(--gradient-teal); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <i class="fas fa-spa" style="color: white; font-size: 1.2rem;"></i>
+                            <div class="service-item">
+                                <div class="service-icon-box" style="background: var(--gradient-teal);">
+                                    <i class="fas fa-spa"></i>
                                 </div>
-                                <div>
-                                    <div style="font-weight: 700; font-size: 1rem; color: #1a1a2e; margin-bottom: 0.25rem;">Yoga Alliance Certified Studio</div>
-                                    <div style="font-size: 0.9rem; color: #666;">200hr RYT Vinyasa Yoga instruction</div>
+                                <div class="service-text">
+                                    <h3>Yoga Alliance Certified Studio</h3>
+                                    <p>200hr RYT Vinyasa Yoga instruction</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <p style="font-size: 1rem; color: #666; margin-bottom: 2rem;">
-                        <i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Based in Nashua, NH
-                    </p>
+                        <p style="font-size: 0.95rem; color: #666; margin-bottom: 2rem;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Based in Nashua, NH
+                        </p>
 
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn-primary-modern">Schedule Now</a>
-                        <a href="#services" class="btn-secondary-modern">Our Services</a>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn-primary-modern">Schedule Now</a>
+                            <a href="#services" class="btn-secondary-modern">My Services</a>
+                        </div>
                     </div>
                 </div>
 
@@ -973,7 +1091,7 @@
                                     <i class="fas fa-certificate" style="color: white; font-size: 1.5rem;"></i>
                                 </div>
                                 <div>
-                                    <div style="font-weight: 900; color: #1a1a2e; font-family: 'Archivo Black', sans-serif;">LCMHC</div>
+                                    <div style="font-weight: 800; color: #1a1a2e; font-family: 'Poppins', sans-serif;">LCMHC</div>
                                     <div style="font-size: 0.85rem; color: #666;">Licensed Counselor</div>
                                 </div>
                             </div>
@@ -985,7 +1103,7 @@
                                     <i class="fas fa-spa" style="color: white; font-size: 1.5rem;"></i>
                                 </div>
                                 <div>
-                                    <div style="font-weight: 900; color: #1a1a2e; font-family: 'Archivo Black', sans-serif;">RYT-200</div>
+                                    <div style="font-weight: 800; color: #1a1a2e; font-family: 'Poppins', sans-serif;">RYT-200</div>
                                     <div style="font-size: 0.85rem; color: #666;">Yoga Certified</div>
                                 </div>
                             </div>
@@ -995,6 +1113,7 @@
             </div>
         </div>
     </section>
+
     <!-- About Section -->
     <section id="about" class="section-modern">
         <div class="section-header" data-aos="fade-up">
@@ -1042,6 +1161,7 @@
             </div>
         </div>
     </section>
+
     <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="section-header" data-aos="fade-up">
@@ -1106,7 +1226,7 @@
             <span class="section-badge" style="background: rgba(152, 223, 210, 0.2); color: var(--accent-teal);">
                 <i class="fas fa-om"></i> Yoga Studio
             </span>
-            <h2 class="section-title bebas" style="color: white; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 5px; text-shadow: 0 0 30px rgba(152, 223, 210, 0.5);">
+            <h2 class="section-title" style="color: white; font-size: clamp(2.5rem, 5vw, 4rem); text-shadow: 0 0 30px rgba(152, 223, 210, 0.5);">
                 VINYASA YOGA CLASSES
             </h2>
             <p class="section-description" style="color: rgba(255, 255, 255, 0.9); max-width: 800px;">
@@ -1116,7 +1236,7 @@
 
         <div class="yoga-content">
             <div data-aos="fade-right" data-aos-duration="1000">
-                <h3 style="font-size: 2rem; margin-bottom: 1.5rem; font-family: 'Archivo Black', sans-serif;">Professional Instruction</h3>
+                <h3 style="font-size: 2rem; margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif;">Professional Instruction</h3>
                 <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.9);">
                     As a Yoga Alliance-registered instructor with 200 hours of certified training, I bring professional expertise to each session. Classes are thoughtfully designed to blend movement with mindfulness, supporting both your physical and mental well-being.
                 </p>
@@ -1142,15 +1262,51 @@
                 <div style="display: flex; gap: 1rem; align-items: center; background: rgba(152, 223, 210, 0.15); border: 2px solid rgba(152, 223, 210, 0.3); border-radius: 20px; padding: 1.5rem; margin-top: 2rem;">
                     <img src="img/RYT-200.jpg" alt="Yoga Alliance RYT-200" style="width: 80px; height: 80px; border-radius: 15px; box-shadow: 0 0 20px rgba(152, 223, 210, 0.5);">
                     <div>
-                        <div style="font-weight: 900; font-size: 1.3rem; font-family: 'Archivo Black', sans-serif; color: var(--accent-teal); margin-bottom: 0.25rem;">RYT-200 Certified</div>
+                        <div style="font-weight: 800; font-size: 1.3rem; font-family: 'Poppins', sans-serif; color: var(--accent-teal); margin-bottom: 0.25rem;">RYT-200 Certified</div>
                         <div style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8);">Yoga Alliance Registered Teacher</div>
                     </div>
                 </div>
             </div>
 
             <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <div class="yoga-image-wrapper" style="height: 500px;">
-                    <img src="img/yoga-placeholder.jpeg" alt="Yoga Studio at Mind Validation">
+                <div class="yoga-pose-container">
+                    <!-- Yoga Pose SVG -->
+                    <svg class="yoga-pose-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Tree Pose Illustration -->
+                        <!-- Head -->
+                        <circle cx="200" cy="60" r="30" fill="#98dfd2" opacity="0.9"/>
+
+                        <!-- Body -->
+                        <ellipse cx="200" cy="140" rx="35" ry="70" fill="#504BFD" opacity="0.8"/>
+
+                        <!-- Left Arm (raised) -->
+                        <line x1="165" y1="110" x2="140" y2="50" stroke="#f30090" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="140" cy="50" r="8" fill="#f30090"/>
+
+                        <!-- Right Arm (raised) -->
+                        <line x1="235" y1="110" x2="260" y2="50" stroke="#f30090" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="260" cy="50" r="8" fill="#f30090"/>
+
+                        <!-- Standing Leg -->
+                        <line x1="200" y1="210" x2="200" y2="380" stroke="#504BFD" stroke-width="18" stroke-linecap="round"/>
+
+                        <!-- Bent Leg (tree pose) -->
+                        <path d="M 200 240 Q 160 280, 150 320" stroke="#98dfd2" stroke-width="14" fill="none" stroke-linecap="round"/>
+                        <circle cx="150" cy="320" r="8" fill="#98dfd2"/>
+
+                        <!-- Foot -->
+                        <ellipse cx="200" cy="395" rx="25" ry="12" fill="#f30090" opacity="0.9"/>
+
+                        <!-- Decorative elements -->
+                        <circle cx="100" cy="100" r="5" fill="#98dfd2" opacity="0.3"/>
+                        <circle cx="300" cy="150" r="5" fill="#f30090" opacity="0.3"/>
+                        <circle cx="120" cy="250" r="4" fill="#504BFD" opacity="0.3"/>
+                        <circle cx="280" cy="280" r="4" fill="#98dfd2" opacity="0.3"/>
+
+                        <!-- Text -->
+                        <text x="200" y="460" font-family="Poppins, sans-serif" font-size="24" font-weight="700" fill="#98dfd2" text-anchor="middle">YOGA</text>
+                        <text x="200" y="485" font-family="Poppins, sans-serif" font-size="16" font-weight="500" fill="white" text-anchor="middle" opacity="0.8">Tree Pose</text>
+                    </svg>
                 </div>
                 <div style="background: rgba(152, 223, 210, 0.1); border: 2px solid rgba(152, 223, 210, 0.3); border-radius: 20px; padding: 2rem; margin-top: 2rem; text-align: center;">
                     <div style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-teal);">
@@ -1163,101 +1319,75 @@
             </div>
         </div>
     </section>
+
     <!-- Certifications Section -->
-    <section id="certifications" class="section-modern" style="background: var(--light-bg);">
+    <section id="certifications" class="section-modern">
         <div class="section-header" data-aos="fade-up">
             <span class="section-badge">Professional Credentials</span>
-            <h2 class="section-title">Certifications & Education</h2>
+            <h2 class="section-title">Certifications</h2>
             <p class="section-description">
                 Comprehensive training and continuous professional development
             </p>
         </div>
 
-        <div style="margin-bottom: 4rem;">
-            <h3 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: var(--primary-pink);">Active Certifications</h3>
-            <div class="cert-grid">
-                <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 50px; height: 50px; background: var(--gradient-teal); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-om" style="color: white; font-size: 1.5rem;"></i>
-                        </div>
-                        <h4 style="margin: 0;">Yoga Certification</h4>
+        <div class="cert-grid">
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="width: 50px; height: 50px; background: var(--gradient-teal); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-om" style="color: white; font-size: 1.5rem;"></i>
                     </div>
-                    <p>200 Hours of Yoga Alliance Certified Training at Sutra Studio</p>
-                    <span class="cert-date">April 2024 – Present</span>
+                    <h4 style="margin: 0;">Yoga Certification</h4>
                 </div>
-
-                <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-brain" style="color: white; font-size: 1.5rem;"></i>
-                        </div>
-                        <h4 style="margin: 0;">Cognitive Behavior Therapy</h4>
-                    </div>
-                    <p>Beck Institute for Cognitive Behavior Therapy</p>
-                    <span class="cert-date">December 2011 – Present</span>
-                </div>
-
-                <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 50px; height: 50px; background: var(--gradient-secondary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-heart-pulse" style="color: white; font-size: 1.5rem;"></i>
-                        </div>
-                        <h4 style="margin: 0;">Trauma-Focused CBT</h4>
-                    </div>
-                    <p>Medical University of South Carolina</p>
-                    <span class="cert-date">June 2010 – Present</span>
-                </div>
-
-                <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-comment-dots" style="color: white; font-size: 1.5rem;"></i>
-                        </div>
-                        <h4 style="margin: 0;">Assertiveness Training</h4>
-                    </div>
-                    <p>American Management Association</p>
-                    <span class="cert-date">June 2012 – Present</span>
-                </div>
-
-                <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 50px; height: 50px; background: var(--gradient-secondary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-handshake" style="color: white; font-size: 1.5rem;"></i>
-                        </div>
-                        <h4 style="margin: 0;">Motivational Interviewing</h4>
-                    </div>
-                    <p>Greater Manchester Mental Health Center</p>
-                    <span class="cert-date">September 2012 – Present</span>
-                </div>
+                <p>200 Hours of Yoga Alliance Certified Training at Sutra Studio</p>
+                <span class="cert-date">April 2024 – Present</span>
             </div>
-        </div>
 
-        <div>
-            <h3 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: var(--secondary-blue);">Education</h3>
-            <div class="row" style="max-width: 1000px; margin: 0 auto;">
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="cert-card" style="height: 100%;">
-                        <img src="img/Riv.png" alt="Rivier University" style="width: 100%; max-width: 200px; margin: 0 auto 1.5rem; display: block;">
-                        <h4 style="text-align: center;">Rivier University</h4>
-                        <ul style="color: #666; line-height: 1.8;">
-                            <li>Certificate of Advanced Degree – School Psychology</li>
-                            <li>Master's Degree – Mental Health Counseling / Counselor</li>
-                        </ul>
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-brain" style="color: white; font-size: 1.5rem;"></i>
                     </div>
+                    <h4 style="margin: 0;">Cognitive Behavior Therapy</h4>
                 </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="cert-card" style="height: 100%;">
-                        <img src="img/school/UML.png" alt="UMASS Lowell" style="width: 100%; max-width: 200px; margin: 0 auto 1.5rem; display: block;">
-                        <h4 style="text-align: center;">UMASS Lowell</h4>
-                        <ul style="color: #666; line-height: 1.8;">
-                            <li>Degree – Psychology</li>
-                        </ul>
+                <p>Beck Institute for Cognitive Behavior Therapy</p>
+                <span class="cert-date">December 2011 – Present</span>
+            </div>
+
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="width: 50px; height: 50px; background: var(--gradient-secondary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-heart-pulse" style="color: white; font-size: 1.5rem;"></i>
                     </div>
+                    <h4 style="margin: 0;">Trauma-Focused CBT</h4>
                 </div>
+                <p>Medical University of South Carolina</p>
+                <span class="cert-date">June 2010 – Present</span>
+            </div>
+
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-comment-dots" style="color: white; font-size: 1.5rem;"></i>
+                    </div>
+                    <h4 style="margin: 0;">Assertiveness Training</h4>
+                </div>
+                <p>American Management Association</p>
+                <span class="cert-date">June 2012 – Present</span>
+            </div>
+
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="width: 50px; height: 50px; background: var(--gradient-secondary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-handshake" style="color: white; font-size: 1.5rem;"></i>
+                    </div>
+                    <h4 style="margin: 0;">Motivational Interviewing</h4>
+                </div>
+                <p>Greater Manchester Mental Health Center</p>
+                <span class="cert-date">September 2012 – Present</span>
             </div>
         </div>
     </section>
+
     <!-- Location Section -->
     <section id="location" class="section-modern">
         <div class="section-header" data-aos="fade-up">
@@ -1354,6 +1484,7 @@
         </div>
         <p>Mind Validation © 2025. All Rights Reserved.</p>
     </footer>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -1422,7 +1553,8 @@
 
         if (mobileToggle) {
             mobileToggle.addEventListener('click', () => {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                mobileToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
             });
         }
 
@@ -1430,7 +1562,8 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
+                    mobileToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
                 }
             });
         });
@@ -1438,9 +1571,8 @@
         // Handle window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
-                navLinks.style.display = 'flex';
-            } else {
-                navLinks.style.display = 'none';
+                navLinks.classList.remove('active');
+                mobileToggle.classList.remove('active');
             }
         });
     </script>
