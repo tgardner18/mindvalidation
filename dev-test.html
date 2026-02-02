@@ -225,7 +225,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e8eaf6 100%);
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
             padding-top: 80px;
         }
 
@@ -246,7 +246,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
+            opacity: 0.25;
         }
 
         .wave-1 {
@@ -257,13 +257,13 @@
         .wave-2 {
             animation: lava-float-2 15s ease-in-out infinite;
             animation-delay: -5s;
-            opacity: 0.12;
+            opacity: 0.2;
         }
 
         .wave-3 {
             animation: lava-float-3 18s ease-in-out infinite;
             animation-delay: -8s;
-            opacity: 0.1;
+            opacity: 0.18;
         }
 
         @keyframes lava-float-1 {
@@ -320,13 +320,14 @@
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
             margin-bottom: 1rem;
-            color: #000000;
+            color: #ffffff;
             line-height: 1.1;
+            text-shadow: 0 0 40px rgba(243, 0, 144, 0.3);
         }
 
         .hero-tagline {
             font-size: clamp(1.2rem, 3vw, 2rem);
-            color: #555;
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: 3rem;
             font-weight: 500;
         }
@@ -340,12 +341,13 @@
         }
 
         .hero-service-box {
-            background: white;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             padding: 2.5rem 2rem;
             border-radius: 25px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid transparent;
+            border: 2px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -372,8 +374,9 @@
 
         .hero-service-box:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(243, 0, 144, 0.2);
-            border-color: rgba(243, 0, 144, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(243, 0, 144, 0.4);
+            border-color: rgba(243, 0, 144, 0.5);
         }
 
         .hero-service-icon {
@@ -405,11 +408,11 @@
         .hero-service-box h3 {
             font-size: 1.3rem;
             margin-bottom: 0.75rem;
-            color: #1a1a2e;
+            color: #ffffff;
         }
 
         .hero-service-box p {
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
             line-height: 1.6;
             margin: 0;
@@ -428,11 +431,13 @@
             align-items: center;
             gap: 0.5rem;
             padding: 1rem 2rem;
-            background: white;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             font-weight: 600;
-            color: #666;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .hero-location i {
@@ -535,7 +540,6 @@
             text-align: center;
             margin-bottom: 2rem;
             padding-bottom: 2rem;
-            border-bottom: 2px solid rgba(243, 0, 144, 0.1);
         }
 
         .section-badge {
@@ -708,10 +712,6 @@
             color: white;
         }
 
-        .services-section .section-header {
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-        }
-
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -827,11 +827,30 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 50%;
+            width: 100%;
             height: 100%;
-            background: var(--gradient-teal);
-            opacity: 0.05;
-            border-radius: 0 0 100% 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(243, 0, 144, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(160, 222, 209, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(80, 75, 253, 0.05) 0%, transparent 70%);
+            opacity: 1;
+        }
+
+        .yoga-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 100px,
+                rgba(243, 0, 144, 0.02) 100px,
+                rgba(243, 0, 144, 0.02) 101px
+            );
+            pointer-events: none;
         }
 
         .yoga-section .section-badge {
@@ -846,7 +865,8 @@
         }
 
         .yoga-section .section-header {
-            border-bottom-color: rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .neon-container {
@@ -854,13 +874,14 @@
             margin: 4rem auto 0;
             text-align: center;
             position: relative;
+            z-index: 1;
         }
 
         /* Neon Sign Title */
         .neon-title {
             font-size: clamp(3rem, 8vw, 7rem);
             font-weight: 400;
-            color: var(--primary-pink);
+            color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             text-shadow:
@@ -1168,9 +1189,6 @@
             color: white;
         }
 
-        .contact-section .section-header {
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-        }
 
         .contact-grid {
             display: grid;
@@ -1389,8 +1407,8 @@
             <svg class="wave wave-1" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <defs>
                     <radialGradient id="lava-gradient1" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" style="stop-color:#F30090;stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:#504BFD;stop-opacity:0.4" />
+                        <stop offset="0%" style="stop-color:#F30090;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#504BFD;stop-opacity:0.6" />
                     </radialGradient>
                 </defs>
                 <path fill="url(#lava-gradient1)" d="M200,150 Q350,100 450,180 T700,200 Q800,220 900,180 T1100,200 Q1200,180 1300,220 L1300,450 Q1200,400 1100,450 T900,430 Q800,460 700,420 T450,450 Q350,480 200,430 Z">
@@ -1404,8 +1422,8 @@
             <svg class="wave wave-2" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <defs>
                     <radialGradient id="lava-gradient2" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" style="stop-color:#A0DED1;stop-opacity:0.6" />
-                        <stop offset="100%" style="stop-color:#F30090;stop-opacity:0.3" />
+                        <stop offset="0%" style="stop-color:#A0DED1;stop-opacity:0.9" />
+                        <stop offset="100%" style="stop-color:#F30090;stop-opacity:0.5" />
                     </radialGradient>
                 </defs>
                 <ellipse fill="url(#lava-gradient2)" cx="300" cy="400" rx="250" ry="200">
@@ -1419,8 +1437,8 @@
             <svg class="wave wave-3" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <defs>
                     <radialGradient id="lava-gradient3" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" style="stop-color:#504BFD;stop-opacity:0.5" />
-                        <stop offset="100%" style="stop-color:#A0DED1;stop-opacity:0.2" />
+                        <stop offset="0%" style="stop-color:#504BFD;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#A0DED1;stop-opacity:0.4" />
                     </radialGradient>
                 </defs>
                 <ellipse fill="url(#lava-gradient3)" cx="1100" cy="300" rx="200" ry="280">
