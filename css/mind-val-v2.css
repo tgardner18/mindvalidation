@@ -4,7 +4,7 @@
             --secondary-blue: #504BFD;
             --accent-teal: #A0DED1;
             --light-bg: #f8f9fa;
-            --dark-bg: #1a1a2e;
+            --dark-bg: #222222;
             --gradient-primary: linear-gradient(135deg, #F30090 0%, #504BFD 100%);
             --gradient-secondary: linear-gradient(135deg, #504BFD 0%, #020887 100%);
             --gradient-teal: linear-gradient(135deg, #A0DED1 0%, #504BFD 100%);
@@ -1556,7 +1556,7 @@
 
         /* Footer */
         .modern-footer {
-            background: #0d0d1a;
+            background: #333;
             padding: 2rem;
             text-align: center;
             color: rgba(255, 255, 255, 0.6);
