@@ -229,7 +229,7 @@
             padding-top: 80px;
         }
 
-        /* Animated SVG Background Shapes */
+        /* Animated Wave Background */
         .hero-shapes {
             position: absolute;
             top: 0;
@@ -237,73 +237,48 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            overflow: hidden;
         }
 
-        .floating-shape {
+        .wave {
             position: absolute;
-            opacity: 0.15;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            opacity: 0.1;
         }
 
-        .shape-circle-1 {
-            top: 10%;
-            right: 15%;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            animation: float-1 20s ease-in-out infinite;
+        .wave-1 {
+            animation: wave-flow-1 25s ease-in-out infinite;
+            animation-delay: 0s;
         }
 
-        .shape-circle-2 {
-            bottom: 20%;
-            left: 10%;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: var(--gradient-teal);
-            animation: float-2 15s ease-in-out infinite;
+        .wave-2 {
+            animation: wave-flow-2 20s ease-in-out infinite;
+            animation-delay: -5s;
+            opacity: 0.08;
         }
 
-        .shape-triangle {
-            top: 50%;
-            right: 5%;
-            width: 0;
-            height: 0;
-            border-left: 100px solid transparent;
-            border-right: 100px solid transparent;
-            border-bottom: 175px solid rgba(80, 75, 253, 0.15);
-            animation: rotate-shape 30s linear infinite;
+        .wave-3 {
+            animation: wave-flow-3 30s ease-in-out infinite;
+            animation-delay: -10s;
+            opacity: 0.06;
         }
 
-        .shape-square {
-            bottom: 10%;
-            right: 25%;
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, rgba(152, 223, 210, 0.15), rgba(80, 75, 253, 0.15));
-            transform: rotate(45deg);
-            animation: pulse-shape 10s ease-in-out infinite;
+        @keyframes wave-flow-1 {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
         }
 
-        @keyframes float-1 {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(30px, -40px); }
-            66% { transform: translate(-20px, 30px); }
+        @keyframes wave-flow-2 {
+            0%, 100% { transform: translateX(-25%) translateY(0); }
+            50% { transform: translateX(-75%) translateY(-30px); }
         }
 
-        @keyframes float-2 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-30px, -30px); }
-        }
-
-        @keyframes rotate-shape {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse-shape {
-            0%, 100% { transform: rotate(45deg) scale(1); }
-            50% { transform: rotate(45deg) scale(1.1); }
+        @keyframes wave-flow-3 {
+            0%, 100% { transform: translateX(-10%) translateY(0); }
+            50% { transform: translateX(-60%) translateY(-15px); }
         }
 
         .hero-content {
@@ -816,171 +791,225 @@
             margin-right: 0.75rem;
         }
 
-        /* New Yoga Section - Bold Card Design */
+        /* Yoga Section - Retro Neon Sign Design */
         .yoga-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaf6 100%);
+            background: var(--dark-bg);
             padding: 6rem 2rem;
             position: relative;
             overflow: hidden;
         }
 
-        .yoga-hero-card {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #2a2a3e 100%);
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .yoga-hero-card::before {
+        .yoga-section::before {
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 50%;
             height: 100%;
-            background: radial-gradient(circle at top right, rgba(152, 223, 210, 0.15), transparent);
-            pointer-events: none;
+            background: var(--gradient-teal);
+            opacity: 0.05;
+            border-radius: 0 0 100% 0;
         }
 
-        .yoga-content-wrapper {
-            padding: 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .yoga-badge {
-            display: inline-block;
-            padding: 0.75rem 2rem;
+        .yoga-section .section-badge {
             background: rgba(152, 223, 210, 0.2);
             color: var(--accent-teal);
-            border: 2px solid rgba(152, 223, 210, 0.4);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            border-color: rgba(152, 223, 210, 0.4);
         }
 
-        .yoga-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 900;
+        .yoga-section .section-title,
+        .yoga-section .section-description {
             color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
         }
 
-        .yoga-title span {
-            background: var(--gradient-teal);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .yoga-section .section-header {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
         }
 
-        .yoga-description {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            max-width: 800px;
-        }
-
-        .yoga-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .yoga-feature-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(152, 223, 210, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
+        .neon-container {
+            max-width: 1000px;
+            margin: 4rem auto 0;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
         }
 
-        .yoga-feature-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-teal);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(152, 223, 210, 0.3);
+        /* Neon Sign Title */
+        .neon-title {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow:
+                0 0 10px var(--accent-teal),
+                0 0 20px var(--accent-teal),
+                0 0 40px var(--accent-teal),
+                0 0 80px var(--accent-teal),
+                0 0 120px var(--accent-teal);
+            animation: neon-flicker 3s ease-in-out infinite alternate;
+            margin-bottom: 2rem;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .yoga-feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-teal);
+        @keyframes neon-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow:
+                    0 0 10px var(--accent-teal),
+                    0 0 20px var(--accent-teal),
+                    0 0 40px var(--accent-teal),
+                    0 0 80px var(--accent-teal),
+                    0 0 120px var(--accent-teal);
+            }
+            20%, 24%, 55% {
+                text-shadow:
+                    0 0 5px var(--accent-teal),
+                    0 0 10px var(--accent-teal);
+            }
+        }
+
+        .neon-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        /* Neon Divider */
+        .neon-divider {
+            width: 200px;
+            height: 4px;
+            background: var(--accent-teal);
+            margin: 3rem auto;
+            box-shadow:
+                0 0 10px var(--accent-teal),
+                0 0 20px var(--accent-teal),
+                0 0 40px var(--accent-teal);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 10px var(--accent-teal),
+                    0 0 20px var(--accent-teal),
+                    0 0 40px var(--accent-teal);
+            }
+            50% {
+                box-shadow:
+                    0 0 20px var(--accent-teal),
+                    0 0 40px var(--accent-teal),
+                    0 0 80px var(--accent-teal);
+            }
+        }
+
+        /* Neon Feature List */
+        .neon-features {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin: 4rem 0;
+        }
+
+        .neon-feature {
+            text-align: center;
+        }
+
+        .neon-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--accent-teal);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
+            box-shadow:
+                0 0 15px var(--accent-teal),
+                0 0 30px var(--accent-teal),
+                inset 0 0 15px rgba(152, 223, 210, 0.2);
             transition: all 0.4s ease;
         }
 
-        .yoga-feature-item:hover .yoga-feature-icon {
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 10px 30px rgba(152, 223, 210, 0.5);
+        .neon-feature:hover .neon-icon {
+            transform: scale(1.1);
+            box-shadow:
+                0 0 25px var(--accent-teal),
+                0 0 50px var(--accent-teal),
+                0 0 100px var(--accent-teal),
+                inset 0 0 25px rgba(152, 223, 210, 0.4);
         }
 
-        .yoga-feature-icon i {
-            font-size: 1.8rem;
-            color: white;
+        .neon-icon i {
+            font-size: 2.5rem;
+            color: var(--accent-teal);
+            filter: drop-shadow(0 0 10px var(--accent-teal));
         }
 
-        .yoga-feature-item h4 {
-            color: white;
+        .neon-feature-text {
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        .yoga-feature-item p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        .yoga-certification-box {
+        /* Certification Badge Neon Style */
+        .neon-cert-box {
             display: inline-flex;
             align-items: center;
-            gap: 1.5rem;
-            padding: 2rem 3rem;
-            background: rgba(152, 223, 210, 0.15);
-            border: 2px solid rgba(152, 223, 210, 0.3);
-            border-radius: 25px;
-            margin-bottom: 2rem;
+            gap: 2rem;
+            padding: 2.5rem 4rem;
+            border: 3px solid var(--accent-teal);
+            border-radius: 15px;
+            margin: 3rem 0;
+            box-shadow:
+                0 0 20px var(--accent-teal),
+                0 0 40px var(--accent-teal),
+                inset 0 0 20px rgba(152, 223, 210, 0.1);
+            transition: all 0.4s ease;
         }
 
-        .yoga-cert-badge {
-            width: 90px;
-            height: 90px;
-            border-radius: 20px;
+        .neon-cert-box:hover {
+            box-shadow:
+                0 0 30px var(--accent-teal),
+                0 0 60px var(--accent-teal),
+                0 0 90px var(--accent-teal),
+                inset 0 0 30px rgba(152, 223, 210, 0.2);
+        }
+
+        .neon-cert-badge {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(152, 223, 210, 0.4);
+            box-shadow: 0 0 25px rgba(152, 223, 210, 0.5);
         }
 
-        .yoga-cert-badge img {
+        .neon-cert-badge img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .yoga-cert-text h5 {
-            font-size: 1.5rem;
+        .neon-cert-text h5 {
+            font-size: 2rem;
             color: var(--accent-teal);
-            margin-bottom: 0.25rem;
-            font-weight: 800;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow:
+                0 0 10px var(--accent-teal),
+                0 0 20px var(--accent-teal);
         }
 
-        .yoga-cert-text p {
+        .neon-cert-text p {
             color: rgba(255, 255, 255, 0.8);
             margin: 0;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
         }
 
         /* New Certifications - Badge Style */
@@ -1264,12 +1293,22 @@
                 padding: 4rem 1.5rem;
             }
 
-            .yoga-content-wrapper {
-                padding: 2.5rem 1.5rem;
-            }
-
             .hero-services-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .neon-features {
+                gap: 2rem;
+            }
+
+            .neon-cert-box {
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .neon-title {
+                font-size: 3rem;
             }
         }
 
@@ -1318,12 +1357,37 @@
 
     <!-- New Hero Section -->
     <section id="home" class="hero-section">
-        <!-- Animated Background Shapes -->
+        <!-- Animated Wave Background -->
         <div class="hero-shapes">
-            <div class="floating-shape shape-circle-1"></div>
-            <div class="floating-shape shape-circle-2"></div>
-            <div class="floating-shape shape-triangle"></div>
-            <div class="floating-shape shape-square"></div>
+            <svg class="wave wave-1" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#f30090;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#504BFD;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient1)" d="M0,400 C320,300 420,500 720,400 C1020,300 1120,500 1440,400 L1440,800 L0,800 Z"/>
+            </svg>
+
+            <svg class="wave wave-2" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#504BFD;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#020887;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient2)" d="M0,500 C360,350 480,600 840,450 C1200,300 1320,550 1440,500 L1440,800 L0,800 Z"/>
+            </svg>
+
+            <svg class="wave wave-3" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#98dfd2;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#504BFD;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient3)" d="M0,600 C300,450 600,650 900,550 C1200,450 1320,600 1440,600 L1440,800 L0,800 Z"/>
+            </svg>
         </div>
 
         <div class="hero-content">
@@ -1344,8 +1408,8 @@
                         <div class="hero-service-icon">
                             <i class="fas fa-spa"></i>
                         </div>
-                        <h3>Yoga Alliance Certified</h3>
-                        <p>200hr RYT Vinyasa Yoga instruction blending movement with mindfulness</p>
+                        <h3>Yoga Classes</h3>
+                        <p>Vinyasa Yoga instruction blending movement with mindfulness</p>
                     </div>
                 </div>
 
@@ -1470,66 +1534,62 @@
         </div>
     </section>
 
-    <!-- New Yoga Section -->
+    <!-- Yoga Section - Retro Neon Design -->
     <section id="yoga" class="yoga-section">
         <div class="section-header" data-aos="fade-up">
-            <span class="section-badge" style="background: rgba(152, 223, 210, 0.2); color: var(--accent-teal); border-color: rgba(152, 223, 210, 0.4);">
-                Yoga Studio
-            </span>
+            <span class="section-badge">Yoga Studio</span>
             <h2 class="section-title">Vinyasa Yoga Classes</h2>
+            <p class="section-description">
+                Professional instruction blending movement with mindfulness for holistic wellness
+            </p>
         </div>
 
-        <div class="yoga-hero-card" data-aos="fade-up" data-aos-duration="1000">
-            <div class="yoga-content-wrapper">
-                <span class="yoga-badge">
-                    <i class="fas fa-om"></i> Yoga Alliance Certified
-                </span>
+        <div class="neon-container">
+            <h2 class="neon-title" data-aos="zoom-in" data-aos-duration="1000">
+                YOGA
+            </h2>
 
-                <h2 class="yoga-title">
-                    Mind-Body <span>Wellness</span> Through Yoga
-                </h2>
+            <p class="neon-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Mind • Body • Breath
+            </p>
 
-                <p class="yoga-description">
-                    As a Yoga Alliance-registered instructor with 200 hours of certified training, I bring professional expertise to each session. Classes are thoughtfully designed to blend movement with mindfulness, supporting both your physical and mental well-being.
-                </p>
+            <div class="neon-divider" data-aos="fade-up" data-aos-delay="300"></div>
 
-                <div class="yoga-features">
-                    <div class="yoga-feature-item">
-                        <div class="yoga-feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4>All Levels Welcome</h4>
-                        <p>From beginners to advanced practitioners</p>
+            <div class="neon-features" data-aos="fade-up" data-aos-delay="400">
+                <div class="neon-feature">
+                    <div class="neon-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-
-                    <div class="yoga-feature-item">
-                        <div class="yoga-feature-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h4>Holistic Approach</h4>
-                        <p>Mind-body integration and breathwork</p>
-                    </div>
-
-                    <div class="yoga-feature-item">
-                        <div class="yoga-feature-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <h4>Flexible Scheduling</h4>
-                        <p>Classes available by appointment</p>
-                    </div>
+                    <div class="neon-feature-text">All Levels</div>
                 </div>
 
-                <div class="yoga-certification-box">
-                    <div class="yoga-cert-badge">
-                        <img src="img/RYT-200.jpg" alt="Yoga Alliance RYT-200">
+                <div class="neon-feature">
+                    <div class="neon-icon">
+                        <i class="fas fa-om"></i>
                     </div>
-                    <div class="yoga-cert-text">
-                        <h5>RYT-200 Certified</h5>
-                        <p>Yoga Alliance Registered Teacher</p>
-                    </div>
+                    <div class="neon-feature-text">Vinyasa Flow</div>
                 </div>
 
-                <a href="#contact" class="btn-primary-modern">Book Your Session</a>
+                <div class="neon-feature">
+                    <div class="neon-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="neon-feature-text">By Appointment</div>
+                </div>
+            </div>
+
+            <div class="neon-cert-box" data-aos="zoom-in" data-aos-delay="500">
+                <div class="neon-cert-badge">
+                    <img src="img/RYT-200.jpg" alt="Yoga Alliance RYT-200">
+                </div>
+                <div class="neon-cert-text">
+                    <h5>RYT-200</h5>
+                    <p>Yoga Alliance Certified</p>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="600">
+                <a href="#contact" class="btn-primary-modern" style="margin-top: 2rem;">Book Your Session</a>
             </div>
         </div>
     </section>
