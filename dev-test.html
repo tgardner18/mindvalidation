@@ -14,7 +14,7 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no" />
     <!-- Web Fonts  -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Tilt+Neon&display=swap" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
@@ -24,15 +24,15 @@
 
     <style>
         :root {
-            --primary-pink: #f30090;
+            --primary-pink: #F30090;
             --primary-blue: #020887;
             --secondary-blue: #504BFD;
-            --accent-teal: #98dfd2;
+            --accent-teal: #A0DED1;
             --light-bg: #f8f9fa;
             --dark-bg: #1a1a2e;
-            --gradient-primary: linear-gradient(135deg, #f30090 0%, #504BFD 100%);
+            --gradient-primary: linear-gradient(135deg, #F30090 0%, #504BFD 100%);
             --gradient-secondary: linear-gradient(135deg, #504BFD 0%, #020887 100%);
-            --gradient-teal: linear-gradient(135deg, #98dfd2 0%, #504BFD 100%);
+            --gradient-teal: linear-gradient(135deg, #A0DED1 0%, #504BFD 100%);
         }
 
         * {
@@ -242,43 +242,69 @@
 
         .wave {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            width: 200%;
+            width: 100%;
             height: 100%;
-            opacity: 0.1;
+            opacity: 0.15;
         }
 
         .wave-1 {
-            animation: wave-flow-1 25s ease-in-out infinite;
+            animation: lava-float-1 12s ease-in-out infinite;
             animation-delay: 0s;
         }
 
         .wave-2 {
-            animation: wave-flow-2 20s ease-in-out infinite;
+            animation: lava-float-2 15s ease-in-out infinite;
             animation-delay: -5s;
-            opacity: 0.08;
+            opacity: 0.12;
         }
 
         .wave-3 {
-            animation: wave-flow-3 30s ease-in-out infinite;
-            animation-delay: -10s;
-            opacity: 0.06;
+            animation: lava-float-3 18s ease-in-out infinite;
+            animation-delay: -8s;
+            opacity: 0.1;
         }
 
-        @keyframes wave-flow-1 {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-20px); }
+        @keyframes lava-float-1 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                filter: blur(40px);
+            }
+            33% {
+                transform: translate(-30px, 20px) scale(1.1);
+                filter: blur(50px);
+            }
+            66% {
+                transform: translate(20px, -30px) scale(0.95);
+                filter: blur(45px);
+            }
         }
 
-        @keyframes wave-flow-2 {
-            0%, 100% { transform: translateX(-25%) translateY(0); }
-            50% { transform: translateX(-75%) translateY(-30px); }
+        @keyframes lava-float-2 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                filter: blur(60px);
+            }
+            50% {
+                transform: translate(40px, -40px) scale(1.15);
+                filter: blur(70px);
+            }
         }
 
-        @keyframes wave-flow-3 {
-            0%, 100% { transform: translateX(-10%) translateY(0); }
-            50% { transform: translateX(-60%) translateY(-15px); }
+        @keyframes lava-float-3 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                filter: blur(50px);
+            }
+            33% {
+                transform: translate(30px, 30px) scale(0.9);
+                filter: blur(55px);
+            }
+            66% {
+                transform: translate(-40px, -20px) scale(1.1);
+                filter: blur(65px);
+            }
         }
 
         .hero-content {
@@ -294,10 +320,7 @@
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
             margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #000000;
             line-height: 1.1;
         }
 
@@ -836,34 +859,39 @@
         /* Neon Sign Title */
         .neon-title {
             font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 900;
-            color: var(--accent-teal);
+            font-weight: 400;
+            color: var(--primary-pink);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             text-shadow:
-                0 0 10px var(--accent-teal),
-                0 0 20px var(--accent-teal),
-                0 0 40px var(--accent-teal),
-                0 0 80px var(--accent-teal),
-                0 0 120px var(--accent-teal);
-            animation: neon-flicker 3s ease-in-out infinite alternate;
+                0 0 10px var(--primary-pink),
+                0 0 20px var(--primary-pink),
+                0 0 40px var(--primary-pink),
+                0 0 80px var(--primary-pink),
+                0 0 120px var(--primary-pink);
+            animation: neon-pulse 2s ease-in-out infinite;
             margin-bottom: 2rem;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Tilt Neon', sans-serif;
         }
 
-        @keyframes neon-flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        @keyframes neon-pulse {
+            0%, 100% {
                 text-shadow:
-                    0 0 10px var(--accent-teal),
-                    0 0 20px var(--accent-teal),
-                    0 0 40px var(--accent-teal),
-                    0 0 80px var(--accent-teal),
-                    0 0 120px var(--accent-teal);
+                    0 0 10px var(--primary-pink),
+                    0 0 20px var(--primary-pink),
+                    0 0 40px var(--primary-pink),
+                    0 0 80px var(--primary-pink),
+                    0 0 120px var(--primary-pink),
+                    0 0 160px var(--primary-pink);
             }
-            20%, 24%, 55% {
+            50% {
                 text-shadow:
-                    0 0 5px var(--accent-teal),
-                    0 0 10px var(--accent-teal);
+                    0 0 5px var(--primary-pink),
+                    0 0 10px var(--primary-pink),
+                    0 0 20px var(--primary-pink),
+                    0 0 40px var(--primary-pink),
+                    0 0 60px var(--primary-pink),
+                    0 0 80px var(--primary-pink);
             }
         }
 
@@ -1334,7 +1362,6 @@
         <div class="nav-container">
             <a href="#home" class="logo">
                 <img src="img/mind-validation-icon.png" alt="Mind Validation Logo">
-                <span>Mind Validation</span>
             </a>
 
             <ul class="nav-links">
@@ -1357,36 +1384,51 @@
 
     <!-- New Hero Section -->
     <section id="home" class="hero-section">
-        <!-- Animated Wave Background -->
+        <!-- Animated Lava Lamp Background -->
         <div class="hero-shapes">
             <svg class="wave wave-1" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <defs>
-                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#f30090;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#504BFD;stop-opacity:1" />
-                    </linearGradient>
+                    <radialGradient id="lava-gradient1" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#F30090;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#504BFD;stop-opacity:0.4" />
+                    </radialGradient>
                 </defs>
-                <path fill="url(#gradient1)" d="M0,400 C320,300 420,500 720,400 C1020,300 1120,500 1440,400 L1440,800 L0,800 Z"/>
+                <path fill="url(#lava-gradient1)" d="M200,150 Q350,100 450,180 T700,200 Q800,220 900,180 T1100,200 Q1200,180 1300,220 L1300,450 Q1200,400 1100,450 T900,430 Q800,460 700,420 T450,450 Q350,480 200,430 Z">
+                    <animate attributeName="d" dur="15s" repeatCount="indefinite"
+                        values="M200,150 Q350,100 450,180 T700,200 Q800,220 900,180 T1100,200 Q1200,180 1300,220 L1300,450 Q1200,400 1100,450 T900,430 Q800,460 700,420 T450,450 Q350,480 200,430 Z;
+                                M200,180 Q350,220 450,160 T700,180 Q800,140 900,200 T1100,180 Q1200,220 1300,190 L1300,420 Q1200,460 1100,400 T900,440 Q800,380 700,450 T450,420 Q350,400 200,450 Z;
+                                M200,150 Q350,100 450,180 T700,200 Q800,220 900,180 T1100,200 Q1200,180 1300,220 L1300,450 Q1200,400 1100,450 T900,430 Q800,460 700,420 T450,450 Q350,480 200,430 Z" />
+                </path>
             </svg>
 
             <svg class="wave wave-2" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <defs>
-                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#504BFD;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#020887;stop-opacity:1" />
-                    </linearGradient>
+                    <radialGradient id="lava-gradient2" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#A0DED1;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#F30090;stop-opacity:0.3" />
+                    </radialGradient>
                 </defs>
-                <path fill="url(#gradient2)" d="M0,500 C360,350 480,600 840,450 C1200,300 1320,550 1440,500 L1440,800 L0,800 Z"/>
+                <ellipse fill="url(#lava-gradient2)" cx="300" cy="400" rx="250" ry="200">
+                    <animate attributeName="cx" dur="20s" repeatCount="indefinite" values="300;600;1100;600;300" />
+                    <animate attributeName="cy" dur="20s" repeatCount="indefinite" values="400;250;400;550;400" />
+                    <animate attributeName="rx" dur="10s" repeatCount="indefinite" values="250;180;280;200;250" />
+                    <animate attributeName="ry" dur="10s" repeatCount="indefinite" values="200;250;180;240;200" />
+                </ellipse>
             </svg>
 
             <svg class="wave wave-3" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <defs>
-                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#98dfd2;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#504BFD;stop-opacity:1" />
-                    </linearGradient>
+                    <radialGradient id="lava-gradient3" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#504BFD;stop-opacity:0.5" />
+                        <stop offset="100%" style="stop-color:#A0DED1;stop-opacity:0.2" />
+                    </radialGradient>
                 </defs>
-                <path fill="url(#gradient3)" d="M0,600 C300,450 600,650 900,550 C1200,450 1320,600 1440,600 L1440,800 L0,800 Z"/>
+                <ellipse fill="url(#lava-gradient3)" cx="1100" cy="300" rx="200" ry="280">
+                    <animate attributeName="cx" dur="18s" repeatCount="indefinite" values="1100;800;400;900;1100" />
+                    <animate attributeName="cy" dur="18s" repeatCount="indefinite" values="300;500;350;250;300" />
+                    <animate attributeName="rx" dur="9s" repeatCount="indefinite" values="200;260;180;240;200" />
+                    <animate attributeName="ry" dur="9s" repeatCount="indefinite" values="280;220;300;240;280" />
+                </ellipse>
             </svg>
         </div>
 
@@ -1554,6 +1596,10 @@
             </p>
 
             <div class="neon-divider" data-aos="fade-up" data-aos-delay="300"></div>
+
+            <div data-aos="fade-up" data-aos-delay="350" style="max-width: 800px; margin: 2rem auto 0; color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; line-height: 1.8; text-align: center;">
+                <p>As a Yoga Alliance-registered instructor with over 200 hours of certified training, I'm honored to guide you through energizing flows that blend movement, breath, and mindfulness. Classes are designed to nourish both body and mind, with a small group size of just 8 students to ensure personalized attention in a welcoming, supportive space. No experience required; classes offer options for both beginners and seasoned practitioners.</p>
+            </div>
 
             <div class="neon-features" data-aos="fade-up" data-aos-delay="400">
                 <div class="neon-feature">
