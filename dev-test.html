@@ -222,7 +222,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #000000 0%, #0a0a0f 40%, #1a0a14 100%);
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 30%, #2a1a2a 60%, #3d0a29 100%);
             padding-top: 80px;
         }
 
@@ -619,7 +619,7 @@
         .section-description {
             font-size: 1.1rem;
             color: #666;
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
             line-height: 1.8;
         }
@@ -721,12 +721,26 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 50%;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: var(--gradient-primary);
-            opacity: 0.05;
-            border-radius: 0 0 0 100%;
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30 30 0z' fill='%23F30090' fill-opacity='0.03'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+            opacity: 1;
+        }
+
+        .services-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(243, 0, 144, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(160, 222, 209, 0.06) 0%, transparent 40%);
+            pointer-events: none;
         }
 
         .services-section .section-badge {
@@ -739,11 +753,18 @@
             color: white;
         }
 
+        .services-section .section-header {
+            position: relative;
+            z-index: 1;
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card {
@@ -1228,78 +1249,127 @@
         }
 
         .contact-card {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            text-align: left;
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            backdrop-filter: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .contact-card::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(152, 223, 210, 0.1), transparent);
-            transition: transform 0.5s ease;
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--gradient-primary);
+            transition: height 0.4s ease;
+            border-radius: 2px;
         }
 
         .contact-card:hover::before {
-            transform: translate(-50%, -50%) scale(2);
+            height: 100%;
         }
 
-        .contact-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(152, 223, 210, 0.5);
-            transform: translateY(-10px) scale(1.05);
-            box-shadow:
-                0 0 30px rgba(152, 223, 210, 0.6),
-                0 0 60px rgba(152, 223, 210, 0.3);
+        .contact-card-inner {
+            padding: 2rem 2rem 2rem 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: none;
+            border-radius: 0 15px 15px 0;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card-inner::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(243, 0, 144, 0.05) 50%, transparent 70%);
+            transform: translateX(100%);
+            transition: transform 0.6s ease;
+        }
+
+        .contact-card:hover .contact-card-inner::after {
+            transform: translateX(-100%);
+        }
+
+        .contact-card:hover .contact-card-inner {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(243, 0, 144, 0.3);
+            transform: translateX(8px);
         }
 
         .contact-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid var(--primary-pink);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin-bottom: 1rem;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
         }
 
         .contact-card:hover .contact-icon {
-            transform: rotate(360deg) scale(1.1);
+            background: var(--gradient-primary);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(243, 0, 144, 0.5);
         }
 
         .contact-icon i {
-            font-size: 2rem;
+            font-size: 1.5rem;
+            color: var(--primary-pink);
+            transition: color 0.3s ease;
+        }
+
+        .contact-card:hover .contact-icon i {
             color: white;
         }
 
         .contact-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.5);
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card:hover h4 {
+            color: var(--primary-pink);
         }
 
         .contact-card a,
         .contact-card p {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-card a:hover {
             color: var(--accent-teal);
+            text-shadow: 0 0 10px rgba(160, 222, 209, 0.5);
         }
 
         /* Footer */
@@ -1808,35 +1878,43 @@
 
         <div class="contact-grid">
             <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
+                <div class="contact-card-inner">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h4>Address</h4>
+                    <p>92 Main Street Suite #105<br>Nashua, NH</p>
                 </div>
-                <h4>Address</h4>
-                <p>92 Main Street Suite #105<br>Nashua, NH</p>
             </div>
 
             <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="contact-icon">
-                    <i class="fas fa-phone"></i>
+                <div class="contact-card-inner">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h4>Phone Number</h4>
+                    <a href="tel:+9515472909">(951) 547-2909</a>
                 </div>
-                <h4>Phone Number</h4>
-                <a href="tel:+9515472909">(951) 547-2909</a>
             </div>
 
             <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
+                <div class="contact-card-inner">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>Email Address</h4>
+                    <a href="mailto:mindvalidation@gmail.com">mindvalidation@gmail.com</a>
                 </div>
-                <h4>Email Address</h4>
-                <a href="mailto:mindvalidation@gmail.com">mindvalidation@gmail.com</a>
             </div>
 
             <div class="contact-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="contact-icon">
-                    <i class="fas fa-calendar-alt"></i>
+                <div class="contact-card-inner">
+                    <div class="contact-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4>Working Hours</h4>
+                    <p>By Appointment Only</p>
                 </div>
-                <h4>Working Hours</h4>
-                <p>By Appointment Only</p>
             </div>
         </div>
     </section>
