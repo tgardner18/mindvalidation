@@ -314,6 +314,14 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background: rgba(243, 0, 144, 0.03);
+            transform: translateX(5px);
         }
 
         .service-item:last-child {
@@ -329,11 +337,22 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .service-item:hover .service-icon-box {
+            transform: scale(1.15) rotate(-5deg);
+            box-shadow: 0 0 20px rgba(243, 0, 144, 0.5);
         }
 
         .service-icon-box i {
             color: white;
             font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover .service-icon-box i {
+            transform: scale(1.1);
         }
 
         .service-text h3 {
@@ -364,14 +383,34 @@
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             display: inline-block;
             box-shadow: 0 0 20px rgba(243, 0, 144, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary-modern::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary-modern:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary-modern:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.05);
             box-shadow:
                 0 0 30px rgba(243, 0, 144, 0.8),
                 0 0 60px rgba(243, 0, 144, 0.6),
@@ -388,62 +427,43 @@
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             display: inline-block;
             box-shadow: 0 0 20px rgba(243, 0, 144, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-secondary-modern:hover::before {
+            left: 0;
         }
 
         .btn-secondary-modern:hover {
-            background: var(--primary-pink);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.05);
             box-shadow:
                 0 0 30px rgba(243, 0, 144, 0.8),
                 0 0 60px rgba(243, 0, 144, 0.6),
                 0 15px 35px rgba(243, 0, 144, 0.4);
         }
 
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 30px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .floating-card {
-            position: absolute;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            animation: floatCard 6s ease-in-out infinite;
-        }
-
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
             33% { transform: translate(30px, -50px) rotate(120deg); }
             66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-
-        .floating-card-1 {
-            top: 10%;
-            left: -50px;
-        }
-
-        .floating-card-2 {
-            bottom: 15%;
-            right: -50px;
-            animation-delay: 2s;
         }
 
         /* Section Styling */
@@ -461,7 +481,9 @@
         }
 
         .section-badge {
-            display: inline-block;
+            display: block;
+            width: fit-content;
+            margin: 0 auto 2.5rem;
             padding: 0.5rem 1.5rem;
             background: rgba(80, 75, 253, 0.1);
             color: var(--secondary-blue);
@@ -469,9 +491,20 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-badge::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(80, 75, 253, 0.2) 50%, transparent);
         }
 
         .section-title {
@@ -488,7 +521,7 @@
             position: absolute;
             bottom: -10px;
             left: 0;
-            width: 60%;
+            width: 100%;
             height: 4px;
             background: var(--gradient-primary);
             border-radius: 2px;
@@ -528,6 +561,7 @@
 
         .about-image-wrapper {
             position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .about-image-wrapper::before {
@@ -540,12 +574,28 @@
             background: var(--gradient-primary);
             border-radius: 30px;
             z-index: -1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .about-image-wrapper:hover::before {
+            top: -25px;
+            left: -25px;
+            box-shadow: 0 0 40px rgba(243, 0, 144, 0.5);
+        }
+
+        .about-image-wrapper:hover {
+            transform: translateY(-5px);
         }
 
         .about-image {
             width: 100%;
             border-radius: 30px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .about-image-wrapper:hover .about-image {
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
         }
 
         .about-content h3 {
@@ -629,11 +679,28 @@
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(243, 0, 144, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.02) rotate(-1deg);
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(243, 0, 144, 0.5);
             box-shadow:
@@ -651,11 +718,22 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 25px rgba(243, 0, 144, 0.6);
         }
 
         .service-icon i {
             font-size: 1.8rem;
             color: white;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon i {
+            transform: scale(1.1);
         }
 
         .service-card h3 {
@@ -731,15 +809,6 @@
             border-bottom-color: rgba(255, 255, 255, 0.1);
         }
 
-        .yoga-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
-            align-items: center;
-            max-width: 1400px;
-            margin: 3rem auto 0;
-        }
-
         .yoga-feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -753,11 +822,29 @@
             border-radius: 15px;
             padding: 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .yoga-feature::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(152, 223, 210, 0.2), transparent 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .yoga-feature:hover::before {
+            transform: scale(1);
         }
 
         .yoga-feature:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.05);
             border-color: var(--accent-teal);
             box-shadow:
                 0 0 30px rgba(152, 223, 210, 0.6),
@@ -769,26 +856,11 @@
             color: var(--accent-teal);
             margin-bottom: 1rem;
             display: block;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Yoga Pose SVG Container */
-        .yoga-pose-container {
-            position: relative;
-            border-radius: 30px;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(152, 223, 210, 0.2), rgba(80, 75, 253, 0.2));
-            padding: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-        }
-
-        .yoga-pose-svg {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            filter: drop-shadow(0 10px 30px rgba(152, 223, 210, 0.3));
+        .yoga-feature:hover i {
+            transform: scale(1.2) rotate(10deg);
         }
 
         /* Certifications Section with Floral Pattern */
@@ -821,8 +893,32 @@
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border-top: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            transition: left 0.5s ease;
+        }
+
+        .cert-card:nth-child(odd)::before {
+            background: var(--gradient-primary);
+        }
+
+        .cert-card:nth-child(even)::before {
+            background: var(--gradient-secondary);
+        }
+
+        .cert-card:hover::before {
+            left: 100%;
         }
 
         .cert-card:nth-child(odd) {
@@ -834,7 +930,7 @@
         }
 
         .cert-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.03);
         }
 
         .cert-card:nth-child(odd):hover {
@@ -895,13 +991,32 @@
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(152, 223, 210, 0.1), transparent);
+            transition: transform 0.5s ease;
+            border-radius: 50%;
+        }
+
+        .contact-card:hover::before {
+            transform: translate(-50%, -50%) scale(2);
         }
 
         .contact-card:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(152, 223, 210, 0.5);
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.05);
             box-shadow:
                 0 0 30px rgba(152, 223, 210, 0.6),
                 0 0 60px rgba(152, 223, 210, 0.3);
@@ -916,6 +1031,11 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: rotate(360deg) scale(1.1);
         }
 
         .contact-icon i {
@@ -985,13 +1105,37 @@
                 justify-content: center;
             }
 
-            .floating-card {
-                display: none;
-            }
-
             .section-modern {
                 padding: 4rem 1.5rem;
             }
+
+            .flower-decoration::after {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        /* Decorative Flower Section */
+        .flower-decoration {
+            background: white;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flower-decoration::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background-image: url('https://png.pngtree.com/png-vector/20230531/ourmid/pngtree-chrysanthemum-flower-coloring-page-on-a-white-background-vector-png-image_6775150.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            opacity: 0.08;
+            pointer-events: none;
         }
 
         /* Smooth Scroll */
@@ -1040,8 +1184,8 @@
     <!-- Hero Section - New Design -->
     <section id="home" class="hero-section">
         <div class="hero-content">
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-duration="1000">
                     <div class="hero-text-section">
                         <span class="hero-badge">
                             <i class="fas fa-heart"></i> Mind & Body Wellness
@@ -1080,39 +1224,12 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="hero-image">
-                        <img src="img/be-well.jpg" alt="Mind Validation - Mental Wellness" style="border: 4px solid white; box-shadow: 0 0 40px rgba(243, 0, 144, 0.3);">
-
-                        <div class="floating-card floating-card-1" data-aos="fade-up" data-aos-delay="600" style="box-shadow: 0 0 30px rgba(243, 0, 144, 0.4);">
-                            <div style="display: flex; align-items: center; gap: 1rem;">
-                                <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(243, 0, 144, 0.5);">
-                                    <i class="fas fa-certificate" style="color: white; font-size: 1.5rem;"></i>
-                                </div>
-                                <div>
-                                    <div style="font-weight: 800; color: #1a1a2e; font-family: 'Poppins', sans-serif;">LCMHC</div>
-                                    <div style="font-size: 0.85rem; color: #666;">Licensed Counselor</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="floating-card floating-card-2" data-aos="fade-up" data-aos-delay="800" style="box-shadow: 0 0 30px rgba(152, 223, 210, 0.4);">
-                            <div style="display: flex; align-items: center; gap: 1rem;">
-                                <div style="width: 50px; height: 50px; background: var(--gradient-teal); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(152, 223, 210, 0.5);">
-                                    <i class="fas fa-spa" style="color: white; font-size: 1.5rem;"></i>
-                                </div>
-                                <div>
-                                    <div style="font-weight: 800; color: #1a1a2e; font-family: 'Poppins', sans-serif;">RYT-200</div>
-                                    <div style="font-size: 0.85rem; color: #666;">Yoga Certified</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+
+    <!-- Decorative Flower Section -->
+    <section class="flower-decoration"></section>
 
     <!-- About Section -->
     <section id="about" class="section-modern">
@@ -1234,88 +1351,45 @@
             </p>
         </div>
 
-        <div class="yoga-content">
-            <div data-aos="fade-right" data-aos-duration="1000">
-                <h3 style="font-size: 2rem; margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif;">Professional Instruction</h3>
-                <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.9);">
-                    As a Yoga Alliance-registered instructor with 200 hours of certified training, I bring professional expertise to each session. Classes are thoughtfully designed to blend movement with mindfulness, supporting both your physical and mental well-being.
-                </p>
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;" data-aos="fade-up" data-aos-duration="1000">
+            <h3 style="font-size: 2rem; margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif;">Professional Instruction</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem; color: rgba(255, 255, 255, 0.9);">
+                As a Yoga Alliance-registered instructor with 200 hours of certified training, I bring professional expertise to each session. Classes are thoughtfully designed to blend movement with mindfulness, supporting both your physical and mental well-being.
+            </p>
 
-                <div class="yoga-feature-grid">
-                    <div class="yoga-feature">
-                        <i class="fas fa-users"></i>
-                        <div style="font-weight: 700; margin-bottom: 0.5rem;">All Levels</div>
-                        <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Beginners to Advanced</div>
-                    </div>
-                    <div class="yoga-feature">
-                        <i class="fas fa-heart"></i>
-                        <div style="font-weight: 700; margin-bottom: 0.5rem;">Mind-Body</div>
-                        <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Holistic Approach</div>
-                    </div>
-                    <div class="yoga-feature">
-                        <i class="fas fa-calendar-check"></i>
-                        <div style="font-weight: 700; margin-bottom: 0.5rem;">Flexible</div>
-                        <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">By Appointment</div>
-                    </div>
+            <div class="yoga-feature-grid">
+                <div class="yoga-feature">
+                    <i class="fas fa-users"></i>
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">All Levels</div>
+                    <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Beginners to Advanced</div>
                 </div>
-
-                <div style="display: flex; gap: 1rem; align-items: center; background: rgba(152, 223, 210, 0.15); border: 2px solid rgba(152, 223, 210, 0.3); border-radius: 20px; padding: 1.5rem; margin-top: 2rem;">
-                    <img src="img/RYT-200.jpg" alt="Yoga Alliance RYT-200" style="width: 80px; height: 80px; border-radius: 15px; box-shadow: 0 0 20px rgba(152, 223, 210, 0.5);">
-                    <div>
-                        <div style="font-weight: 800; font-size: 1.3rem; font-family: 'Poppins', sans-serif; color: var(--accent-teal); margin-bottom: 0.25rem;">RYT-200 Certified</div>
-                        <div style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8);">Yoga Alliance Registered Teacher</div>
-                    </div>
+                <div class="yoga-feature">
+                    <i class="fas fa-heart"></i>
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">Mind-Body</div>
+                    <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Holistic Approach</div>
+                </div>
+                <div class="yoga-feature">
+                    <i class="fas fa-calendar-check"></i>
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">Flexible</div>
+                    <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">By Appointment</div>
                 </div>
             </div>
 
-            <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <div class="yoga-pose-container">
-                    <!-- Yoga Pose SVG -->
-                    <svg class="yoga-pose-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Tree Pose Illustration -->
-                        <!-- Head -->
-                        <circle cx="200" cy="60" r="30" fill="#98dfd2" opacity="0.9"/>
-
-                        <!-- Body -->
-                        <ellipse cx="200" cy="140" rx="35" ry="70" fill="#504BFD" opacity="0.8"/>
-
-                        <!-- Left Arm (raised) -->
-                        <line x1="165" y1="110" x2="140" y2="50" stroke="#f30090" stroke-width="12" stroke-linecap="round"/>
-                        <circle cx="140" cy="50" r="8" fill="#f30090"/>
-
-                        <!-- Right Arm (raised) -->
-                        <line x1="235" y1="110" x2="260" y2="50" stroke="#f30090" stroke-width="12" stroke-linecap="round"/>
-                        <circle cx="260" cy="50" r="8" fill="#f30090"/>
-
-                        <!-- Standing Leg -->
-                        <line x1="200" y1="210" x2="200" y2="380" stroke="#504BFD" stroke-width="18" stroke-linecap="round"/>
-
-                        <!-- Bent Leg (tree pose) -->
-                        <path d="M 200 240 Q 160 280, 150 320" stroke="#98dfd2" stroke-width="14" fill="none" stroke-linecap="round"/>
-                        <circle cx="150" cy="320" r="8" fill="#98dfd2"/>
-
-                        <!-- Foot -->
-                        <ellipse cx="200" cy="395" rx="25" ry="12" fill="#f30090" opacity="0.9"/>
-
-                        <!-- Decorative elements -->
-                        <circle cx="100" cy="100" r="5" fill="#98dfd2" opacity="0.3"/>
-                        <circle cx="300" cy="150" r="5" fill="#f30090" opacity="0.3"/>
-                        <circle cx="120" cy="250" r="4" fill="#504BFD" opacity="0.3"/>
-                        <circle cx="280" cy="280" r="4" fill="#98dfd2" opacity="0.3"/>
-
-                        <!-- Text -->
-                        <text x="200" y="460" font-family="Poppins, sans-serif" font-size="24" font-weight="700" fill="#98dfd2" text-anchor="middle">YOGA</text>
-                        <text x="200" y="485" font-family="Poppins, sans-serif" font-size="16" font-weight="500" fill="white" text-anchor="middle" opacity="0.8">Tree Pose</text>
-                    </svg>
+            <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; background: rgba(152, 223, 210, 0.15); border: 2px solid rgba(152, 223, 210, 0.3); border-radius: 20px; padding: 2rem; margin-top: 3rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                <img src="img/RYT-200.jpg" alt="Yoga Alliance RYT-200" style="width: 80px; height: 80px; border-radius: 15px; box-shadow: 0 0 20px rgba(152, 223, 210, 0.5);">
+                <div style="text-align: left;">
+                    <div style="font-weight: 800; font-size: 1.3rem; font-family: 'Poppins', sans-serif; color: var(--accent-teal); margin-bottom: 0.25rem;">RYT-200 Certified</div>
+                    <div style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8);">Yoga Alliance Registered Teacher</div>
                 </div>
-                <div style="background: rgba(152, 223, 210, 0.1); border: 2px solid rgba(152, 223, 210, 0.3); border-radius: 20px; padding: 2rem; margin-top: 2rem; text-align: center;">
-                    <div style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-teal);">
-                        <i class="fas fa-star"></i> Integrated Wellness Approach
-                    </div>
-                    <p style="margin: 0; color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">
-                        Combine mental health counseling with yoga practice for a comprehensive approach to well-being
-                    </p>
+            </div>
+
+            <div style="background: rgba(152, 223, 210, 0.1); border: 2px solid rgba(152, 223, 210, 0.3); border-radius: 20px; padding: 2.5rem; margin-top: 3rem; text-align: center;">
+                <div style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent-teal);">
+                    <i class="fas fa-star"></i> Integrated Wellness Approach
                 </div>
+                <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 1.05rem; line-height: 1.8;">
+                    Combine mental health counseling with yoga practice for a comprehensive approach to well-being. Schedule your session today to experience the benefits of this holistic integration.
+                </p>
             </div>
         </div>
     </section>
