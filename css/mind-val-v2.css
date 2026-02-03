@@ -217,7 +217,7 @@
         }
 
         .hero-main-title {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(3.1rem, 8vw, 6.8rem);
             font-weight: 400;
             margin-bottom: 1rem;
             color: #ffffff;
@@ -227,31 +227,41 @@
             letter-spacing: 0.1em;
             text-shadow:
                 0 0 10px var(--primary-pink),
-                0 0 20px var(--primary-pink),
-                0 0 40px var(--primary-pink),
-                0 0 80px var(--primary-pink),
-                0 0 120px var(--primary-pink);
-            animation: hero-neon-pulse 2.5s ease-in-out infinite;
+                0 0 25px var(--primary-pink),
+                0 0 50px var(--primary-pink),
+                0 0 100px var(--primary-pink),
+                0 0 150px var(--primary-pink),
+                0 0 200px var(--primary-pink);
+            animation: hero-neon-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
         @keyframes hero-neon-pulse {
             0%, 100% {
                 text-shadow:
                     0 0 10px var(--primary-pink),
+                    0 0 25px var(--primary-pink),
+                    0 0 50px var(--primary-pink),
+                    0 0 100px var(--primary-pink),
+                    0 0 150px var(--primary-pink),
+                    0 0 200px var(--primary-pink);
+            }
+            25%, 75% {
+                text-shadow:
+                    0 0 9px var(--primary-pink),
                     0 0 20px var(--primary-pink),
-                    0 0 40px var(--primary-pink),
-                    0 0 80px var(--primary-pink),
-                    0 0 120px var(--primary-pink),
-                    0 0 160px var(--primary-pink);
+                    0 0 42px var(--primary-pink),
+                    0 0 82px var(--primary-pink),
+                    0 0 130px var(--primary-pink),
+                    0 0 175px var(--primary-pink);
             }
             50% {
                 text-shadow:
-                    0 0 5px var(--primary-pink),
-                    0 0 10px var(--primary-pink),
-                    0 0 20px var(--primary-pink),
-                    0 0 40px var(--primary-pink),
-                    0 0 60px var(--primary-pink),
-                    0 0 80px var(--primary-pink);
+                    0 0 8px var(--primary-pink),
+                    0 0 16px var(--primary-pink),
+                    0 0 34px var(--primary-pink),
+                    0 0 65px var(--primary-pink),
+                    0 0 110px var(--primary-pink),
+                    0 0 150px var(--primary-pink);
             }
         }
 
@@ -1034,11 +1044,12 @@
             letter-spacing: 0.15em;
             text-shadow:
                 0 0 10px var(--primary-pink),
-                0 0 20px var(--primary-pink),
-                0 0 40px var(--primary-pink),
-                0 0 80px var(--primary-pink),
-                0 0 120px var(--primary-pink);
-            animation: neon-pulse 2s ease-in-out infinite;
+                0 0 25px var(--primary-pink),
+                0 0 50px var(--primary-pink),
+                0 0 100px var(--primary-pink),
+                0 0 150px var(--primary-pink),
+                0 0 200px var(--primary-pink);
+            animation: neon-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
             margin-bottom: 3rem;
             font-family: 'Tilt Neon', sans-serif;
         }
@@ -1047,20 +1058,29 @@
             0%, 100% {
                 text-shadow:
                     0 0 10px var(--primary-pink),
+                    0 0 25px var(--primary-pink),
+                    0 0 50px var(--primary-pink),
+                    0 0 100px var(--primary-pink),
+                    0 0 150px var(--primary-pink),
+                    0 0 200px var(--primary-pink);
+            }
+            25%, 75% {
+                text-shadow:
+                    0 0 9px var(--primary-pink),
                     0 0 20px var(--primary-pink),
-                    0 0 40px var(--primary-pink),
-                    0 0 80px var(--primary-pink),
-                    0 0 120px var(--primary-pink),
-                    0 0 160px var(--primary-pink);
+                    0 0 42px var(--primary-pink),
+                    0 0 82px var(--primary-pink),
+                    0 0 130px var(--primary-pink),
+                    0 0 175px var(--primary-pink);
             }
             50% {
                 text-shadow:
-                    0 0 5px var(--primary-pink),
-                    0 0 10px var(--primary-pink),
-                    0 0 20px var(--primary-pink),
-                    0 0 40px var(--primary-pink),
-                    0 0 60px var(--primary-pink),
-                    0 0 80px var(--primary-pink);
+                    0 0 8px var(--primary-pink),
+                    0 0 16px var(--primary-pink),
+                    0 0 34px var(--primary-pink),
+                    0 0 65px var(--primary-pink),
+                    0 0 110px var(--primary-pink),
+                    0 0 150px var(--primary-pink);
             }
         }
 
