@@ -2030,3 +2030,45 @@
                 font-size: 1.05rem;
             }
         }
+
+
+               /* Two-column split inside the Therapeutic Approach card */
+        .service-card-split {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.25rem;
+        }
+
+        .service-card-split-col {
+            flex: 1;
+        }
+
+        .service-split-label {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.76rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent-teal);
+            margin-bottom: 0.6rem;
+        }
+
+        .service-split-label i {
+            font-size: 0.72rem;
+        }
+
+        /* Tighter, border-free list items inside the split columns */
+        .service-card-split .service-list li {
+            border-bottom: none;
+            padding: 0.3rem 0;
+        }
+
+        /* Stack the two columns on narrow screens */
+        @media (max-width: 600px) {
+            .service-card-split {
+                flex-direction: column;
+                gap: 1.25rem;
+            }
+        }
