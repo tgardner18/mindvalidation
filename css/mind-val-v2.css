@@ -98,10 +98,10 @@
 
         .nav-links a.active {
             color: #ffffff;
-            background: rgba(243, 0, 144, 0.3);
-            box-shadow: 0 0 15px rgba(243, 0, 144, 0.4);
+            background: rgba(160, 222, 209, 0.2);
+            box-shadow: 0 0 15px rgba(160, 222, 209, 0.5);
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(243, 0, 144, 0.6);
+            text-shadow: 0 0 10px rgba(160, 222, 209, 0.7);
         }
 
         .nav-cta {
@@ -608,7 +608,7 @@
             font-size: 1.1rem;
             color: #666;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 1.5rem auto 0;
             line-height: 1.8;
         }
 
@@ -2059,10 +2059,32 @@
             font-size: 0.72rem;
         }
 
-        /* Tighter, border-free list items inside the split columns */
+        /* Vertical divider between the two split columns */
+        .service-card-split-col + .service-card-split-col {
+            border-left: 1px solid rgba(255, 255, 255, 0.12);
+            padding-left: 2rem;
+        }
+
+        /* Pill-badge layout inside the split columns */
+        .service-card-split .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+
         .service-card-split .service-list li {
             border-bottom: none;
-            padding: 0.3rem 0;
+            padding: 0.4rem 0.95rem;
+            background: rgba(160, 222, 209, 0.1);
+            border: 1px solid rgba(160, 222, 209, 0.22);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card-split .service-list li:hover {
+            background: rgba(160, 222, 209, 0.2);
+            border-color: rgba(160, 222, 209, 0.45);
         }
 
         /* Stack the two columns on narrow screens */
@@ -2070,5 +2092,12 @@
             .service-card-split {
                 flex-direction: column;
                 gap: 1.25rem;
+            }
+
+            .service-card-split-col + .service-card-split-col {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                padding-top: 1.25rem;
             }
         }
