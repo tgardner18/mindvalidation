@@ -286,60 +286,106 @@
             margin: 0 auto 3rem;
         }
 
-        .hero-location-banner {
-            max-width: 800px;
+        .hero-steps-banner {
+            max-width: 900px;
             margin: 3rem auto 0;
             padding: 0;
             position: relative;
         }
 
-        .hero-location-card {
-            background: transparent;
+        .hero-steps-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
             border: 2px solid rgba(160, 222, 209, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-steps-card:hover {
+            border-color: rgba(160, 222, 209, 0.5);
+            box-shadow: 0 0 40px rgba(160, 222, 209, 0.15);
+        }
+
+        .hero-steps-title {
+            color: var(--accent-teal);
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-steps-title i {
+            margin-right: 0.5rem;
+        }
+
+        .hero-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-step {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .hero-step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-teal), #7ecfc0);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin: 0 auto 0.75rem;
         }
 
-        .hero-location-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(160, 222, 209, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .hero-location-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .hero-location-card:hover {
-            border-color: rgba(160, 222, 209, 0.6);
-            box-shadow: 0 0 30px rgba(160, 222, 209, 0.2);
-        }
-
-        .hero-location-card i {
-            font-size: 1.5rem;
-            color: var(--accent-teal);
-            flex-shrink: 0;
-        }
-
-        .hero-location-card p {
-            color: rgba(255, 255, 255, 0.9);
+        .hero-step h4 {
+            color: #fff;
             font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-step p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
             line-height: 1.5;
             margin: 0;
+        }
+
+        .hero-steps-note {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
             text-align: center;
+            margin: 0;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(160, 222, 209, 0.2);
+        }
+
+        .hero-steps-note i {
+            color: var(--accent-teal);
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-steps-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero-steps-card {
+                padding: 1.5rem;
+            }
+
+            .hero-step {
+                padding: 0.75rem;
+            }
         }
 
         .hero-service-box {
@@ -1573,6 +1619,33 @@
             color: #666;
             line-height: 1.8;
             margin-bottom: 2rem;
+        }
+
+        .about-quote {
+            position: relative;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid var(--accent-teal);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem 2rem 1.5rem 2.5rem;
+            margin: 1.5rem 0 2rem;
+            font-style: italic;
+        }
+
+        .about-quote .quote-icon {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            color: var(--accent-teal);
+            font-size: 1.5rem;
+            background: white;
+            padding: 0 5px;
+        }
+
+        .about-quote p {
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin: 0;
         }
 
         .about-section-subtitle {
