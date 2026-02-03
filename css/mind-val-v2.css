@@ -2043,20 +2043,40 @@
             flex: 1;
         }
 
-        .service-split-label {
+        .service-split-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 0.45rem;
-            font-size: 0.76rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--accent-teal);
-            margin-bottom: 0.6rem;
+            justify-content: center;
+            margin-bottom: 0.75rem;
         }
 
-        .service-split-label i {
-            font-size: 0.72rem;
+        .service-split-icon i {
+            font-size: 1rem;
+            color: white;
+        }
+
+        /* Second column icon uses the teal gradient */
+        .service-card-split-col + .service-card-split-col .service-split-icon {
+            background: var(--gradient-teal);
+        }
+
+        .service-split-label {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+        }
+
+        .service-split-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0 0.75rem;
+            line-height: 1.4;
         }
 
         /* Vertical divider between the two split columns */
