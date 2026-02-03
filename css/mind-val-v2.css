@@ -231,7 +231,7 @@
                 0 0 20px var(--primary-pink),
                 0 0 40px var(--primary-pink),
                 0 0 80px var(--primary-pink);
-            animation: hero-neon-pulse 2s infinite;
+            animation: hero-neon-pulse 1.5s infinite;
         }
 
         @keyframes hero-neon-pulse {
@@ -244,11 +244,11 @@
             }
             100%{
                 text-shadow:
-                    0 0 10px var(--primary-pink),
                     0 0 20px var(--primary-pink),
                     0 0 40px var(--primary-pink),
-                    0 0 80px var(--primary-pink),
-                    0 0 160px var(--primary-pink);
+                    0 0 60px var(--primary-pink),
+                    0 0 100px var(--primary-pink),
+                    0 0 200px var(--primary-pink);
             }
         }
 
