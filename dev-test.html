@@ -178,59 +178,64 @@
 
         /* ==========================================
            MODERN PRONOUNCED CONNECTORS
+           Neon pink chevron arrow style
            ========================================== */
         .step-connector {
-            width: 60px;
+            width: 50px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            margin: 0 -5px;
+            margin: 0 5px;
         }
 
-        /* Main connector line - gradient with glow */
-        .step-connector::before {
-            content: '';
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg,
-                rgba(160, 222, 209, 0.2),
-                rgba(160, 222, 209, 0.8),
-                rgba(160, 222, 209, 0.2)
-            );
-            border-radius: 2px;
-            box-shadow: 0 0 12px rgba(160, 222, 209, 0.4);
-        }
-
-        /* Arrow head - modern chevron style */
+        /* Chevron arrow using pseudo-elements */
+        .step-connector::before,
         .step-connector::after {
             content: '';
             position: absolute;
-            right: -2px;
-            width: 0;
-            height: 0;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            border-left: 12px solid var(--accent-teal);
-            filter: drop-shadow(0 0 6px rgba(160, 222, 209, 0.5));
+            width: 18px;
+            height: 4px;
+            background: var(--primary-pink);
+            border-radius: 2px;
+            box-shadow:
+                0 0 8px var(--primary-pink),
+                0 0 16px var(--primary-pink),
+                0 0 24px rgba(243, 0, 144, 0.5);
         }
 
-        /* Animated dash overlay */
-        .step-connector span {
-            display: none; /* Remove if you had content */
+        .step-connector::before {
+            transform: rotate(35deg);
+            top: 6px;
+            right: 12px;
         }
 
-        /* Connector pulse animation on hover */
-        .hero-steps-timeline:hover .step-connector::before {
-            animation: connectorPulse 1.5s ease-in-out infinite;
+        .step-connector::after {
+            transform: rotate(-35deg);
+            bottom: 6px;
+            right: 12px;
         }
 
-        @keyframes connectorPulse {
+        /* Pulse animation on hover */
+        .hero-steps-timeline:hover .step-connector::before,
+        .hero-steps-timeline:hover .step-connector::after {
+            animation: chevronPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes chevronPulse {
             0%, 100% {
-                box-shadow: 0 0 12px rgba(160, 222, 209, 0.4);
+                box-shadow:
+                    0 0 8px var(--primary-pink),
+                    0 0 16px var(--primary-pink),
+                    0 0 24px rgba(243, 0, 144, 0.5);
             }
             50% {
-                box-shadow: 0 0 20px rgba(160, 222, 209, 0.7);
+                box-shadow:
+                    0 0 12px var(--primary-pink),
+                    0 0 24px var(--primary-pink),
+                    0 0 40px rgba(243, 0, 144, 0.7),
+                    0 0 60px rgba(243, 0, 144, 0.4);
             }
         }
 
@@ -245,24 +250,30 @@
             }
 
             .step-connector {
-                width: 3px;
-                height: 40px;
-                margin: -20px 0;
+                width: 30px;
+                height: 50px;
+                margin: -15px 0;
             }
 
+            /* Rotate chevron to point downward on mobile */
             .step-connector::before {
-                width: 3px;
-                height: 100%;
+                width: 18px;
+                height: 4px;
+                transform: rotate(55deg);
+                top: auto;
+                bottom: 12px;
+                right: auto;
+                left: 0;
             }
 
             .step-connector::after {
-                right: auto;
-                bottom: -2px;
+                width: 18px;
+                height: 4px;
+                transform: rotate(-55deg);
                 top: auto;
-                border-top: 12px solid var(--accent-teal);
-                border-bottom: none;
-                border-left: 8px solid transparent;
-                border-right: 8px solid transparent;
+                bottom: 12px;
+                right: 0;
+                left: auto;
             }
         }
     </style>
