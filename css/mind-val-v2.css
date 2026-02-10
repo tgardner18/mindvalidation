@@ -5,7 +5,7 @@
             --accent-teal: #A0DED1;
             --light-bg: #f8f9fa;
             --dark-bg: #222222;
-            --gradient-primary: linear-gradient(135deg, #F30090 0%, #FC31A9 100%);
+            --gradient-primary: linear-gradient(135deg, #F30090 0%, #B8006D 100%);
             --gradient-secondary: linear-gradient(135deg, #504BFD 0%, #020887 100%);
             --gradient-teal: linear-gradient(135deg, #A0DED1 0%, #504BFD 100%);
         }
@@ -1396,10 +1396,6 @@
         }
 
         .yoga-pill-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1408,13 +1404,13 @@
         }
 
         .yoga-pill:hover .yoga-pill-icon {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(10deg) scale(1.1);
+            transform: rotate(10deg) scale(1.15);
         }
 
         .yoga-pill-icon i {
-            font-size: 1.15rem;
+            font-size: 1.5rem;
             color: #ffffff;
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
         }
 
         .yoga-pill-content {
@@ -1938,6 +1934,16 @@
                 max-width: 320px;
             }
 
+            .yoga-benefits-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .yoga-benefit-card {
+                max-width: 320px;
+                width: 100%;
+            }
+
             .cert-seal-inner {
                 width: 130px;
                 height: 130px;
@@ -2043,43 +2049,75 @@
             margin-top: 2rem;
         }
 
-        /* Yoga Benefits Section Styles */
-        .yoga-benefits-container {
-            max-width: 800px;
-            margin: 2rem auto 0;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            line-height: 1.8;
+        /* Yoga Benefits Cards */
+        .yoga-benefits-cards {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 2.5rem auto 0;
+        }
+
+        .yoga-benefit-card {
+            flex: 1 1 240px;
+            max-width: 280px;
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(160, 222, 209, 0.12);
+            border-radius: 16px;
             text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .yoga-benefits-title {
+        .yoga-benefit-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .yoga-benefit-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .yoga-benefit-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(160, 222, 209, 0.25);
+            transform: translateY(-6px);
+        }
+
+        .yoga-benefit-card-icon {
+            font-size: 2rem;
             color: var(--accent-teal);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: transform 0.4s ease;
         }
 
-        .yoga-benefits-list {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
+        .yoga-benefit-card:hover .yoga-benefit-card-icon {
+            transform: scale(1.15);
         }
 
-        .yoga-benefits-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .yoga-benefit-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.02em;
         }
 
-        .yoga-benefits-list li:last-child {
-            border-bottom: none;
-        }
-
-        .yoga-benefits-list i {
-            color: var(--accent-teal);
-            margin-right: 0.75rem;
+        .yoga-benefit-card-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.6;
+            margin: 0;
         }
 
         .yoga-cta-margin {
