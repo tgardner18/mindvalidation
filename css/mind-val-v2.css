@@ -1114,23 +1114,16 @@
         }
 
         .therapy-benefit-item h4 {
-            color: #ffffff;
-            font-size: 1.15rem;
+            color: var(--primary-pink);
+            font-family: 'Tilt Neon', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
             margin-bottom: 1rem;
-            font-weight: 700;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
             position: relative;
             z-index: 1;
-        }
-
-        .therapy-benefit-item h4 i {
-            font-size: 2.5rem;
-            color: #ffffff;
-            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
-            margin-top: 0;
+            text-shadow:
+                0 0 8px rgba(243, 0, 144, 0.4),
+                0 0 20px rgba(243, 0, 144, 0.2);
         }
 
         .therapy-benefit-item p {
