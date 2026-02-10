@@ -981,6 +981,40 @@
         </div>
     </footer>
 
+    <!-- Contact Modal -->
+    <div class="contact-modal-overlay" id="contactModal">
+        <div class="contact-modal">
+            <button class="contact-modal-close" id="contactModalClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="contact-modal-header">
+                <div class="contact-modal-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3 class="contact-modal-title">Let's Connect</h3>
+                <p class="contact-modal-subtitle">Have a question or ready to start your journey? Send a message and Kirby will follow up with you.</p>
+            </div>
+            <form class="contact-modal-form" id="contactModalForm">
+                <div class="contact-modal-field">
+                    <label for="modal-name">Your Name</label>
+                    <input type="text" id="modal-name" placeholder="First and last name" required>
+                </div>
+                <div class="contact-modal-field">
+                    <label for="modal-email">Your Email</label>
+                    <input type="email" id="modal-email" placeholder="you@example.com" required>
+                </div>
+                <div class="contact-modal-field">
+                    <label for="modal-message">Message</label>
+                    <textarea id="modal-message" rows="3" placeholder="Tell me a bit about what brings you here..."></textarea>
+                </div>
+                <button type="submit" class="contact-modal-submit">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+            <button class="contact-modal-dismiss" id="contactModalDismiss">No thanks, maybe later</button>
+        </div>
+    </div>
+
     <!-- Scroll to Top Button -->
     <div class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
@@ -1117,6 +1151,72 @@
                 }
             });
         });
+
+        // Contact Modal
+        (() => {
+            const overlay = document.getElementById('contactModal');
+            const closeBtn = document.getElementById('contactModalClose');
+            const dismissBtn = document.getElementById('contactModalDismiss');
+            const form = document.getElementById('contactModalForm');
+            const STORAGE_KEY = 'mv_modal_dismissed';
+            let modalShown = false;
+
+            function showModal() {
+                if (modalShown || localStorage.getItem(STORAGE_KEY)) return;
+                modalShown = true;
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function hideModal(remember) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                if (remember) {
+                    localStorage.setItem(STORAGE_KEY, 'true');
+                }
+            }
+
+            // Trigger after scrolling 35% of the page
+            window.addEventListener('scroll', () => {
+                const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+                if (scrollPercent > 0.35) {
+                    showModal();
+                }
+            });
+
+            closeBtn.addEventListener('click', () => hideModal(true));
+            dismissBtn.addEventListener('click', () => hideModal(true));
+
+            // Close on overlay click (outside modal)
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) hideModal(false);
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                    hideModal(false);
+                }
+            });
+
+            // Form submission via mailto
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('modal-name').value.trim();
+                const email = document.getElementById('modal-email').value.trim();
+                const message = document.getElementById('modal-message').value.trim();
+
+                const subject = encodeURIComponent('New Inquiry from ' + name);
+                const body = encodeURIComponent(
+                    'Name: ' + name + '\n' +
+                    'Email: ' + email + '\n\n' +
+                    (message ? message : '(No message provided)')
+                );
+
+                window.location.href = 'mailto:mindvalidation@gmail.com?subject=' + subject + '&body=' + body;
+                hideModal(true);
+            });
+        })();
     </script>
 </body>
 
