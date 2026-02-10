@@ -1349,58 +1349,77 @@
         }
 
         /* Neon Feature List */
-        .neon-features {
+        /* Yoga Feature Pills */
+        .yoga-pills {
             display: flex;
             justify-content: center;
-            gap: 4rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            margin: 4rem 0;
+            margin: 3.5rem 0;
         }
 
-        .neon-feature {
-            text-align: center;
+        .yoga-pill {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(160, 222, 209, 0.2);
+            border-radius: 60px;
+            transition: all 0.35s ease;
+            cursor: default;
         }
 
-        .neon-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1.5rem;
-            border: 3px solid var(--accent-teal);
+        .yoga-pill:hover {
+            background: rgba(160, 222, 209, 0.08);
+            border-color: var(--accent-teal);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(160, 222, 209, 0.15);
+        }
+
+        .yoga-pill-icon {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
+            background: rgba(160, 222, 209, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow:
-                0 0 15px var(--accent-teal),
-                0 0 30px var(--accent-teal),
-                inset 0 0 15px rgba(152, 223, 210, 0.2);
-            transition: all 0.4s ease;
+            flex-shrink: 0;
+            transition: all 0.35s ease;
         }
 
-        .neon-feature:hover .neon-icon {
-            transform: scale(1.1);
-            box-shadow:
-                0 0 25px var(--accent-teal),
-                0 0 50px var(--accent-teal),
-                0 0 100px var(--accent-teal),
-                inset 0 0 25px rgba(152, 223, 210, 0.4);
+        .yoga-pill:hover .yoga-pill-icon {
+            background: rgba(160, 222, 209, 0.2);
+            box-shadow: 0 0 12px rgba(160, 222, 209, 0.3);
         }
 
-        .neon-icon i {
-            font-size: 2.5rem;
+        .yoga-pill-icon i {
+            font-size: 1.15rem;
             color: var(--accent-teal);
-            filter: drop-shadow(0 0 10px var(--accent-teal));
         }
 
-        .neon-feature-text {
-            font-size: 1.2rem;
-            color: white;
-            font-weight: 600;
+        .yoga-pill-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .yoga-pill-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
         }
 
-        /* Certification Badge Neon Style */
+        .yoga-pill-desc {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.02em;
+        }
+
+        /* Certification Badge */
         /* Yoga Alliance Certification Seal */
         .yoga-cert-seal {
             display: flex;
@@ -1418,6 +1437,10 @@
             border: 2px dashed rgba(160, 222, 209, 0.35);
             top: -12px;
             animation: seal-spin 20s linear infinite;
+            box-shadow:
+                0 0 15px rgba(243, 0, 144, 0.2),
+                0 0 35px rgba(243, 0, 144, 0.1),
+                inset 0 0 15px rgba(243, 0, 144, 0.15);
         }
 
         @keyframes seal-spin {
@@ -1447,6 +1470,10 @@
         .yoga-cert-seal:hover .cert-seal-ring {
             border-color: rgba(160, 222, 209, 0.6);
             animation-duration: 8s;
+            box-shadow:
+                0 0 25px rgba(243, 0, 144, 0.35),
+                0 0 50px rgba(243, 0, 144, 0.15),
+                inset 0 0 25px rgba(243, 0, 144, 0.25);
         }
 
         .cert-seal-img {
@@ -1880,8 +1907,15 @@
                 grid-template-columns: 1fr;
             }
 
-            .neon-features {
-                gap: 2rem;
+            .yoga-pills {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .yoga-pill {
+                width: 100%;
+                max-width: 320px;
             }
 
             .cert-seal-inner {
