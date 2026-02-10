@@ -1412,11 +1412,11 @@
 
         .cert-seal-ring {
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: 2px dashed rgba(160, 222, 209, 0.35);
-            top: -10px;
+            top: -12px;
             animation: seal-spin 20s linear infinite;
         }
 
@@ -1426,8 +1426,8 @@
         }
 
         .cert-seal-inner {
-            width: 130px;
-            height: 130px;
+            width: 175px;
+            height: 175px;
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--accent-teal);
@@ -1464,7 +1464,7 @@
         }
 
         .cert-seal-title {
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #ffffff;
             letter-spacing: 0.15em;
@@ -1475,17 +1475,22 @@
         }
 
         .cert-seal-divider {
-            width: 40px;
+            width: 50px;
             height: 2px;
             background: var(--gradient-primary);
             border-radius: 1px;
         }
 
         .cert-seal-subtitle {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.8);
             letter-spacing: 0.08em;
             font-weight: 500;
+        }
+
+        .cert-seal-subtitle i {
+            color: var(--accent-teal);
+            margin-right: 0.3rem;
         }
 
         /* New Certifications - Badge Style */
@@ -1783,13 +1788,13 @@
         }
 
         .footer-logo {
-            width: 64px;
-            height: 64px;
+            width: 100px;
+            height: 100px;
             object-fit: contain;
         }
 
         .footer-company-name {
-            font-size: 1.35rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #ffffff;
             letter-spacing: 0.02em;
@@ -1880,13 +1885,21 @@
             }
 
             .cert-seal-inner {
-                width: 110px;
-                height: 110px;
+                width: 130px;
+                height: 130px;
             }
 
             .cert-seal-ring {
-                width: 130px;
-                height: 130px;
+                width: 150px;
+                height: 150px;
+            }
+
+            .cert-seal-title {
+                font-size: 1.6rem;
+            }
+
+            .cert-seal-subtitle {
+                font-size: 0.9rem;
             }
 
             .neon-title {
@@ -1907,6 +1920,15 @@
 
             .footer-brand {
                 justify-content: center;
+            }
+
+            .footer-logo {
+                width: 64px;
+                height: 64px;
+            }
+
+            .footer-company-name {
+                font-size: 1.35rem;
             }
 
             .social-links {
