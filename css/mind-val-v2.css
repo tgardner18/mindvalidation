@@ -1411,6 +1411,8 @@
             font-size: 1.5rem;
             color: #ffffff;
             filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+            width: 1.25em;
+            text-align: center;
         }
 
         .yoga-pill-content {
@@ -2147,6 +2149,11 @@
             .yoga-pill {
                 width: 100%;
                 max-width: 320px;
+            }
+
+            .yoga-pill-content {
+                flex: 1;
+                text-align: left;
             }
 
             .yoga-benefits-cards {
