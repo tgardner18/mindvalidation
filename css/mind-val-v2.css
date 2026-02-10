@@ -5,7 +5,7 @@
             --accent-teal: #A0DED1;
             --light-bg: #f8f9fa;
             --dark-bg: #222222;
-            --gradient-primary: linear-gradient(135deg, #F30090 0%, #504BFD 100%);
+            --gradient-primary: linear-gradient(135deg, #F30090 0%, #FC31A9 100%);
             --gradient-secondary: linear-gradient(135deg, #504BFD 0%, #020887 100%);
             --gradient-teal: linear-gradient(135deg, #A0DED1 0%, #504BFD 100%);
         }
@@ -799,9 +799,9 @@
             width: fit-content;
             margin: 0 auto 2.5rem;
             padding: 0.5rem 1.5rem;
-            background: rgba(80, 75, 253, 0.1);
+            background: rgba(252, 49, 169, 0.1);
             color: var(--secondary-blue);
-            border: 2px solid rgba(80, 75, 253, 0.3);
+            border: 2px solid rgba(252, 49, 169, 0.3);
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 700;
@@ -818,7 +818,7 @@
             transform: translateX(-50%);
             width: 200%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(80, 75, 253, 0.2) 50%, transparent);
+            background: linear-gradient(90deg, transparent, rgba(252, 49, 169, 0.2) 50%, transparent);
         }
 
         .section-title {
@@ -1000,7 +1000,7 @@
 
         .credential-badge {
             padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, rgba(243, 0, 144, 0.1), rgba(80, 75, 253, 0.1));
+            background: linear-gradient(135deg, rgba(243, 0, 144, 0.1), rgba(252, 49, 169, 0.1));
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.85rem;
@@ -1392,7 +1392,7 @@
             transform: translateY(-5px) scale(1.03);
             box-shadow:
                 0 10px 30px rgba(243, 0, 144, 0.35),
-                0 0 20px rgba(80, 75, 253, 0.2);
+                0 0 20px rgba(252, 49, 169, 0.2);
         }
 
         .yoga-pill-icon {
@@ -1588,7 +1588,7 @@
 
         .cert-item:nth-child(even) .cert-dot {
             border-color: var(--secondary-blue);
-            box-shadow: 0 0 20px rgba(80, 75, 253, 0.5);
+            box-shadow: 0 0 20px rgba(252, 49, 169, 0.5);
         }
 
         .cert-item:hover .cert-dot {
@@ -1650,7 +1650,7 @@
         .cert-date {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, rgba(243, 0, 144, 0.1), rgba(80, 75, 253, 0.1));
+            background: linear-gradient(135deg, rgba(243, 0, 144, 0.1), rgba(252, 49, 169, 0.1));
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -2273,7 +2273,7 @@
         .kirby-apart-icon-wrapper {
             width: 110px;
             height: 110px;
-            background: linear-gradient(135deg, rgba(243, 0, 144, 0.08) 0%, rgba(80, 75, 253, 0.08) 100%);
+            background: linear-gradient(135deg, rgba(243, 0, 144, 0.08) 0%, rgba(252, 49, 169, 0.08) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -2285,7 +2285,7 @@
 
         .kirby-apart-card:hover .kirby-apart-icon-wrapper {
             transform: scale(1.15);
-            background: linear-gradient(135deg, rgba(243, 0, 144, 0.15) 0%, rgba(80, 75, 253, 0.15) 100%);
+            background: linear-gradient(135deg, rgba(243, 0, 144, 0.15) 0%, rgba(252, 49, 169, 0.15) 100%);
             box-shadow: 0 10px 40px rgba(243, 0, 144, 0.2);
         }
 
@@ -2410,7 +2410,7 @@
             flex-shrink: 0;
             width: 30px;
             height: 30px;
-            background: linear-gradient(135deg, rgba(243, 0, 144, 0.1), rgba(80, 75, 253, 0.1));
+            background: linear-gradient(135deg, rgba(243, 0, 144, 0.1), rgba(252, 49, 169, 0.1));
             border-radius: 50%;
             display: flex;
             align-items: center;
