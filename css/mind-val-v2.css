@@ -1114,7 +1114,7 @@
         }
 
         .therapy-benefit-item h4 {
-            color: var(--primary-pink);
+            color: #ffffff;
             font-family: 'Tilt Neon', sans-serif;
             font-size: 1.4rem;
             font-weight: 400;
@@ -1122,8 +1122,9 @@
             position: relative;
             z-index: 1;
             text-shadow:
-                0 0 8px rgba(243, 0, 144, 0.4),
-                0 0 20px rgba(243, 0, 144, 0.2);
+                0 0 8px var(--primary-pink),
+                0 0 20px var(--primary-pink),
+                0 0 40px var(--primary-pink);
         }
 
         .therapy-benefit-item p {
