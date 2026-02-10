@@ -336,7 +336,7 @@
                 <li><a href="#certifications">Background</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#location">Location</a></li>
-                <li><a href="#contact" class="nav-cta">Contact Me</a></li>
+                <li><a href="#" class="nav-cta contact-modal-trigger">Contact Me</a></li>
             </ul>
 
             <div class="mobile-toggle">
@@ -379,7 +379,7 @@
                 </div>
 
                 <div class="hero-cta-section" data-aos="fade-up" data-aos-delay="300">
-                    <a href="#contact" class="btn-primary-modern">Schedule Intake</a>
+                    <a href="#" class="btn-primary-modern contact-modal-trigger">Schedule Intake</a>
                     <a href="#services" class="btn-secondary-modern">Explore Services</a>
                 </div>
 
@@ -476,7 +476,7 @@
                 </div>
 
                 <div class="about-cta-margin">
-                    <a href="#contact" class="btn-primary-modern">Contact Me</a>
+                    <a href="#" class="btn-primary-modern contact-modal-trigger">Contact Me</a>
                 </div>
             </div>
         </div>
@@ -698,7 +698,7 @@
             </div>
 
             <div data-aos="fade-up" data-aos-delay="500">
-                <a href="#contact" class="btn-primary-modern yoga-cta-margin">Book Your Session</a>
+                <a href="#" class="btn-primary-modern yoga-cta-margin contact-modal-trigger">Book Your Session</a>
             </div>
         </div>
     </section>
@@ -1256,6 +1256,19 @@
                 if (e.key === 'Escape' && overlay.classList.contains('active')) {
                     hideModal(false);
                 }
+            });
+
+            // Expose modal opener for CTA buttons
+            window.openContactModal = function () {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            document.querySelectorAll('.contact-modal-trigger').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.openContactModal();
+                });
             });
 
             const EMAILJS_SERVICE_ID = 'service_2ajvq1g';
