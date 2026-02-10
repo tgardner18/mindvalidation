@@ -2095,10 +2095,11 @@
         }
 
         .yoga-benefit-card-icon {
-            font-size: 2rem;
-            color: var(--accent-teal);
+            font-size: 2.5rem;
+            color: #ffffff;
             margin-bottom: 1rem;
             transition: transform 0.4s ease;
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
         }
 
         .yoga-benefit-card:hover .yoga-benefit-card-icon {
