@@ -319,23 +319,25 @@
             z-index: 0;
             pointer-events: none;
             user-select: none;
-            filter: grayscale(1) brightness(0.55) opacity(0.35);
+            /* Strip original green, shift hue to accent teal (#A0DED1 ≈ 170°),
+               darken to sit against the black background */
+            filter: grayscale(0.1) hue-rotate(48deg) saturate(0.85) brightness(0.45) opacity(0.55);
         }
         .monstera-leaf-left {
-            bottom: -20px;
-            left: -100px;
-            width: 420px;
+            bottom: -40px;
+            left: -120px;
+            width: 620px;
             transform: rotate(18deg);
         }
         .monstera-leaf-right {
-            bottom: 5%;
-            right: -90px;
-            width: 340px;
+            bottom: 3%;
+            right: -120px;
+            width: 520px;
             transform: rotate(-18deg) scaleX(-1);
         }
         @media (max-width: 768px) {
-            .monstera-leaf-left { width: 260px; left: -70px; }
-            .monstera-leaf-right { width: 220px; right: -65px; }
+            .monstera-leaf-left { width: 320px; left: -80px; }
+            .monstera-leaf-right { width: 280px; right: -80px; }
         }
     </style>
 </head>
