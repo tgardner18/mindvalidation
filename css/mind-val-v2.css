@@ -2793,3 +2793,32 @@
                 padding-top: 1.25rem;
             }
         }
+
+        /* =============================================
+           Monstera Leaf Decorations — Hero Section
+           ============================================= */
+        .monstera-leaf {
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            filter: grayscale(1) brightness(0.6) opacity(0.42);
+        }
+
+        .monstera-leaf-left {
+            bottom: -40px;
+            left: -120px;
+            width: 580px;
+            transform: rotate(18deg);
+        }
+
+        .monstera-leaf-right {
+            bottom: -40px;
+            right: -120px;
+            width: 580px;
+            transform: rotate(-18deg) scaleX(-1);
+        }
+
+        @media (max-width: 768px) {
+            .monstera-leaf { display: none; }
+        }
