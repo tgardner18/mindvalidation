@@ -319,25 +319,23 @@
             z-index: 0;
             pointer-events: none;
             user-select: none;
-            /* Strip original green, shift hue to accent teal (#A0DED1 ≈ 170°),
-               darken to sit against the black background */
-            filter: grayscale(0.1) hue-rotate(48deg) saturate(0.85) brightness(0.45) opacity(0.55);
+            /* Shift hue toward accent teal (#A0DED1) — brighter so it reads as teal, not dark forest green */
+            filter: grayscale(0.05) hue-rotate(52deg) saturate(0.75) brightness(0.62) opacity(0.52);
         }
         .monstera-leaf-left {
             bottom: -40px;
             left: -120px;
-            width: 620px;
+            width: 580px;
             transform: rotate(18deg);
         }
         .monstera-leaf-right {
-            bottom: 3%;
+            bottom: -40px;
             right: -120px;
-            width: 520px;
+            width: 580px;
             transform: rotate(-18deg) scaleX(-1);
         }
         @media (max-width: 768px) {
-            .monstera-leaf-left { width: 320px; left: -80px; }
-            .monstera-leaf-right { width: 280px; right: -80px; }
+            .monstera-leaf { display: none; }
         }
     </style>
 </head>
