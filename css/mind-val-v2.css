@@ -1018,7 +1018,7 @@
         /* Services Section */
         .services-section {
             background: linear-gradient(180deg, var(--dark-bg) 0%, #000 50%, var(--dark-bg) 100%);
-            padding: 6rem 2rem;
+            padding: 2rem 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -1116,15 +1116,15 @@
         .therapy-benefit-item h4 {
             color: #ffffff;
             font-family: 'Tilt Neon', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.7rem;
             font-weight: 400;
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
             text-shadow:
-                0 0 8px var(--primary-pink),
-                0 0 20px var(--primary-pink),
-                0 0 40px var(--primary-pink);
+                0 0 8px #333,
+                0 0 20px #333,
+                0 0 40px #fff;
         }
 
         .therapy-benefit-item p {
@@ -2802,21 +2802,21 @@
             z-index: 0;
             pointer-events: none;
             user-select: none;
-            filter: grayscale(1) brightness(0.6) opacity(0.42);
+            filter: brightness(0) saturate(100%) invert(96%) sepia(88%) saturate(399%) hue-rotate(88deg) brightness(70%) contrast(88%) opacity(0.3);
         }
 
         .monstera-leaf-left {
-            bottom: -40px;
+            bottom: -10px;
             left: -120px;
             width: 580px;
-            transform: rotate(18deg);
+            transform: rotate(180deg);
         }
 
         .monstera-leaf-right {
-            bottom: -40px;
+            bottom: -10px;
             right: -120px;
             width: 580px;
-            transform: rotate(-18deg) scaleX(-1);
+            transform: rotate(-180deg) scaleX(-1);
         }
 
         @media (max-width: 768px) {
