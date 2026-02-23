@@ -56,11 +56,34 @@
     <link rel="stylesheet" href="css/mind-val-v2.css" />
 
     <style>
-        /* Location section textured background */
+        /* Location section — layered geometric 3D background */
         #location {
-            background-color: #fff;
-            background-image: radial-gradient(circle, rgba(160, 222, 209, 0.5) 1.5px, transparent 1.5px);
-            background-size: 28px 28px;
+            background-color: #f5fbfa;
+            background-image:
+                /* NW→SE bands: bright leading edge, teal fill fading across, soft shadow at trailing edge */
+                repeating-linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.95)  0px,
+                    rgba(255, 255, 255, 0.95)  3px,
+                    rgba(160, 222, 209, 0.28)  3px,
+                    rgba(160, 222, 209, 0.07) 190px,
+                    rgba(0,   0,   0,   0.06) 190px,
+                    rgba(0,   0,   0,   0.06) 195px,
+                    transparent               200px,
+                    transparent               380px
+                ),
+                /* NE→SW bands: same treatment, slightly different scale for offset feel */
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 255, 255, 0.85)  0px,
+                    rgba(255, 255, 255, 0.85)  3px,
+                    rgba(160, 222, 209, 0.20)  3px,
+                    rgba(160, 222, 209, 0.05) 155px,
+                    rgba(0,   0,   0,   0.05) 155px,
+                    rgba(0,   0,   0,   0.05) 160px,
+                    transparent               165px,
+                    transparent               340px
+                );
         }
     </style>
 
