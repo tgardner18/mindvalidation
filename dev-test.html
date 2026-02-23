@@ -76,33 +76,40 @@
             z-index: 1;
         }
 
-        /* Entrance info alert card */
+        /* Entrance info alert card — glassmorphism */
         #location .location-info-text {
-            max-width: 680px;
-            margin: 2rem auto 0;
+            max-width: 640px;
+            margin: 2.5rem auto 0;
             text-align: left;
-            color: inherit;
         }
         #location .location-info-text p {
             display: flex;
-            align-items: flex-start;
-            gap: 0.9rem;
+            align-items: center;
+            gap: 1rem;
             margin: 0;
-            background: #ffffff;
-            border: 1px solid rgba(160, 222, 209, 0.55);
-            border-left: 4px solid #A0DED1;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
             padding: 1rem 1.4rem;
             font-size: 0.95rem;
-            color: #3a5a54;
-            box-shadow: 0 6px 24px rgba(0, 100, 82, 0.09);
+            color: #2d4d48;
+            box-shadow: 0 8px 32px rgba(0, 100, 82, 0.10), 0 2px 8px rgba(0, 0, 0, 0.04);
             line-height: 1.6;
         }
         #location .location-info-text p i {
-            color: #5fbeab;
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #A0DED1, #5fbeab);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.95rem;
+            box-shadow: 0 3px 10px rgba(95, 190, 171, 0.40);
             flex-shrink: 0;
-            margin-top: 0.2rem;
         }
     </style>
 
