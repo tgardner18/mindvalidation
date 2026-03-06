@@ -2280,7 +2280,8 @@
         .yoga-benefit-card {
             flex: 1 1 240px;
             max-width: 280px;
-            padding: 1.75rem 1.5rem 5rem;
+            padding: 1.75rem 1.5rem 1.75rem;
+            min-height: 200px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(160, 222, 209, 0.12);
             border-radius: 16px;
@@ -2314,9 +2315,9 @@
 
         .yoga-benefit-card-icon {
             position: absolute;
-            bottom: -0.5rem;
+            bottom: 0;
             right: 0.75rem;
-            font-size: 5.5rem;
+            font-size: 5rem;
             color: #ffffff;
             opacity: 0.12;
             pointer-events: none;
