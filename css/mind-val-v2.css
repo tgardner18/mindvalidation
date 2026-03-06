@@ -1364,9 +1364,9 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 0.6rem;
+            gap: 0.4rem;
             flex: 1 1 220px;
-            padding: 2rem 1.5rem 1.75rem;
+            padding: 1.75rem 1.5rem 5rem;
             background: linear-gradient(to bottom, #f30090, #000000);
             border-radius: 16px;
             cursor: default;
@@ -1376,17 +1376,8 @@
             overflow: hidden;
         }
 
-        /* Subtle light bleed from the top-left — depth without interactivity cues */
         .yoga-pill::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: -30px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            pointer-events: none;
+            display: none;
         }
 
         .yoga-pill:hover {
@@ -1394,14 +1385,15 @@
             box-shadow: 0 8px 32px rgba(243, 0, 144, 0.35);
         }
 
+        /* Decorative icon — large, bottom-right, faded */
         .yoga-pill-icon {
+            position: absolute;
+            bottom: -0.5rem;
+            right: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            margin-bottom: 0.25rem;
+            pointer-events: none;
         }
 
         .yoga-pill-icon::after {
@@ -1413,25 +1405,24 @@
         }
 
         .yoga-pill-icon i {
-            font-size: 1.75rem;
+            font-size: 5.5rem;
             color: #ffffff;
+            opacity: 0.18;
             width: auto;
-            text-align: left;
         }
 
-        /* Thin white divider between icon and text */
         .yoga-pill-content {
             display: flex;
             flex-direction: column;
             gap: 0.35rem;
             text-align: left;
-            padding-top: 0.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
             width: 100%;
+            position: relative;
+            z-index: 1;
         }
 
         .yoga-pill-label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.02em;
