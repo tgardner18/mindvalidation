@@ -1346,28 +1346,46 @@
         }
 
         /* Neon Feature List */
-        /* Yoga Info Cards */
+        /* Yoga Attribute Stamps */
         .yoga-pills {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0;
             margin: 3.5rem auto;
-            max-width: 780px;
+            max-width: 720px;
+            position: relative;
+        }
+
+        /* Connecting line threading through the badge centers */
+        .yoga-pills::after {
+            content: '';
+            position: absolute;
+            top: 46px;
+            left: 18%;
+            right: 18%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(243, 0, 144, 0.3) 20%,
+                rgba(243, 0, 144, 0.3) 80%,
+                transparent
+            );
+            pointer-events: none;
         }
 
         .yoga-pill {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.85rem;
-            padding: 2rem 1.5rem 1.75rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(243, 0, 144, 0.2);
-            border-top: 2px solid rgba(243, 0, 144, 0.5);
-            border-radius: 14px;
+            gap: 1rem;
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 0 1rem;
             cursor: default;
             position: relative;
-            text-align: center;
         }
 
         .yoga-pill::before {
@@ -1384,11 +1402,24 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            width: 52px;
-            height: 52px;
+            width: 92px;
+            height: 92px;
             border-radius: 50%;
-            background: rgba(243, 0, 144, 0.12);
-            border: 1px solid rgba(243, 0, 144, 0.35);
+            background: radial-gradient(circle at 40% 35%, rgba(243, 0, 144, 0.18), rgba(0, 0, 0, 0.5));
+            border: 1.5px solid rgba(243, 0, 144, 0.55);
+            box-shadow:
+                0 0 20px rgba(243, 0, 144, 0.18),
+                inset 0 0 20px rgba(243, 0, 144, 0.08);
+            position: relative;
+        }
+
+        /* Outer orbit ring */
+        .yoga-pill-icon::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 1px dashed rgba(243, 0, 144, 0.22);
         }
 
         .yoga-pill:hover .yoga-pill-icon {
@@ -1396,9 +1427,11 @@
         }
 
         .yoga-pill-icon i {
-            font-size: 1.35rem;
+            font-size: 1.6rem;
             color: #f30090;
-            filter: drop-shadow(0 0 6px rgba(243, 0, 144, 0.6));
+            filter:
+                drop-shadow(0 0 5px rgba(243, 0, 144, 0.9))
+                drop-shadow(0 0 16px rgba(243, 0, 144, 0.45));
             width: auto;
             text-align: center;
         }
@@ -1411,17 +1444,17 @@
         }
 
         .yoga-pill-label {
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 0.07em;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.1em;
             text-transform: uppercase;
         }
 
         .yoga-pill-desc {
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.55);
-            line-height: 1.4;
+            font-size: 0.74rem;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.45;
         }
 
         /* Certification Badge */
@@ -2130,10 +2163,16 @@
             }
 
             .yoga-pills {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
                 max-width: 320px;
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            .yoga-pills::after {
+                display: none;
             }
 
             .yoga-benefits-cards {
