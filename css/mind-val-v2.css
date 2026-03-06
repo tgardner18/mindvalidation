@@ -2281,7 +2281,7 @@
             flex: 1 1 240px;
             max-width: 280px;
             padding: 1.75rem 1.5rem 1.75rem;
-            min-height: 200px;
+            min-height: 260px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(160, 222, 209, 0.12);
             border-radius: 16px;
@@ -2318,11 +2318,17 @@
             bottom: 0;
             right: 0.75rem;
             font-size: 5rem;
+            line-height: 1;
             color: #ffffff;
             opacity: 0.12;
             pointer-events: none;
             transition: none;
             filter: none;
+        }
+
+        .yoga-benefit-card-icon i {
+            display: block;
+            line-height: 1;
         }
 
         .yoga-benefit-card:hover .yoga-benefit-card-icon {
