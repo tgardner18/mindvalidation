@@ -2314,9 +2314,9 @@
 
         .yoga-benefit-card-icon {
             position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            font-size: 3.5rem;
+            bottom: -0.5rem;
+            right: 0.75rem;
+            font-size: 5.5rem;
             color: #ffffff;
             opacity: 0.12;
             pointer-events: none;
