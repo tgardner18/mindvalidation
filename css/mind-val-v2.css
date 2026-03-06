@@ -1363,15 +1363,15 @@
         .yoga-pill {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.6rem;
             flex: 1 1 220px;
             padding: 2rem 1.5rem 1.75rem;
-            background: var(--gradient-primary);
+            background: linear-gradient(to bottom, #f30090, #000000);
             border-radius: 16px;
             cursor: default;
             position: relative;
-            text-align: center;
+            text-align: left;
             box-shadow: 0 8px 32px rgba(243, 0, 144, 0.35);
             overflow: hidden;
         }
@@ -1416,7 +1416,7 @@
             font-size: 1.75rem;
             color: #ffffff;
             width: auto;
-            text-align: center;
+            text-align: left;
         }
 
         /* Thin white divider between icon and text */
@@ -1424,7 +1424,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.35rem;
-            text-align: center;
+            text-align: left;
             padding-top: 0.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.25);
             width: 100%;
@@ -1434,8 +1434,8 @@
             font-size: 0.9rem;
             font-weight: 800;
             color: #ffffff;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            text-transform: none;
         }
 
         .yoga-pill-desc {
