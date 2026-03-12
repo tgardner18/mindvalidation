@@ -239,12 +239,12 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(110px);
-            opacity: 0.3;
+            opacity: 0.42;
         }
 
         .aurora-blob-1 {
-            width: 550px;
-            height: 550px;
+            width: 680px;
+            height: 680px;
             background: radial-gradient(circle, #F30090 0%, transparent 70%);
             top: -180px;
             left: -80px;
@@ -252,32 +252,32 @@
         }
 
         .aurora-blob-2 {
-            width: 600px;
-            height: 600px;
+            width: 740px;
+            height: 740px;
             background: radial-gradient(circle, #A0DED1 0%, transparent 70%);
             top: -220px;
             right: -120px;
-            opacity: 0.22;
+            opacity: 0.32;
             animation: aurora-drift-b 36s ease-in-out infinite alternate;
         }
 
         .aurora-blob-3 {
-            width: 420px;
-            height: 420px;
+            width: 540px;
+            height: 540px;
             background: radial-gradient(circle, #A0DED1 0%, transparent 70%);
             bottom: 5%;
             left: 5%;
-            opacity: 0.18;
+            opacity: 0.28;
             animation: aurora-drift-a 28s ease-in-out infinite alternate-reverse;
         }
 
         .aurora-blob-4 {
-            width: 380px;
-            height: 380px;
+            width: 500px;
+            height: 500px;
             background: radial-gradient(circle, #F30090 0%, transparent 70%);
             bottom: 0;
             right: 15%;
-            opacity: 0.18;
+            opacity: 0.28;
             animation: aurora-drift-b 24s ease-in-out infinite alternate-reverse;
         }
 
