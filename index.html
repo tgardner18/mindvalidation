@@ -350,9 +350,6 @@
     <!-- New Hero Section -->
     <section id="home" class="hero-section">
 
-        <!-- Particle Background -->
-        <div id="hero-particles"></div>
-
         <!-- Monstera Leaf Decorations -->
         <img src="img/leaf.webp" class="monstera-leaf monstera-leaf-left" aria-hidden="true" alt="">
         <img src="img/leaf.webp" class="monstera-leaf monstera-leaf-right" aria-hidden="true" alt="">
@@ -1097,32 +1094,8 @@
     <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
     <!-- Custom JS -->
     <script>
-        // Hero Particles
-        particlesJS('hero-particles', {
-            particles: {
-                number: { value: 55, density: { enable: true, value_area: 900 } },
-                color: { value: ['#ffffff', '#f30090'] },
-                shape: { type: 'circle' },
-                opacity: { value: 0.55, random: true, anim: { enable: true, speed: 0.8, opacity_min: 0.2, sync: false } },
-                size: { value: 3.5, random: true, anim: { enable: false } },
-                line_linked: { enable: false },
-                move: {
-                    enable: true, speed: 0.6, direction: 'none',
-                    random: true, straight: false, out_mode: 'out', bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
-            },
-            retina_detect: true
-        });
-
         // Initialize AOS
         AOS.init({
             duration: 800,
