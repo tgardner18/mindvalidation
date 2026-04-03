@@ -1170,7 +1170,7 @@
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
             font-size: 1.7rem;
-            font-weight: 700;
+            font-weight: 200;
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
@@ -2999,7 +2999,7 @@
             left: -160px;
             width: 680px;
             height: 680px;
-            background: radial-gradient(circle at 40% 60%, #A0DED1 0%, #504BFD 55%, transparent 100%);
+            background: radial-gradient(circle, #A0DED1 0%, transparent 70%);
             animation: orb-drift-left 12s ease-in-out infinite alternate;
         }
 
@@ -3008,7 +3008,7 @@
             right: -160px;
             width: 680px;
             height: 680px;
-            background: radial-gradient(circle at 60% 60%, #F30090 0%, #B8006D 35%, #504BFD 70%, transparent 100%);
+            background: radial-gradient(circle, #F30090 0%, transparent 70%);
             animation: orb-drift-right 14s ease-in-out infinite alternate;
         }
 
