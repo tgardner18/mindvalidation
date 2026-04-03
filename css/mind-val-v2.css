@@ -312,31 +312,13 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
             text-shadow:
-                0 0 5px var(--primary-pink),
                 0 0 10px var(--primary-pink),
-                0 0 20px var(--primary-pink),
-                0 0 40px var(--primary-pink),
-                0 0 80px var(--primary-pink);
-            animation: hero-neon-pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes hero-neon-pulse {
-            0%, 100% {
-                text-shadow:
-                    0 0 5px var(--primary-pink),
-                    0 0 10px var(--primary-pink),
-                    0 0 20px var(--primary-pink),
-                    0 0 40px var(--primary-pink),
-                    0 0 80px var(--primary-pink);
-            }
-            50% {
-                text-shadow:
-                    0 0 8px var(--primary-pink),
-                    0 0 15px var(--primary-pink),
-                    0 0 30px var(--primary-pink),
-                    0 0 55px var(--primary-pink),
-                    0 0 100px var(--primary-pink);
-            }
+                0 0 25px var(--primary-pink),
+                0 0 50px var(--primary-pink),
+                0 0 100px var(--primary-pink),
+                0 0 150px var(--primary-pink),
+                0 0 200px var(--primary-pink);
+            animation: neon-flicker 10s linear infinite;
         }
 
         .hero-tagline {
@@ -3018,6 +3000,7 @@
             width: 520px;
             height: 520px;
             background: radial-gradient(circle at 40% 60%, #A0DED1 0%, #504BFD 60%, transparent 100%);
+            animation: orb-drift-left 18s ease-in-out infinite alternate;
         }
 
         .hero-orb-right {
@@ -3026,6 +3009,21 @@
             width: 520px;
             height: 520px;
             background: radial-gradient(circle at 60% 60%, #F30090 0%, #B8006D 40%, #504BFD 80%, transparent 100%);
+            animation: orb-drift-right 22s ease-in-out infinite alternate;
+        }
+
+        @keyframes orb-drift-left {
+            0%   { transform: translate(0px, 0px) scale(1); }
+            30%  { transform: translate(60px, -40px) scale(1.08); }
+            60%  { transform: translate(20px, -80px) scale(0.94); }
+            100% { transform: translate(80px, -30px) scale(1.05); }
+        }
+
+        @keyframes orb-drift-right {
+            0%   { transform: translate(0px, 0px) scale(1); }
+            25%  { transform: translate(-50px, -60px) scale(1.06); }
+            65%  { transform: translate(-80px, -20px) scale(0.96); }
+            100% { transform: translate(-30px, -70px) scale(1.1); }
         }
 
         @media (max-width: 768px) {
