@@ -371,23 +371,28 @@
                     MA, NH, and VT, and small-group yoga in downtown Nashua.</p>
 
                 <div class="hero-services-grid">
-                    <div class="hero-service-box" data-aos="fade-up" data-aos-delay="100">
-                        <div class="hero-service-icon">
-                            <i class="fas fa-brain"></i>
+                    <div class="hero-service-box" data-aos="fade-up" data-aos-delay="100" data-card="consulting">
+                        <div class="hsb-aurora-wrap"><div class="hsb-aurora"></div></div>
+                        <div class="hsb-particles"></div>
+                        <div class="hsb-content">
+                            <i class="fas fa-brain hsb-icon-inline"></i>
+                            <h3>Clinical Consulting</h3>
+                            <p>Tools for the Mind: Navigate life's challenges with evidence-based strategies tailored to
+                                your needs.</p>
                         </div>
-                        <h3>Clinical Consulting</h3>
-                        <p>Tools for the Mind: Navigate life's challenges with evidence-based strategies tailored to
-                            your needs.</p>
+                        <div class="hsb-ghost" aria-hidden="true"><i class="fas fa-brain"></i></div>
                     </div>
 
-                    <div class="hero-service-box" data-aos="fade-up" data-aos-delay="200">
-                        <div class="hero-service-icon">
-                            <i class="fas fa-spa"></i>
+                    <div class="hero-service-box" data-aos="fade-up" data-aos-delay="200" data-card="yoga">
+                        <div class="hsb-aurora-wrap"><div class="hsb-aurora"></div></div>
+                        <div class="hsb-particles"></div>
+                        <div class="hsb-content">
+                            <i class="fas fa-spa hsb-icon-inline"></i>
+                            <h3>Vinyasa Yoga</h3>
+                            <p>Movement for the Soul: Small-group classes (max 8) designed to nourish your body and provide
+                                a supportive community space.</p>
                         </div>
-                        <h3>Vinyasa Yoga</h3>
-                        <p>Movement for the Soul: Small-group classes (max 8) designed to nourish your body and provide
-                            a supportive community
-                            space.</p>
+                        <div class="hsb-ghost" aria-hidden="true"><i class="fas fa-spa"></i></div>
                     </div>
                 </div>
 
@@ -1193,6 +1198,66 @@
                 behavior: 'smooth'
             });
         });
+
+        // Hero Service Cards — 3D tilt + floating particles
+        (function () {
+            const PARTICLE_COUNT = 12;
+            const CARD_COLORS = { consulting: '#F30090', yoga: '#A0DED1' };
+
+            document.querySelectorAll('.hero-service-box').forEach(card => {
+                const color = CARD_COLORS[card.dataset.card] || '#F30090';
+                const particlesEl = card.querySelector('.hsb-particles');
+
+                // Spawn particles at random positions across the card width
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'hsb-particle';
+                    const x = Math.random() * 100;
+                    const bottom = Math.random() * 50;
+                    const dur = (1.4 + Math.random() * 2).toFixed(2) + 's';
+                    // Negative delay staggers particles so they don't all start together
+                    const delay = '-' + (Math.random() * 3).toFixed(2) + 's';
+                    dot.style.cssText = [
+                        'left:' + x + '%',
+                        'bottom:' + bottom + 'px',
+                        'background:' + color,
+                        '--dur:' + dur,
+                        '--delay:' + delay,
+                        'box-shadow:0 0 6px ' + color,
+                    ].join(';');
+                    particlesEl.appendChild(dot);
+                }
+
+                // 3D tilt — tight transition on enter so it tracks cursor
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = [
+                        'transform 0.08s linear',
+                        'background 0.4s ease',
+                        'box-shadow 0.4s ease',
+                    ].join(',');
+                });
+
+                card.addEventListener('mousemove', e => {
+                    const r = card.getBoundingClientRect();
+                    const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+                    const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+                    const rotY =  dx * 12;
+                    const rotX = -dy * 12;
+                    card.style.transform =
+                        'perspective(1200px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translateY(-6px)';
+                });
+
+                // Spring-bounce easing on leave, then clear inline transform
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = [
+                        'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)',
+                        'background 0.4s ease',
+                        'box-shadow 0.4s ease',
+                    ].join(',');
+                    card.style.transform = '';
+                });
+            });
+        })();
 
         // FAQ Accordion Functionality
         const faqItems = document.querySelectorAll('.faq-item');

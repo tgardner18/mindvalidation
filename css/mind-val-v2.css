@@ -370,6 +370,7 @@
             gap: 2rem;
             max-width: 900px;
             margin: 0 auto 3rem;
+            perspective: 1200px;
         }
 
         .hero-steps-banner {
@@ -662,70 +663,161 @@
             }
         }
 
+        /* ---- Hero Service Boxes ---- */
         .hero-service-box {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             padding: 2.5rem 2rem;
             border-radius: 25px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             position: relative;
-            overflow: hidden;
             text-align: left;
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
         }
 
+        /* Top accent line */
         .hero-service-box::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: var(--gradient-primary);
+            height: 3px;
+            background: linear-gradient(90deg, #F30090, #7b2ff7);
+            border-radius: 25px 25px 0 0;
             transform: scaleX(0);
+            transform-origin: left;
             transition: transform 0.4s ease;
+            z-index: 4;
         }
 
         .hero-service-box:nth-child(2)::before {
-            background: linear-gradient(135deg, #A0DED1 0%, #98dfd2 100%);
+            background: linear-gradient(90deg, #A0DED1, #7b2ff7);
         }
 
         .hero-service-box:hover::before {
             transform: scaleX(1);
         }
 
+        /* Animated shimmer border */
+        .hero-service-box::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(90deg, #F30090, #7b2ff7, #F30090);
+            background-size: 200% 100%;
+            animation: hsb-shimmer 2.5s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .hero-service-box:nth-child(2)::after {
+            background: linear-gradient(90deg, #A0DED1, #7b2ff7, #A0DED1);
+            background-size: 200% 100%;
+        }
+
+        .hero-service-box:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes hsb-shimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
         .hero-service-box:hover {
-            transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 60px rgba(243, 0, 144, 0.4);
-            border-color: rgba(243, 0, 144, 0.5);
+            box-shadow: 0 20px 60px rgba(243, 0, 144, 0.35);
         }
 
-        .hero-service-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .hero-service-box:nth-child(2):hover {
+            box-shadow: 0 20px 60px rgba(160, 222, 209, 0.3);
         }
 
-        .hero-service-box:nth-child(2) .hero-service-icon {
-            background: linear-gradient(135deg, #A0DED1 0%, #98dfd2 100%);
+        /* Aurora glow — inner wrapper clips aurora without breaking preserve-3d on card */
+        .hsb-aurora-wrap {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .hero-service-box:hover .hero-service-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 30px rgba(243, 0, 144, 0.4);
+        .hsb-aurora {
+            position: absolute;
+            inset: -60%;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, #F30090 0%, #7b2ff7 60%, transparent 80%);
+            filter: blur(55px);
+            opacity: 0;
+            transform: scale(0.7);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .hero-service-icon i {
-            font-size: 2rem;
-            color: white;
+        [data-card="yoga"] .hsb-aurora {
+            background: radial-gradient(ellipse at center, #A0DED1 0%, #7b2ff7 60%, transparent 80%);
+        }
+
+        .hero-service-box:hover .hsb-aurora {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Content wrapper — translateZ for 3D lift on hover */
+        .hsb-content {
+            position: relative;
+            z-index: 1;
+            transform: translateZ(0);
+            transition: transform 0.4s ease;
+        }
+
+        .hero-service-box:hover .hsb-content {
+            transform: translateZ(20px);
+        }
+
+        /* Small bare inline icon above the card title */
+        .hsb-icon-inline {
+            font-size: 18px;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Large ghost watermark icon — opacity on wrapper only to avoid multiplicative compound */
+        .hsb-ghost {
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            opacity: 0.07;
+            color: #ffffff;
+            transform: rotate(-12deg);
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+            line-height: 1;
+        }
+
+        .hsb-ghost i {
+            font-size: 9rem;
+            color: #ffffff;
+        }
+
+        .hero-service-box:hover .hsb-ghost {
+            opacity: 0.18;
+            transform: rotate(-7deg);
+            filter: blur(1px);
         }
 
         .hero-service-box h3 {
@@ -740,6 +832,38 @@
             font-size: 1rem;
             line-height: 1.7;
             margin: 0;
+        }
+
+        /* Floating particles container */
+        .hsb-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hsb-particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: hsb-float var(--dur, 2s) ease-in var(--delay, 0s) infinite;
+            animation-play-state: paused;
+            opacity: 0;
+        }
+
+        .hero-service-box:hover .hsb-particle {
+            animation-play-state: running;
+        }
+
+        @keyframes hsb-float {
+            0%   { transform: translateY(0) scale(1); opacity: 0; }
+            10%  { opacity: 0.9; }
+            90%  { opacity: 0.5; }
+            100% { transform: translateY(-150px) scale(0.4); opacity: 0; }
         }
 
         .hero-cta-section {
