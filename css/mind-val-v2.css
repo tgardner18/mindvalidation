@@ -359,7 +359,7 @@
         }
 
         .hero-subhead-body {
-            color: #A0DED1;
+            color: #F30090;
         }
 
         .hero-subdescription {
@@ -616,7 +616,7 @@
             border: 1px solid rgba(160, 222, 209, 0.35);
             border-radius: 50px;
             color: var(--accent-teal);
-            font-size: 0.82rem;
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0.02em;
             white-space: nowrap;
@@ -676,7 +676,7 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             padding: 2.5rem 2rem;
-            min-height: 260px;
+            min-height: 340px;
             border-radius: 25px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -722,13 +722,13 @@
         }
 
         [data-card="consulting"]:hover {
-            background: rgba(243, 0, 144, 0.1);
-            box-shadow: 0 20px 60px rgba(243, 0, 144, 0.35);
+            background: rgba(243, 0, 144, 0.22);
+            box-shadow: 0 20px 60px rgba(243, 0, 144, 0.4);
         }
 
         [data-card="yoga"]:hover {
-            background: rgba(160, 222, 209, 0.1);
-            box-shadow: 0 20px 60px rgba(160, 222, 209, 0.3);
+            background: rgba(160, 222, 209, 0.2);
+            box-shadow: 0 20px 60px rgba(160, 222, 209, 0.35);
         }
 
         /* Aurora glow — inner wrapper clips aurora without breaking preserve-3d on card */
