@@ -348,10 +348,18 @@
 
         .hero-subhead {
             font-size: clamp(1.5rem, 3vw, 2.5rem);
-            color: var(--accent-teal);
+            color: #ffffff;
             margin-bottom: 1rem;
             font-weight: 700;
             letter-spacing: 0.02em;
+        }
+
+        .hero-subhead-mind {
+            color: #F30090;
+        }
+
+        .hero-subhead-body {
+            color: #A0DED1;
         }
 
         .hero-subdescription {
@@ -668,6 +676,7 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             padding: 2.5rem 2rem;
+            min-height: 260px;
             border-radius: 25px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -676,30 +685,6 @@
             transform-style: preserve-3d;
             will-change: transform;
             transition: background 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        /* Top accent line */
-        .hero-service-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #F30090, #7b2ff7);
-            border-radius: 25px 25px 0 0;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-            z-index: 4;
-        }
-
-        .hero-service-box:nth-child(2)::before {
-            background: linear-gradient(90deg, #A0DED1, #7b2ff7);
-        }
-
-        .hero-service-box:hover::before {
-            transform: scaleX(1);
         }
 
         /* Animated shimmer border */
@@ -736,12 +721,13 @@
             100% { background-position: -200% 0; }
         }
 
-        .hero-service-box:hover {
-            background: rgba(255, 255, 255, 0.08);
+        [data-card="consulting"]:hover {
+            background: rgba(243, 0, 144, 0.1);
             box-shadow: 0 20px 60px rgba(243, 0, 144, 0.35);
         }
 
-        .hero-service-box:nth-child(2):hover {
+        [data-card="yoga"]:hover {
+            background: rgba(160, 222, 209, 0.1);
             box-shadow: 0 20px 60px rgba(160, 222, 209, 0.3);
         }
 
@@ -785,14 +771,6 @@
 
         .hero-service-box:hover .hsb-content {
             transform: translateZ(20px);
-        }
-
-        /* Small bare inline icon above the card title */
-        .hsb-icon-inline {
-            font-size: 18px;
-            color: #ffffff;
-            display: block;
-            margin-bottom: 0.75rem;
         }
 
         /* Large ghost watermark icon — opacity on wrapper only to avoid multiplicative compound */
