@@ -694,7 +694,7 @@
             inset: 0;
             border-radius: inherit;
             padding: 1px;
-            background: linear-gradient(90deg, #F30090, #7b2ff7, #F30090);
+            background: linear-gradient(90deg, #F30090, #7d0049, #F30090);
             background-size: 200% 100%;
             animation: hsb-shimmer 2.5s linear infinite;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -708,7 +708,7 @@
         }
 
         .hero-service-box:nth-child(2)::after {
-            background: linear-gradient(90deg, #A0DED1, #7b2ff7, #A0DED1);
+            background: linear-gradient(90deg, #A0DED1, #2e6e65, #A0DED1);
             background-size: 200% 100%;
         }
 
@@ -745,7 +745,7 @@
             position: absolute;
             inset: -60%;
             border-radius: 50%;
-            background: radial-gradient(ellipse at center, #F30090 0%, #7b2ff7 60%, transparent 80%);
+            background: radial-gradient(ellipse at center, #F30090 0%, #7d0049 60%, transparent 85%);
             filter: blur(55px);
             opacity: 0;
             transform: scale(0.7);
@@ -753,7 +753,7 @@
         }
 
         [data-card="yoga"] .hsb-aurora {
-            background: radial-gradient(ellipse at center, #A0DED1 0%, #7b2ff7 60%, transparent 80%);
+            background: radial-gradient(ellipse at center, #A0DED1 0%, #2e6e65 60%, transparent 85%);
         }
 
         .hero-service-box:hover .hsb-aurora {
