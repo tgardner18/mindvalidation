@@ -373,7 +373,6 @@
                 <div class="hero-services-grid">
                     <div class="hero-service-box" data-aos="fade-up" data-aos-delay="100" data-card="consulting">
                         <div class="hsb-aurora-wrap"><div class="hsb-aurora"></div></div>
-                        <div class="hsb-particles"></div>
                         <div class="hsb-content">
                             <h3>Clinical Consulting</h3>
                             <p>Tools for the Mind: Navigate life's challenges with evidence-based strategies tailored to
@@ -384,7 +383,6 @@
 
                     <div class="hero-service-box" data-aos="fade-up" data-aos-delay="200" data-card="yoga">
                         <div class="hsb-aurora-wrap"><div class="hsb-aurora"></div></div>
-                        <div class="hsb-particles"></div>
                         <div class="hsb-content">
                             <h3>Vinyasa Yoga</h3>
                             <p>Movement for the Soul: Small-group classes (max 8) designed to nourish your body and provide
@@ -1197,35 +1195,9 @@
             });
         });
 
-        // Hero Service Cards — 3D tilt + floating particles
+        // Hero Service Cards — 3D tilt
         (function () {
-            const PARTICLE_COUNT = 12;
-            const CARD_COLORS = { consulting: '#F30090', yoga: '#A0DED1' };
-
             document.querySelectorAll('.hero-service-box').forEach(card => {
-                const color = CARD_COLORS[card.dataset.card] || '#F30090';
-                const particlesEl = card.querySelector('.hsb-particles');
-
-                // Spawn particles at random positions across the card width
-                for (let i = 0; i < PARTICLE_COUNT; i++) {
-                    const dot = document.createElement('span');
-                    dot.className = 'hsb-particle';
-                    const x = Math.random() * 100;
-                    const bottom = Math.random() * 50;
-                    const dur = (1.4 + Math.random() * 2).toFixed(2) + 's';
-                    // Negative delay staggers particles so they don't all start together
-                    const delay = '-' + (Math.random() * 3).toFixed(2) + 's';
-                    dot.style.cssText = [
-                        'left:' + x + '%',
-                        'bottom:' + bottom + 'px',
-                        'background:' + color,
-                        '--dur:' + dur,
-                        '--delay:' + delay,
-                        'box-shadow:0 0 6px ' + color,
-                    ].join(';');
-                    particlesEl.appendChild(dot);
-                }
-
                 // 3D tilt — tight transition on enter so it tracks cursor
                 card.addEventListener('mouseenter', () => {
                     card.style.transition = [

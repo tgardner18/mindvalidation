@@ -812,37 +812,6 @@
             margin: 0;
         }
 
-        /* Floating particles container */
-        .hsb-particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            border-radius: inherit;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .hsb-particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: hsb-float var(--dur, 2s) ease-in var(--delay, 0s) infinite;
-            animation-play-state: paused;
-            opacity: 0;
-        }
-
-        .hero-service-box:hover .hsb-particle {
-            animation-play-state: running;
-        }
-
-        @keyframes hsb-float {
-            0%   { transform: translateY(0) scale(1); opacity: 0; }
-            10%  { opacity: 0.9; }
-            90%  { opacity: 0.5; }
-            100% { transform: translateY(-150px) scale(0.4); opacity: 0; }
-        }
 
         .hero-cta-section {
             display: flex;
