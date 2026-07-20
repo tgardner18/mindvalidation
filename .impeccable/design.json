@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-20T00:00:00Z",
+  "title": "Design System: Mind Validation",
+  "extensions": {
+    "colorMeta": {
+      "electric-magenta": {
+        "role": "primary",
+        "displayName": "Electric Magenta",
+        "canonical": "oklch(55% 0.30 350)",
+        "tonalRamp": [
+          "oklch(15% 0.08 350)",
+          "oklch(25% 0.14 350)",
+          "oklch(35% 0.22 350)",
+          "oklch(45% 0.28 350)",
+          "oklch(55% 0.30 350)",
+          "oklch(65% 0.22 350)",
+          "oklch(75% 0.14 350)",
+          "oklch(90% 0.06 350)"
+        ]
+      },
+      "electric-magenta-deep": {
+        "role": "primary",
+        "displayName": "Electric Magenta Deep",
+        "canonical": "oklch(43% 0.28 350)",
+        "tonalRamp": [
+          "oklch(10% 0.06 350)",
+          "oklch(20% 0.12 350)",
+          "oklch(30% 0.20 350)",
+          "oklch(43% 0.28 350)",
+          "oklch(55% 0.30 350)",
+          "oklch(65% 0.22 350)",
+          "oklch(78% 0.14 350)",
+          "oklch(92% 0.05 350)"
+        ]
+      },
+      "voltage-violet": {
+        "role": "secondary",
+        "displayName": "Voltage Violet",
+        "canonical": "oklch(50% 0.28 264)",
+        "tonalRamp": [
+          "oklch(12% 0.10 264)",
+          "oklch(22% 0.18 264)",
+          "oklch(35% 0.24 264)",
+          "oklch(45% 0.28 264)",
+          "oklch(50% 0.28 264)",
+          "oklch(62% 0.22 264)",
+          "oklch(75% 0.15 264)",
+          "oklch(90% 0.07 264)"
+        ]
+      },
+      "deep-indigo": {
+        "role": "secondary",
+        "displayName": "Deep Indigo",
+        "canonical": "oklch(18% 0.20 264)",
+        "tonalRamp": [
+          "oklch(8% 0.08 264)",
+          "oklch(18% 0.20 264)",
+          "oklch(28% 0.22 264)",
+          "oklch(38% 0.26 264)",
+          "oklch(50% 0.28 264)",
+          "oklch(63% 0.22 264)",
+          "oklch(76% 0.14 264)",
+          "oklch(90% 0.06 264)"
+        ]
+      },
+      "seafoam-signal": {
+        "role": "tertiary",
+        "displayName": "Seafoam Signal",
+        "canonical": "oklch(83% 0.07 184)",
+        "tonalRamp": [
+          "oklch(18% 0.03 184)",
+          "oklch(30% 0.05 184)",
+          "oklch(44% 0.07 184)",
+          "oklch(57% 0.08 184)",
+          "oklch(68% 0.08 184)",
+          "oklch(78% 0.07 184)",
+          "oklch(83% 0.07 184)",
+          "oklch(95% 0.03 184)"
+        ]
+      },
+      "noir-canvas": {
+        "role": "neutral",
+        "displayName": "Noir Canvas",
+        "canonical": "oklch(17% 0.005 265)",
+        "tonalRamp": [
+          "oklch(5% 0.005 265)",
+          "oklch(10% 0.005 265)",
+          "oklch(17% 0.005 265)",
+          "oklch(25% 0.005 265)",
+          "oklch(38% 0.005 265)",
+          "oklch(55% 0.005 265)",
+          "oklch(72% 0.005 265)",
+          "oklch(90% 0.005 265)"
+        ]
+      },
+      "midnight-ink": {
+        "role": "neutral",
+        "displayName": "Midnight Ink",
+        "canonical": "oklch(14% 0.03 265)",
+        "tonalRamp": [
+          "oklch(7% 0.02 265)",
+          "oklch(14% 0.03 265)",
+          "oklch(22% 0.04 265)",
+          "oklch(34% 0.04 265)",
+          "oklch(48% 0.03 265)",
+          "oklch(62% 0.02 265)",
+          "oklch(78% 0.015 265)",
+          "oklch(92% 0.008 265)"
+        ]
+      },
+      "soft-graphite": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "canonical": "oklch(46% 0.00 0)",
+        "tonalRamp": [
+          "oklch(12% 0.00 0)",
+          "oklch(22% 0.00 0)",
+          "oklch(34% 0.00 0)",
+          "oklch(46% 0.00 0)",
+          "oklch(58% 0.00 0)",
+          "oklch(70% 0.00 0)",
+          "oklch(82% 0.00 0)",
+          "oklch(94% 0.00 0)"
+        ]
+      },
+      "misted-seafoam": {
+        "role": "neutral",
+        "displayName": "Misted Seafoam",
+        "canonical": "oklch(97% 0.01 184)",
+        "tonalRamp": [
+          "oklch(30% 0.04 184)",
+          "oklch(45% 0.05 184)",
+          "oklch(60% 0.05 184)",
+          "oklch(72% 0.04 184)",
+          "oklch(82% 0.03 184)",
+          "oklch(90% 0.02 184)",
+          "oklch(97% 0.01 184)",
+          "oklch(99% 0.005 184)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display / Neon",
+        "purpose": "Hero title and yoga section heading only. Always accompanied by the 6-layer Electric Magenta text-shadow neon stack."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Section titles on both light and dark surfaces. On light: Midnight Ink with 4px Electric Magenta underline via ::after. On dark: white."
+      },
+      "title": {
+        "displayName": "Sub-Headline / Tagline",
+        "purpose": "Hero subhead, about-section owner tagline. Weight 200 taglines beneath weight 700 titles create the key weight-contrast rhythm."
+      },
+      "body": {
+        "displayName": "Body Copy",
+        "purpose": "Section descriptions, FAQ answers, about intro. Line length capped at 65-75ch via max-width on containers."
+      },
+      "label": {
+        "displayName": "Label / Badge",
+        "purpose": "Section badges, footer headings, credential badge text, form labels. Uppercase with 0.12em letter-spacing."
+      }
+    },
+    "shadows": [
+      {
+        "name": "magenta-glow-button",
+        "value": "0 10px 30px rgba(243,0,144,0.35), 0 0 20px rgba(243,0,144,0.25), 0 0 60px rgba(243,0,144,0.12)",
+        "purpose": "Primary CTA buttons at rest. Intensifies on hover to 0 15px 40px / 0 0 60px."
+      },
+      {
+        "name": "magenta-glow-card-hover",
+        "value": "0 0 30px rgba(243,0,144,0.6), 0 0 60px rgba(243,0,144,0.4), 0 20px 40px rgba(0,0,0,0.3)",
+        "purpose": "Service cards on hover in dark sections. Maximum glow state."
+      },
+      {
+        "name": "teal-glow-step",
+        "value": "0 20px 50px rgba(160,222,209,0.2)",
+        "purpose": "Hero step cards on hover. Cooler and less urgent than magenta glow."
+      },
+      {
+        "name": "ambient-lift-light",
+        "value": "0 10px 40px rgba(0,0,0,0.08)",
+        "purpose": "Certification content cards and FAQ items at rest. Light surface ambient lift; no color."
+      },
+      {
+        "name": "ambient-lift-light-hover",
+        "value": "0 20px 50px rgba(0,0,0,0.12)",
+        "purpose": "Hover state for light-surface cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for most state transitions (nav scroll, modal overlay)."
+      },
+      {
+        "name": "ease-out-spring",
+        "value": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+        "purpose": "Card hover lifts and scroll-to-top visibility. Slight overshoot on entry, clean exit."
+      },
+      {
+        "name": "ease-out-slow",
+        "value": "ease-out",
+        "purpose": "Button shimmer wipe, long transitions (0.5s). Used wherever motion should feel intentional, not snappy."
+      },
+      {
+        "name": "duration-fast",
+        "value": "0.2s",
+        "purpose": "Color transitions, link hover, icon state changes."
+      },
+      {
+        "name": "duration-standard",
+        "value": "0.3s to 0.4s",
+        "purpose": "Card lifts, modal transitions, FAQ accordion."
+      },
+      {
+        "name": "duration-slow",
+        "value": "0.5s",
+        "purpose": "Button shimmer wipe, long hover effects. Reserved for intentional choreography."
+      },
+      {
+        "name": "aurora-drift",
+        "value": "24s to 36s ease-in-out infinite alternate",
+        "purpose": "Background aurora blob animations on hero and yoga sections. Slow enough to be atmospheric, not distracting."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "480px" },
+      { "name": "tablet", "value": "768px" },
+      { "name": "desktop-sm", "value": "900px" },
+      { "name": "desktop", "value": "992px" },
+      { "name": "desktop-lg", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The site's primary conversion action. Pill-shaped, magenta gradient, shimmer-wipe hover.",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\">Schedule Intake</a>",
+      "css": ".ds-btn-primary { display: inline-block; padding: 1.2rem 3rem; background: linear-gradient(135deg, #F30090 0%, #B8006D 100%); color: #fefefe; border: none; border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.05rem; text-decoration: none; cursor: pointer; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(243,0,144,0.35), 0 0 20px rgba(243,0,144,0.25); transition: transform 0.5s ease-out, box-shadow 0.5s ease-out; } .ds-btn-primary::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: rgba(255,255,255,0.18); border-radius: 50px; transition: height 0.5s ease-out; } .ds-btn-primary:hover::before { height: 100%; } .ds-btn-primary:hover { transform: scale(1.03); box-shadow: 0 15px 40px rgba(243,0,144,0.4), 0 0 60px rgba(243,0,144,0.2); color: #fefefe; } .ds-btn-primary:focus-visible { outline: 3px solid #A0DED1; outline-offset: 4px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ghost button used alongside a primary CTA. White outline, transparent fill.",
+      "html": "<a href=\"#\" class=\"ds-btn-secondary\">Explore Services</a>",
+      "css": ".ds-btn-secondary { display: inline-block; padding: 1.2rem 3rem; background: transparent; color: rgba(255,255,255,0.9); border: 2px solid rgba(255,255,255,0.55); border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.05rem; text-decoration: none; cursor: pointer; position: relative; overflow: hidden; transition: all 0.5s ease-out; } .ds-btn-secondary::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: rgba(255,255,255,0.12); border-radius: 50px; transition: height 0.5s ease-out; } .ds-btn-secondary:hover::before { height: 100%; } .ds-btn-secondary:hover { border-color: rgba(255,255,255,0.9); color: #fefefe; transform: scale(1.02); } .ds-btn-secondary:focus-visible { outline: 3px solid #A0DED1; outline-offset: 4px; }"
+    },
+    {
+      "name": "Section Badge",
+      "kind": "chip",
+      "refersTo": "section-badge",
+      "description": "Pill label that introduces each section. Pink-tinted on light, teal-tinted on dark.",
+      "html": "<span class=\"ds-section-badge\">What I Can Do For You</span>",
+      "css": ".ds-section-badge { display: inline-block; padding: 0.5rem 1.5rem; background: rgba(252,49,169,0.1); color: #504BFD; border: 2px solid rgba(252,49,169,0.3); border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; position: relative; } .ds-section-badge::after { content: ''; position: absolute; bottom: -1.5rem; left: 50%; transform: translateX(-50%); width: 200%; height: 1px; background: linear-gradient(90deg, transparent, rgba(252,49,169,0.2) 50%, transparent); } .ds-section-badge--dark { background: rgba(152,223,210,0.2); color: #A0DED1; border-color: rgba(152,223,210,0.4); } .ds-section-badge--dark::after { background: linear-gradient(90deg, transparent, rgba(160,222,209,0.2) 50%, transparent); }"
+    },
+    {
+      "name": "Credential Badge",
+      "kind": "chip",
+      "refersTo": "credential-badge",
+      "description": "Inline credential label used in flex clusters on the About section.",
+      "html": "<span class=\"ds-credential-badge\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"#F30090\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z\"/></svg> LCMHC Licensed</span>",
+      "css": ".ds-credential-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; background: rgba(243,0,144,0.1); border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; color: #F30090; white-space: nowrap; }"
+    },
+    {
+      "name": "Insurance Pill",
+      "kind": "chip",
+      "refersTo": "insurance-pill",
+      "description": "Muted informational pill for insurance provider names. Teal-tinted on dark hero.",
+      "html": "<span class=\"ds-insurance-pill\">Optum</span>",
+      "css": ".ds-insurance-pill { display: inline-block; padding: 0.3rem 0.9rem; background: rgba(160,222,209,0.12); border: 1px solid rgba(160,222,209,0.35); border-radius: 50px; color: #A0DED1; font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; }"
+    },
+    {
+      "name": "FAQ Accordion Item",
+      "kind": "custom",
+      "refersTo": "faq-item",
+      "description": "Expandable question-answer pair. White surface, magenta border on hover, rotating icon.",
+      "html": "<div class=\"ds-faq-item\"><div class=\"ds-faq-question\"><h3>What types of therapy do I offer?</h3><div class=\"ds-faq-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"#F30090\"><path d=\"M7 10l5 5 5-5z\"/></svg></div></div><div class=\"ds-faq-answer\"><p>Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), trauma-focused therapy, and mindfulness-based approaches.</p></div></div>",
+      "css": ".ds-faq-item { background: #fefefe; border: 1px solid rgba(0,0,0,0.08); border-radius: 15px; margin-bottom: 1.5rem; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; } .ds-faq-item:hover { border-color: rgba(243,0,144,0.3); box-shadow: 0 5px 20px rgba(243,0,144,0.1); } .ds-faq-question { padding: 1.75rem 2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; } .ds-faq-question h3 { font-family: 'Poppins', sans-serif; font-size: 1.15rem; color: #1a1a2e; margin: 0; font-weight: 600; line-height: 1.5; } .ds-faq-icon { flex-shrink: 0; width: 30px; height: 30px; background: rgba(243,0,144,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s ease; } .ds-faq-item.active .ds-faq-icon { background: linear-gradient(135deg, #F30090, #B8006D); } .ds-faq-item.active .ds-faq-icon svg { fill: #fefefe; transform: rotate(180deg); } .ds-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; } .ds-faq-item.active .ds-faq-answer { max-height: 500px; } .ds-faq-answer p { padding: 0 2rem 1.75rem; font-family: 'Poppins', sans-serif; color: #666; line-height: 1.8; font-size: 1.05rem; margin: 0; } .ds-faq-item:focus-within { outline: 2px solid #F30090; outline-offset: 2px; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Dark-glass fixed navigation. Links show teal active state tracked by scroll position.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#home\" class=\"ds-nav-link ds-nav-link--active\">Home</a><a href=\"#about\" class=\"ds-nav-link\">About</a><a href=\"#\" class=\"ds-nav-cta\">Contact Me</a></nav>",
+      "css": ".ds-nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; align-items: center; gap: 2rem; z-index: 1000; transition: background 0.3s ease; } .ds-nav--scrolled { background: rgba(0,0,0,0.5); } .ds-nav-link { text-decoration: none; color: rgba(255,255,255,0.8); font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.95rem; padding: 0.5rem 1rem; border-radius: 8px; transition: color 0.3s ease, background 0.3s ease; } .ds-nav-link:hover { color: #fefefe; background: rgba(243,0,144,0.15); } .ds-nav-link--active { color: #fefefe; background: rgba(160,222,209,0.2); font-weight: 700; box-shadow: 0 0 15px rgba(160,222,209,0.5); text-shadow: 0 0 10px rgba(160,222,209,0.7); } .ds-nav-cta { padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #F30090, #B8006D); color: #fefefe; border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; box-shadow: 0 0 15px rgba(243,0,144,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; } .ds-nav-cta:hover { transform: scale(1.03); box-shadow: 0 0 25px rgba(243,0,144,0.7); }"
+    },
+    {
+      "name": "Hero Service Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Signature dark glass card on the hero. 3D tilt via JS, shimmer border on hover, aurora inner glow, ghost watermark icon.",
+      "html": "<div class=\"ds-hero-service-card\" data-card=\"consulting\"><div class=\"ds-hsc-content\"><h3>Clinical Consulting</h3><p>Tools for the Mind: Navigate life's challenges with evidence-based strategies tailored to your needs.</p></div><div class=\"ds-hsc-ghost\" aria-hidden=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"144\" height=\"144\" viewBox=\"0 0 24 24\" fill=\"rgba(255,255,255,0.07)\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\"/></svg></div></div>",
+      "css": ".ds-hero-service-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 2.5rem 2rem; min-height: 340px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.12); position: relative; text-align: left; transform-style: preserve-3d; transition: background 0.4s ease, box-shadow 0.4s ease; overflow: hidden; } .ds-hero-service-card[data-card=\"consulting\"]:hover { background: rgba(243,0,144,0.22); box-shadow: 0 20px 60px rgba(243,0,144,0.4); } .ds-hsc-content { position: relative; z-index: 1; } .ds-hsc-content h3 { font-family: 'Poppins', sans-serif; font-size: 1.4rem; color: #fefefe; font-weight: 700; margin: 0 0 1rem; } .ds-hsc-content p { font-family: 'Poppins', sans-serif; color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.7; margin: 0; } .ds-hsc-ghost { position: absolute; bottom: 1rem; right: 1.5rem; opacity: 0.07; transform: rotate(-12deg); pointer-events: none; z-index: 0; transition: opacity 0.4s ease, transform 0.4s ease; } .ds-hero-service-card:hover .ds-hsc-ghost { opacity: 0.18; transform: rotate(-7deg); } .ds-hero-service-card:focus-visible { outline: 3px solid #A0DED1; outline-offset: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Charged Canvas",
+    "overview": "Mind Validation's visual system is built on a single premise: neon conviction on a dark field. The site exists as a charged canvas where clinical credibility and kinetic energy coexist without apology. The design does not soften itself to meet a visitor's preconceptions about what a therapy site looks like. It signals, instead, that the work of healing is bold, intentional, and possible. Every element earns its place on the canvas.\n\nThe site operates in two distinct registers held in deliberate tension. Dark sections carry the electric charge: aurora blobs, neon glows, high-contrast typography, animated orbs. Light sections ground that charge in clinical daylight: white surfaces, Midnight Ink text, Poppins precision. Moving through the page is a physical exhale, from high-voltage entry to trustworthy substance.\n\nThe system explicitly rejects two failure modes: the generic healthcare portal (cold institutional blues, stock-photo warmth, dense legal paragraphs) and the corporate therapy chain (franchise-polished but anonymous, where any therapist's face could replace Kirby's with no loss).",
+    "keyCharacteristics": [
+      "Two-register page: dark neon sections alternate with white clinical sections",
+      "Full-palette strategy: Electric Magenta (primary charge), Seafoam Signal (calm counterpoint), Voltage Violet (secondary depth)",
+      "Typography contrast: Tilt Neon for display (neon sections only), Poppins for everything else",
+      "Glow-over-shadow elevation: colored glows on dark, gentle ambient lift on light",
+      "Motion is grounding, never playful: no bounce, no elastic, no spin"
+    ],
+    "rules": [
+      {
+        "name": "The Rarity Rule",
+        "body": "Electric Magenta is the site's only fully saturated color on light surfaces. On white sections it appears only as badge text, link color, and credential accents. Reserve it or lose it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Glow Rule",
+        "body": "On dark surfaces, only Electric Magenta and Seafoam Signal are permitted as glow sources. Voltage Violet never glows. Deep Indigo never glows.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tilt Neon Rule",
+        "body": "Tilt Neon is used only with the neon text-shadow stack (6 layers, Electric Magenta, spreading from 10px to 200px). Rendering Tilt Neon without the glow is prohibited.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight Contrast Rule",
+        "body": "Within any single text block, maintain at least a 2-step weight jump between heading and body. Flat weight scales are prohibited.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-by-Default Rule",
+        "body": "Glows and shadows appear only as a response to hover or interactive state. An element at rest with a permanent glow must be a primary CTA or a decorative accent, not an interactive card.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use Electric Magenta as a glow color on dark surfaces via text-shadow and box-shadow.",
+      "Do alternate dark and light sections in sequence: dark hero, light about, dark services, dark yoga, light certifications, light FAQ, light location, dark footer.",
+      "Do use the neon text-shadow stack (6-layer spread) whenever Tilt Neon appears.",
+      "Do use Seafoam Signal for grounding accents on dark surfaces: connectors, nav active, icon accents.",
+      "Do animate with ease-out curves on departures. Nothing bounces.",
+      "Do maintain the pill radius (50px) for all buttons and badge-style elements.",
+      "Do keep the section badge pattern: uppercase label, pill shape, gradient underline rule, above the headline."
+    ],
+    "donts": [
+      "Don't use a border-left or border-right greater than 1px as a colored accent on cards or callouts. Current violations: certification cards and about-section blockquote.",
+      "Don't use background-clip: text with a gradient. Current violation: What Sets Kirby Apart icon elements.",
+      "Don't render Tilt Neon without the neon glow stack.",
+      "Don't use Voltage Violet or Deep Indigo as glow sources on dark backgrounds.",
+      "Don't contaminate light sections with dark-section components (aurora blobs, neon glows, glass cards).",
+      "Don't make the contact modal fire without user intent. Prefer a persistent sticky CTA bar.",
+      "Don't produce generic healthcare visual patterns: clinical blues, stock-photo grids, heavy tables.",
+      "Don't produce corporate therapy chain visual patterns: franchise-feel repetition, anonymous stock portraits."
+    ]
+  }
+}
