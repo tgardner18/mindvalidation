@@ -1146,6 +1146,7 @@
 
         .about-image {
             width: 100%;
+            height: auto;
             border-radius: 30px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
             transition: all 0.4s ease;
@@ -3139,4 +3140,61 @@
                 font-size: 0.85rem;
                 padding: 0.55rem 1.25rem;
             }
+        }
+        /* Seasonal effect — layer injected by script: leaves Sep–Nov, snow Dec–Feb */
+        .seasonal-effect {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 999; /* below the fixed nav */
+        }
+
+        .fall-item {
+            position: absolute;
+            top: -60px;
+            left: var(--x);
+            animation: seasonal-fall var(--fall-dur) linear var(--delay) infinite;
+            will-change: transform;
+        }
+
+        .fall-item-inner {
+            display: block;
+            width: var(--size);
+            height: var(--size);
+            animation: seasonal-sway var(--sway-dur) ease-in-out infinite alternate;
+            will-change: transform;
+        }
+
+        .fall-leaf .fall-item-inner {
+            color: var(--leaf-color);
+            opacity: 0.85;
+        }
+
+        .fall-leaf svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
+        }
+
+        .fall-snow .fall-item-inner {
+            border-radius: 50%;
+            background: #fff;
+            opacity: var(--opacity);
+            /* faint indigo edge keeps flakes visible over white sections */
+            box-shadow: 0 0 2px rgba(2, 8, 135, 0.35), 0 0 6px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes seasonal-fall {
+            to { transform: translateY(calc(100vh + 120px)); }
+        }
+
+        @keyframes seasonal-sway {
+            from { transform: translateX(calc(var(--sway) * -1)) rotate(var(--rot-start)) rotateX(0deg); }
+            to   { transform: translateX(var(--sway)) rotate(var(--rot-end)) rotateX(var(--flip)); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .seasonal-effect { display: none; }
         }

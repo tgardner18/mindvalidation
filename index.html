@@ -5,19 +5,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Kirby Gardner, LCMHC - Therapy & Yoga in Nashua NH | Mind Validation</title>
-    <meta name="keywords"
-        content="Mental Health Counseling, Therapy, CBT, DBT, Yoga, Nashua NH, Anxiety, Depression, Trauma Recovery, LCMHC" />
     <meta name="description"
-        content="Licensed therapist in Nashua NH offering CBT, DBT, trauma-informed therapy and mindful yoga. Kirby Gardner, LCMHC helps adults with anxiety, depression, ADHD and emotional regulation. Book a consultation today." />
+        content="Kirby Gardner, LCMHC offers CBT, DBT and trauma-informed therapy for adults (in person in Nashua, NH or virtual in MA, NH and VT) plus mindful yoga." />
     <meta name="author" content="Kirby Gardner" />
+    <link rel="canonical" href="https://mindvalidation.com/" />
 
     <!-- OpenGraph Meta Tags for Social Sharing & AI Crawlers -->
     <meta property="og:title" content="Kirby Gardner, LCMHC - Therapy & Yoga in Nashua NH | Mind Validation" />
     <meta property="og:description"
-        content="Licensed therapist offering CBT, DBT, trauma-informed therapy and mindful yoga. Specialized care for anxiety, depression, ADHD and emotional regulation in downtown Nashua, NH." />
+        content="Licensed therapist offering CBT, DBT, trauma-informed therapy and mindful yoga. Specialized care for anxiety, depression, ADHD and emotional regulation in downtown Nashua, NH and virtually across MA, NH and VT." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.mindvalidation.com" />
-    <meta property="og:image" content="https://www.mindvalidation.com/img/mindvalidation-logo-Dark.png" />
+    <meta property="og:url" content="https://mindvalidation.com/" />
+    <meta property="og:image" content="https://mindvalidation.com/img/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mind Validation: evidence-based support for mind and body" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Mind Validation" />
 
@@ -26,10 +28,12 @@
     <meta name="twitter:title" content="Kirby Gardner, LCMHC - Therapy & Yoga in Nashua NH" />
     <meta name="twitter:description"
         content="Licensed therapist offering CBT, DBT, trauma-informed therapy and mindful yoga in Nashua, NH." />
-    <meta name="twitter:image" content="https://www.mindvalidation.com/img/mindvalidation-logo-Dark.png" />
+    <meta name="twitter:image" content="https://mindvalidation.com/img/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Mind Validation: evidence-based support for mind and body" />
 
     <!-- Additional SEO Meta Tags -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#222222" />
     <meta name="geo.region" content="US-NH" />
     <meta name="geo.placename" content="Nashua" />
     <meta name="geo.position" content="42.76248;-71.46610" />
@@ -42,11 +46,20 @@
     <meta name="business:contact_data:postal_code" content="03060" />
     <meta name="business:contact_data:country_name" content="United States" />
 
+    <!-- Plain-text summary for AI assistants (llmstxt.org) -->
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM-friendly summary" />
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="img/mindvalidation-logo-Dark.png" />
+    <link rel="apple-touch-icon" href="img/MindValidation-Logo-Dark.png" />
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no" />
+    <!-- Preconnect to CDNs so fonts and styles start loading sooner (Core Web Vitals) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <!-- Web Fonts  -->
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Tilt+Neon&display=swap"
@@ -62,20 +75,32 @@
     <link rel="stylesheet" href="css/mind-val-v2.css" />
 
 
-    <!-- Structured Data (JSON-LD) for AI Crawlers & Search Engines -->
+    <!-- Structured Data (JSON-LD) for AI Crawlers & Search Engines.
+         FAQ answers must match the visible #faq section word for word — update both together. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@graph": [
             {
+                "@type": "WebSite",
+                "@id": "https://mindvalidation.com/#website",
+                "url": "https://mindvalidation.com/",
+                "name": "Mind Validation",
+                "inLanguage": "en-US",
+                "publisher": { "@id": "https://mindvalidation.com/#business" }
+            },
+            {
                 "@type": "MedicalBusiness",
-                "@id": "https://www.mindvalidation.com/#business",
+                "@id": "https://mindvalidation.com/#business",
                 "name": "Mind Validation",
                 "alternateName": "Mind Validation Counseling and Yoga",
-                "description": "Professional mental health counseling and yoga services in Nashua, NH. Licensed LCMHC specializing in CBT, DBT, trauma-informed therapy, and mindful movement.",
-                "url": "https://www.mindvalidation.com",
-                "logo": "https://www.mindvalidation.com/img/mindvalidation-logo.png",
-                "image": "https://www.mindvalidation.com/img/Kirby-MV.jpg",
+                "description": "Professional mental health counseling and yoga services in Nashua, NH. Licensed LCMHC specializing in CBT, DBT, trauma-informed therapy, and mindful movement. In-person sessions in downtown Nashua and virtual sessions for adults in Massachusetts, New Hampshire, and Vermont.",
+                "url": "https://mindvalidation.com/",
+                "logo": "https://mindvalidation.com/img/MindValidation-Logo.png",
+                "image": [
+                    "https://mindvalidation.com/img/Kirby-MV.jpg",
+                    "https://mindvalidation.com/img/og-image.jpg"
+                ],
                 "telephone": "+1-951-547-2909",
                 "email": "mindvalidation@gmail.com",
                 "priceRange": "$$",
@@ -93,20 +118,23 @@
                     "latitude": 42.76248,
                     "longitude": -71.46610
                 },
+                "hasMap": "https://www.google.com/maps?cid=11144389484445788865",
                 "openingHoursSpecification": {
                     "@type": "OpeningHoursSpecification",
                     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
                     "opens": "09:00",
                     "closes": "18:00"
                 },
-                "areaServed": {
-                    "@type": "City",
-                    "name": "Nashua",
-                    "containedIn": {
-                        "@type": "State",
-                        "name": "New Hampshire"
-                    }
-                },
+                "areaServed": [
+                    {
+                        "@type": "City",
+                        "name": "Nashua",
+                        "containedInPlace": { "@type": "State", "name": "New Hampshire" }
+                    },
+                    { "@type": "State", "name": "New Hampshire" },
+                    { "@type": "State", "name": "Massachusetts" },
+                    { "@type": "State", "name": "Vermont" }
+                ],
                 "hasOfferCatalog": {
                     "@type": "OfferCatalog",
                     "name": "Mental Health Services",
@@ -138,32 +166,33 @@
                         {
                             "@type": "Offer",
                             "itemOffered": {
-                                "@type": "SportsActivityLocation",
+                                "@type": "Service",
                                 "name": "Vinyasa Yoga Classes",
-                                "description": "Mindful movement and yoga for mind-body wellness"
+                                "description": "Mindful small-group Vinyasa yoga (max 8) for mind-body wellness in downtown Nashua, NH"
                             }
                         }
                     ]
                 },
-                "founder": {
-                    "@type": "Person",
-                    "@id": "https://www.mindvalidation.com/#kirby-gardner"
-                }
+                "founder": { "@id": "https://mindvalidation.com/#kirby-gardner" },
+                "employee": { "@id": "https://mindvalidation.com/#kirby-gardner" },
+                "sameAs": [
+                    "https://www.facebook.com/mindvalidation/",
+                    "https://www.instagram.com/mindvalidation/",
+                    "https://www.psychologytoday.com/us/therapists/kirby-gardner-nashua-nh/130969"
+                ]
             },
             {
                 "@type": "Person",
-                "@id": "https://www.mindvalidation.com/#kirby-gardner",
+                "@id": "https://mindvalidation.com/#kirby-gardner",
                 "name": "Kirby Gardner",
+                "honorificSuffix": "LCMHC",
                 "jobTitle": "Licensed Clinical Mental Health Counselor (LCMHC)",
                 "description": "Licensed therapist with over a decade of clinical experience specializing in CBT, DBT, and trauma-informed care. Certified yoga instructor (RYT-200) integrating mindfulness and movement into therapeutic practice.",
-                "image": "https://www.mindvalidation.com/img/Kirby-MV.jpg",
+                "image": "https://mindvalidation.com/img/Kirby-MV.jpg",
                 "email": "mindvalidation@gmail.com",
                 "telephone": "+1-951-547-2909",
-                "url": "https://www.mindvalidation.com",
-                "worksFor": {
-                    "@type": "MedicalBusiness",
-                    "@id": "https://www.mindvalidation.com/#business"
-                },
+                "url": "https://mindvalidation.com/#about",
+                "worksFor": { "@id": "https://mindvalidation.com/#business" },
                 "hasCredential": [
                     {
                         "@type": "EducationalOccupationalCredential",
@@ -174,19 +203,21 @@
                         "@type": "EducationalOccupationalCredential",
                         "name": "Beck Institute Certified - Cognitive Behavior Therapy",
                         "credentialCategory": "Professional Certification",
+                        "recognizedBy": { "@type": "Organization", "name": "Beck Institute for Cognitive Behavior Therapy" },
                         "dateCreated": "2011-12"
                     },
                     {
                         "@type": "EducationalOccupationalCredential",
                         "name": "Trauma-Focused CBT Certification",
                         "credentialCategory": "Professional Certification",
-                        "educationalLevel": "Medical University of South Carolina",
+                        "recognizedBy": { "@type": "Organization", "name": "Medical University of South Carolina" },
                         "dateCreated": "2010-06"
                     },
                     {
                         "@type": "EducationalOccupationalCredential",
                         "name": "Yoga Alliance RYT-200",
                         "credentialCategory": "Professional Certification",
+                        "recognizedBy": { "@type": "Organization", "name": "Yoga Alliance" },
                         "dateCreated": "2024-04"
                     }
                 ],
@@ -205,18 +236,19 @@
                     "https://www.facebook.com/mindvalidation/",
                     "https://www.psychologytoday.com/us/therapists/kirby-gardner-nashua-nh/130969",
                     "https://www.linkedin.com/in/kirby-gardner-lcmhc-b6691963/",
-                    "https://www.instagram.com/mindvalidation/?hl=en"
+                    "https://www.instagram.com/mindvalidation/"
                 ]
             },
             {
                 "@type": "FAQPage",
+                "@id": "https://mindvalidation.com/#faq",
                 "mainEntity": [
                     {
                         "@type": "Question",
                         "name": "What types of therapy does Mind Validation offer?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Mind Validation offers Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), trauma-focused therapy, and mindfulness-based approaches. All therapy is evidence-based and tailored to individual client needs."
+                            "text": "Kirby Gardner, LCMHC offers Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), trauma-focused therapy, and mindfulness-based approaches. All therapy is evidence-based and tailored to individual client needs, focusing on practical skills and lasting change."
                         }
                     },
                     {
@@ -224,7 +256,15 @@
                         "name": "Who can benefit from therapy at Mind Validation?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Mind Validation serves adults dealing with anxiety, depression, ADHD, trauma, emotional regulation challenges, relationship issues, stress management, and life transitions."
+                            "text": "Mind Validation serves adults dealing with anxiety, depression, ADHD, trauma, emotional regulation challenges, relationship issues, stress management, and life transitions. Whether you're struggling with daily stress or working through deeper challenges, compassionate support is available."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do you offer virtual therapy?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. Kirby offers both in-person sessions at the downtown Nashua, NH office and virtual sessions for adults located in Massachusetts, New Hampshire, and Vermont. Day and evening appointments are available."
                         }
                     },
                     {
@@ -232,7 +272,7 @@
                         "name": "Where is Mind Validation located?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Mind Validation is located in downtown Nashua, New Hampshire at 92 Main Street Suite #105. The entrance is between Casa Vieja Mexican Grill and Giant of Siam restaurants. Street parking is typically available."
+                            "text": "Mind Validation is conveniently located in downtown Nashua, New Hampshire at 92 Main Street Suite #105. The entrance is between Casa Vieja Mexican Grill and Giant of Siam restaurants. The location is accessible through public transportation and street parking is typically available."
                         }
                     },
                     {
@@ -240,23 +280,31 @@
                         "name": "Does Mind Validation offer yoga classes?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Yes, Kirby is a Yoga Alliance certified instructor (RYT-200) offering mindful Vinyasa yoga classes by appointment. Classes are suitable for all levels and focus on mind-body connection, stress resilience, and increased body awareness."
+                            "text": "Yes, Kirby is a Yoga Alliance certified instructor (RYT-200) offering mindful Vinyasa yoga classes by appointment. Classes are suitable for all levels and focus on mind-body connection, stress resilience, increased body awareness, and creating a gentle community experience with personalized guidance."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "How do I get started with therapy or yoga at Mind Validation?",
+                        "name": "How do I get started?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Getting started is simple with three easy steps: (1) Send an email to mindvalidation@gmail.com to introduce yourself and share what brings you here. (2) Kirby will review your request and follow up with any questions to determine if we're the right fit for your goals. (3) Begin your journey—whether it's therapy or yoga, Kirby will personalize an approach tailored to your needs."
+                            "text": "Getting started is simple with three easy steps: (1) Send an email to mindvalidation@gmail.com to introduce yourself and share what brings you here. (2) Kirby will review your request and follow up with any questions to determine if we're the right fit for your goals. (3) Begin your journey—whether it's therapy or yoga, Kirby will personalize an approach tailored to your needs. Accepted insurance includes Optum, United Healthcare, Tufts, and Harvard Pilgrim. Private pay is also available."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "What insurance does Mind Validation accept?",
+                        "name": "What insurance do you accept?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Mind Validation accepts Optum, United Healthcare, Tufts, and Harvard Pilgrim insurance plans. Private pay is also available for those without insurance coverage or who prefer to pay out-of-pocket."
+                            "text": "Mind Validation accepts Optum, United Healthcare, Tufts, and Harvard Pilgrim insurance plans. Private pay is also available for those without insurance coverage or who prefer to pay out-of-pocket. Please reach out to discuss your specific insurance situation and we'll help determine the best payment option for you."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What makes Mind Validation different from other therapy practices?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Mind Validation combines clinical expertise with a holistic approach to wellness. Kirby's unique integration of evidence-based therapy (CBT, DBT) with mindfulness and yoga creates a comprehensive mind-body healing experience. With over a decade of clinical experience and multiple certifications, you receive compassionate, personalized care that addresses your whole self."
                         }
                     }
                 ]
@@ -288,22 +336,18 @@
             },
             {
                 "@type": "WebPage",
-                "@id": "https://www.mindvalidation.com/#webpage",
-                "url": "https://www.mindvalidation.com",
+                "@id": "https://mindvalidation.com/#webpage",
+                "url": "https://mindvalidation.com/",
                 "name": "Kirby Gardner, LCMHC - Therapy & Yoga in Nashua NH | Mind Validation",
                 "description": "Licensed therapist offering CBT, DBT, trauma-informed therapy and mindful yoga. Specialized care for anxiety, depression, ADHD and emotional regulation in downtown Nashua, NH.",
                 "inLanguage": "en-US",
-                "isPartOf": {
-                    "@type": "WebSite",
-                    "@id": "https://www.mindvalidation.com/#website"
-                },
-                "about": {
-                    "@type": "MedicalBusiness",
-                    "@id": "https://www.mindvalidation.com/#business"
-                },
+                "dateModified": "2026-10-10",
+                "isPartOf": { "@id": "https://mindvalidation.com/#website" },
+                "about": { "@id": "https://mindvalidation.com/#business" },
+                "mainEntity": { "@id": "https://mindvalidation.com/#business" },
                 "primaryImageOfPage": {
                     "@type": "ImageObject",
-                    "url": "https://www.mindvalidation.com/img/Kirby-MV.jpg"
+                    "url": "https://mindvalidation.com/img/Kirby-MV.jpg"
                 }
             }
         ]
@@ -321,12 +365,12 @@
 </head>
 
 <body>
-    <a href="#home" class="skip-link">Skip to main content</a>
+    <a href="#main" class="skip-link">Skip to main content</a>
     <!-- Modern Navigation -->
     <nav class="modern-nav">
         <div class="nav-container">
             <a href="#home" class="logo">
-                <img src="img/mindvalidation-logo.png" alt="Mind Validation Logo">
+                <img src="img/MindValidation-Logo.png" alt="Mind Validation logo" width="833" height="837">
             </a>
 
             <ul class="nav-links">
@@ -348,6 +392,7 @@
         </div>
     </nav>
 
+    <main id="main">
     <!-- New Hero Section -->
     <section id="home" class="hero-section">
 
@@ -455,7 +500,7 @@
     <section id="about" class="section-modern">
         <div class="about-grid">
             <div class="about-image-wrapper" data-aos="fade-right" data-aos-duration="1000">
-                <img src="img/Kirby-MV.jpg" alt="Kirby Gardner LCMHC" class="about-image">
+                <img src="img/Kirby-MV.jpg" alt="Kirby Gardner, LCMHC, licensed therapist and yoga instructor in Nashua, NH" class="about-image" width="1098" height="1464" loading="lazy" decoding="async">
             </div>
 
             <div class="about-content" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
@@ -705,7 +750,7 @@
             <div class="yoga-cert-seal" data-aos="zoom-in" data-aos-delay="400">
                 <div class="cert-seal-ring"></div>
                 <div class="cert-seal-inner">
-                    <img src="img/RYT-200.jpg" alt="Yoga Alliance RYT-200" class="cert-seal-img">
+                    <img src="img/RYT-200.jpg" alt="Yoga Alliance RYT-200 certification seal" class="cert-seal-img" width="850" height="850" loading="lazy" decoding="async">
                 </div>
                 <div class="cert-seal-text">
                     <span class="cert-seal-title">RYT-200</span>
@@ -815,7 +860,7 @@
         <div class="faq-container">
             <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
                 <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-1">
-                    <h3>What types of therapy do I offer?</h3>
+                    <h3>What types of therapy does Mind Validation offer?</h3>
                     <div class="faq-icon">
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -842,6 +887,22 @@
                         regulation challenges, relationship issues, stress management, and life transitions. Whether
                         you're struggling with daily stress or working through deeper challenges, compassionate support
                         is available.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-8">
+                    <h3>Do you offer virtual therapy?</h3>
+                    <div class="faq-icon">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer" id="faq-answer-8" aria-hidden="true">
+                    <div class="faq-answer-content">
+                        Yes. Kirby offers both in-person sessions at the downtown Nashua, NH office and virtual sessions
+                        for adults located in Massachusetts, New Hampshire, and Vermont. Day and evening appointments
+                        are available.
                     </div>
                 </div>
             </div>
@@ -948,7 +1009,7 @@
 
         <div data-aos="fade-up" data-aos-delay="200">
             <div class="location-map-container">
-                <iframe
+                <iframe title="Map of Mind Validation at 92 Main Street, Nashua, NH"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d732.3058243360645!2d-71.4661051707468!3d42.76248258330272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3b12800aaa3d5%3A0x9aa8d330cafd6ac1!2sMind%20Validation!5e0!3m2!1sen!2sus!4v1659356939470!5m2!1sen!2sus"
                     width="100%" height="500" class="location-map-iframe" allowfullscreen="true" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
@@ -963,6 +1024,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="modern-footer" id="contact">
         <div class="footer-inner">
@@ -970,23 +1033,23 @@
             <!-- Col 1: Brand + tagline -->
             <div class="footer-col footer-col--brand">
                 <div class="footer-brand">
-                    <img src="img/MindValidation-Logo.png" alt="Mind Validation Logo" class="footer-logo">
+                    <img src="img/MindValidation-Logo.png" alt="Mind Validation logo" class="footer-logo" width="833" height="837" loading="lazy" decoding="async">
                     <span class="footer-company-name">Mind Validation</span>
                 </div>
                 <p class="footer-tagline">Evidence-based therapy and mindful yoga for adults in MA, NH, and VT.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/mindvalidation/" target="_blank" title="Facebook">
+                    <a href="https://www.facebook.com/mindvalidation/" target="_blank" rel="noopener" title="Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                     <a href="https://www.psychologytoday.com/us/therapists/kirby-gardner-nashua-nh/130969"
-                        target="_blank" title="Psychology Today">
+                        target="_blank" rel="noopener" title="Psychology Today">
                         <i class="fa-solid fa-address-book"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/kirby-gardner-lcmhc-b6691963/" target="_blank"
+                    <a href="https://www.linkedin.com/in/kirby-gardner-lcmhc-b6691963/" target="_blank" rel="noopener"
                         title="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://www.instagram.com/mindvalidation/?hl=en" target="_blank" title="Instagram">
+                    <a href="https://www.instagram.com/mindvalidation/?hl=en" target="_blank" rel="noopener" title="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
@@ -1015,7 +1078,7 @@
                     </li>
                     <li>
                         <i class="fas fa-phone"></i>
-                        <a href="tel:+9515472909">(951) 547-2909</a>
+                        <a href="tel:+19515472909">(951) 547-2909</a>
                     </li>
                     <li>
                         <i class="fas fa-envelope"></i>
@@ -1403,6 +1466,80 @@
                 document.body.classList.remove('sticky-bar-active');
                 localStorage.setItem(STORAGE_KEY, 'true');
             });
+        })();
+
+        // Seasonal effect — leaves Sep–Nov, snow Dec–Feb, nothing Mar–Aug.
+        // Preview any time with ?effect=leaves, ?effect=snow or ?effect=none
+        (function () {
+            const param = new URLSearchParams(window.location.search).get('effect');
+            const month = new Date().getMonth(); // 0 = Jan
+            const seasonal = month >= 8 && month <= 10 ? 'leaves'
+                : (month === 11 || month <= 1) ? 'snow'
+                : 'none';
+            const effect = ['leaves', 'snow', 'none'].includes(param) ? param : seasonal;
+            if (effect === 'none') return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const leafShapes = [
+                // Rounded leaf with center vein
+                '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.5C6.5 5.5 4 10 4 14.2 4 18.8 7.6 22 12 22s8-3.2 8-7.8C20 10 17.5 5.5 12 1.5z"/><path d="M12 5v17" stroke="rgba(0,0,0,0.18)" stroke-width="1" fill="none"/></svg>',
+                // Slender leaf with stem
+                '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5C11 3.5 4.5 8.5 4.5 15.5c0 1.6.4 2.9 1 4C14 19.5 20.5 13 20.5 3.5z"/><path d="M3 21c4-5 9-10 15-15" stroke="rgba(0,0,0,0.18)" stroke-width="1" fill="none"/></svg>'
+            ];
+            const leafColors = ['#D9531E', '#E8871E', '#C0392B', '#B5651D', '#E3A72F', 'var(--primary-pink)'];
+            const mobile = window.innerWidth < 768;
+            const rand = (min, max) => min + Math.random() * (max - min);
+
+            const configs = {
+                leaves: {
+                    count: mobile ? 7 : 14,
+                    build(item, inner, i) {
+                        item.style.setProperty('--fall-dur', rand(12, 22) + 's');
+                        item.style.setProperty('--delay', rand(0, 18) + 's');
+                        item.style.setProperty('--size', rand(16, 30) + 'px');
+                        item.style.setProperty('--sway', rand(20, 60) + 'px');
+                        item.style.setProperty('--sway-dur', rand(2.5, 4.5) + 's');
+                        item.style.setProperty('--rot-start', rand(-60, 0) + 'deg');
+                        item.style.setProperty('--rot-end', rand(30, 120) + 'deg');
+                        item.style.setProperty('--flip', '55deg');
+                        item.style.setProperty('--leaf-color', leafColors[Math.floor(Math.random() * leafColors.length)]);
+                        inner.innerHTML = leafShapes[i % leafShapes.length];
+                    }
+                },
+                snow: {
+                    count: mobile ? 25 : 50,
+                    build(item) {
+                        item.style.setProperty('--fall-dur', rand(10, 20) + 's');
+                        item.style.setProperty('--delay', rand(0, 15) + 's');
+                        item.style.setProperty('--size', rand(3, 8) + 'px');
+                        item.style.setProperty('--sway', rand(10, 35) + 'px');
+                        item.style.setProperty('--sway-dur', rand(3, 6) + 's');
+                        item.style.setProperty('--rot-start', '0deg');
+                        item.style.setProperty('--rot-end', '0deg');
+                        item.style.setProperty('--flip', '0deg');
+                        item.style.setProperty('--opacity', rand(0.5, 0.95).toFixed(2));
+                    }
+                }
+            };
+            const config = configs[effect];
+
+            const layer = document.createElement('div');
+            layer.className = 'seasonal-effect';
+            layer.setAttribute('aria-hidden', 'true');
+
+            for (let i = 0; i < config.count; i++) {
+                const item = document.createElement('div');
+                item.className = 'fall-item ' + (effect === 'leaves' ? 'fall-leaf' : 'fall-snow');
+                item.style.setProperty('--x', rand(0, 100) + 'vw');
+
+                const inner = document.createElement('span');
+                inner.className = 'fall-item-inner';
+                config.build(item, inner, i);
+                item.appendChild(inner);
+                layer.appendChild(item);
+            }
+
+            document.body.appendChild(layer);
         })();
     </script>
 </body>

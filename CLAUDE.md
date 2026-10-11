@@ -43,6 +43,10 @@ The entire site is a single file: `index.html`. All JavaScript is inline at the 
 
 **Scroll animations** — use `data-aos="fade-up"` (or other AOS values) and `data-aos-delay="NNN"` on elements. AOS is initialized once with `duration: 800, once: true, offset: 100`.
 
+**Seasonal effect** — an inline script near the end of `index.html` injects falling leaves (Sep–Nov) or snow (Dec–Feb), nothing Mar–Aug. Preview with `?effect=leaves|snow|none`. Styles are the `.seasonal-effect` block at the end of the CSS.
+
+**SEO / AI-search content** — the canonical host is `https://mindvalidation.com/` (no `www`); use it in every absolute URL. The JSON-LD in `<head>` mirrors the visible page: when you edit FAQ questions/answers, services, credentials, insurance, or contact details, update the JSON-LD and `llms.txt` to match, and bump `dateModified` in the WebPage schema and `<lastmod>` in `sitemap.xml`.
+
 **Netlify redirects** — `_redirects` maps legacy path-style URLs to the SPA's hash anchors with 301s.
 
 ## Deployment

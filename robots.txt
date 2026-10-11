@@ -1,15 +1,27 @@
-User-agent: Googlebot
-Disallow: /nogooglebot/
+# Mind Validation — https://mindvalidation.com
+# Search engines and AI assistants are welcome to crawl the public site.
+# CSS and images are deliberately crawlable: Google needs them to render the page,
+# and the share image / photos are referenced by the structured data.
 
 User-agent: *
 Allow: /
-
-User-agent: *
-Disallow: /ajax/
-Disallow: /css/
-Disallow: /img/
-Disallow: /js/
-Disallow: /vendor/
 Disallow: /dev/
+Disallow: /dev-test.html
+
+# AI search & assistant crawlers (explicitly allowed so the practice can be cited in AI answers)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+Allow: /
+Disallow: /dev/
+Disallow: /dev-test.html
 
 Sitemap: https://mindvalidation.com/sitemap.xml
