@@ -7,7 +7,8 @@
  *   accent    colour for the ornament, message, favicon and toggle when there's no palette
  *   effects   ambient animation (drifting leaves/snow/etc., bats in the hero)
  *   ornament  small neon icon on the hero title (stroke-only SVG paths, 24×24 grid)
- *   ornamentText  a neon text sign in the ornament's place instead (fn of the active date → line or lines)
+ *   ornamentText  a neon text sign in the ornament's place instead (fn of the active date → line or lines);
+ *             with an ornament too, the text sits small above the ornament's artwork on one sign
  *   icon      favicon artwork when it differs from the ornament
  *   message   one line of seasonal copy under the hero CTA
  *   cobwebs   corner webs in the footer
@@ -117,6 +118,27 @@
             '<path d="M12 7.6L7.6 12.4h2.3L6.4 16.6h2.9L5.2 21h13.6l-4.1-4.4h2.9l-3.5-4.2h2.3z"/>' +
             '<path d="M11 21v1.6h2V21"/>' +
             '<path d="M9.6 15.1c1.5.5 3.2.2 4.6-.8M8.3 19.2c2.4.7 5 .3 7.2-1.1"/>',
+        heart:
+            '<path d="M12 20.3l-1.3-1.2C6 14.9 3 12.2 3 8.9 3 6.2 5.1 4.1 7.8 4.1c1.5 0 3 .7 4.2 1.9 1.2-1.2 2.7-1.9 4.2-1.9 2.7 0 4.8 2.1 4.8 4.8 0 3.3-3 6-7.7 10.2z"/>',
+        shamrock:
+            '<path d="M12 11C9.6 9.4 8.2 7.8 8.4 6.2 8.6 4.6 10.6 4 12 5.6 13.4 4 15.4 4.6 15.6 6.2 15.8 7.8 14.4 9.4 12 11z"/>' +
+            '<path transform="rotate(120 12 11)" d="M12 11C9.6 9.4 8.2 7.8 8.4 6.2 8.6 4.6 10.6 4 12 5.6 13.4 4 15.4 4.6 15.6 6.2 15.8 7.8 14.4 9.4 12 11z"/>' +
+            '<path transform="rotate(240 12 11)" d="M12 11C9.6 9.4 8.2 7.8 8.4 6.2 8.6 4.6 10.6 4 12 5.6 13.4 4 15.4 4.6 15.6 6.2 15.8 7.8 14.4 9.4 12 11z"/>' +
+            '<path d="M12 11c.4 3.5 1.4 6.6 3.4 9.6"/>',
+        ribbon:
+            '<path d="M12 3.4c-2.1 0-3.5 1.7-3.5 3.8 0 2.6 2 5 3.5 6.6 1.5-1.6 3.5-4 3.5-6.6 0-2.1-1.4-3.8-3.5-3.8z"/>' +
+            '<path d="M10.3 12.2L6.6 20.4l2.6-.6 1.3 2.3 3.4-7M13.7 12.2l3.7 8.2-2.6-.6-1.3 2.3-3.4-7"/>',
+        star:
+            '<path d="M12 2.8l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 16.8l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+        leaf:
+            '<path d="M12 2.5C7 6 4.5 10 4.5 14.2c0 4.3 3.5 7.3 7.5 7.3s7.5-3 7.5-7.3C19.5 10 17 6 12 2.5z"/>' +
+            '<path d="M12 6.5v15M12 12.5l-3-2.2M12 16l3.2-2.4"/>',
+        turkey: // five fanned tail feathers, round body, head with beak and wattle, feet
+            [-64, -32, 0, 32, 64].map(a => '<ellipse cx="12" cy="6.6" rx="2" ry="4.3" transform="rotate(' + a + ' 12 14)"/>').join('') +
+            '<circle cx="12" cy="15.4" r="4.1"/>' +
+            '<circle cx="12" cy="10" r="1.75"/>' +
+            '<path d="M13.6 9.8l1.6.5-1.6.5M12.9 11.3c.5.8.4 1.7-.2 2.2"/>' +
+            '<path d="M10.7 19.4v2.3M13.3 19.4v2.3M9.7 22.2l1-.5 1 .5M12.3 22.2l1-.5 1 .5"/>',
         sparkle:
             '<path d="M12 3v5M12 16v5M3 12h5M16 12h5"/>' +
             '<path d="M12 8.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/>' +
@@ -203,6 +225,127 @@
             icon: 'sparkle',
             message: {
                 text: 'A new year doesn\u2019t need a new you. Just a next step.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'valentines',
+            name: "Valentine's Day",
+            priority: 10,
+            // Brand colours already are Valentine's; the theme adds hearts and a self-compassion line
+            accent: '#FC31A9',
+            window: y => around(day(y, 1, 14)), // Feb 11 – 15
+            effects: [{ type: 'drift', preset: 'hearts' }],
+            ornament: 'heart',
+            message: {
+                text: 'Start with the relationship you have with yourself.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'stpatricks',
+            name: "St. Patrick's Day",
+            priority: 10,
+            skin: 'full',
+            // Emerald carries the charge (deep enough for white button text), the neon burns clover-bright,
+            // warm gold is the calm counterpoint and deep sea-teal the third voice
+            palette: {
+                primary: '#1E8449', primaryLight: '#58D68D', primaryDeep: '#145A32', primaryDark: '#0B3D20',
+                button: '#17703C', buttonDeep: '#0B3D20',
+                secondary: '#E6D49A', secondaryMid: '#C9B36E', secondarySoft: '#F1E8C8', secondaryDark: '#6B5A22', secondaryInk: '#4A3E17',
+                tertiary: '#2F5D62', tertiaryDeep: '#173236',
+                neon: '#7CFFA0'
+            },
+            window: y => around(day(y, 2, 17)), // Mar 14 – 18
+            effects: [{ type: 'drift', preset: 'shamrocks' }],
+            ornament: 'shamrock',
+            message: {
+                text: 'Luck is nice. Tools last longer.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'mhmonth',
+            name: 'Mental Health Awareness Month',
+            priority: 5,
+            // Light touch for a whole month: the green awareness ribbon, no ambient motion
+            accent: '#7ED957',
+            window: y => [day(y, 4, 1), day(y, 4, 31)], // May
+            ornament: 'ribbon',
+            message: {
+                text: 'May is Mental Health Awareness Month. Reaching out is a strong first step.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'mothersday',
+            name: "Mother's Day",
+            priority: 20,
+            // Message only: this day is hard for many people, so nothing celebratory
+            window: y => around(nthWeekday(y, 4, 0, 2), 1, 0), // Sat + Sun, 2nd Sunday of May
+            message: {
+                text: 'Mother\u2019s Day can hold joy, grief, or both. All of it is welcome here.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'fathersday',
+            name: "Father's Day",
+            priority: 20,
+            window: y => around(nthWeekday(y, 5, 0, 3), 1, 0), // Sat + Sun, 3rd Sunday of June
+            message: {
+                text: 'Father\u2019s Day can hold joy, grief, or both. All of it is welcome here.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'july4',
+            name: '4th of July',
+            priority: 10,
+            skin: 'full',
+            // The flag's official colours: Old Glory Red #B31942 (buttons and accents), white as the calm
+            // counterpoint, Old Glory Blue #0A3161 as the third voice. Lighter tints only where a colour
+            // must glow or be read as small text on the dark hero.
+            palette: {
+                primary: '#B31942', primaryLight: '#E9506F', primaryDeep: '#8C1333', primaryDark: '#5C0C22',
+                button: '#B31942', buttonDeep: '#7E1230',
+                secondary: '#FFFFFF', secondaryMid: '#9DB0CC', secondarySoft: '#F2F4F8', secondaryDark: '#0A3161', secondaryInk: '#0A3161',
+                tertiary: '#0A3161', tertiaryDeep: '#061F3F',
+                neon: '#FF3D63'
+            },
+            window: y => around(day(y, 6, 4)), // Jul 1 – 5
+            // Old Glory Blue is too dark to see against the night sky, so the blue bursts use a luminous flag blue
+            effects: [{ type: 'fireworks', colors: ['#E9506F', '#FFFFFF', '#5B8CFF'] }],
+            ornament: 'star',
+            message: {
+                text: 'Independence includes the freedom to ask for support.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'wmhd',
+            name: 'World Mental Health Day',
+            priority: 10,
+            accent: '#7ED957',
+            window: y => around(day(y, 9, 10), 2, 1), // Oct 8 – 11
+            effects: [{ type: 'drift', preset: 'leaves' }],
+            ornament: 'ribbon',
+            message: {
+                text: 'October 10 is World Mental Health Day. Your mental health matters every day.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'thanksgiving',
+            name: 'Thanksgiving',
+            priority: 10,
+            accent: '#E8871E',
+            window: y => around(nthWeekday(y, 10, 4, 4), 3, 1), // Mon – Fri of Thanksgiving week
+            effects: [{ type: 'drift', preset: 'leaves' }],
+            ornamentText: () => 'Happy Thanksgiving',
+            ornament: 'turkey',
+            message: {
+                text: 'Gratitude and grief can share the same table. There\u2019s room for both here.',
                 cta: 'Schedule intake'
             }
         }
@@ -296,6 +439,10 @@
             // Slender leaf with stem
             '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5C11 3.5 4.5 8.5 4.5 15.5c0 1.6.4 2.9 1 4C14 19.5 20.5 13 20.5 3.5z"/><path d="M3 21c4-5 9-10 15-15" stroke="rgba(0,0,0,0.18)" stroke-width="1" fill="none"/></svg>'
         ];
+        const HEART_PATH = 'M12 20.3l-1.3-1.2C6 14.9 3 12.2 3 8.9 3 6.2 5.1 4.1 7.8 4.1c1.5 0 3 .7 4.2 1.9 1.2-1.2 2.7-1.9 4.2-1.9 2.7 0 4.8 2.1 4.8 4.8 0 3.3-3 6-7.7 10.2z';
+        const LOBE = 'M12 11C9.6 9.4 8.2 7.8 8.4 6.2 8.6 4.6 10.6 4 12 5.6 13.4 4 15.4 4.6 15.6 6.2 15.8 7.8 14.4 9.4 12 11z';
+        const SHAMROCK_FILL = [0, 120, 240].map(r => '<path transform="rotate(' + r + ' 12 11)" d="' + LOBE + '"/>').join('') +
+            '<path d="M11.6 11.2h.8c.3 3.4 1.3 6.4 3.2 9.2l-.7.5c-2-2.9-3-6-3.3-9.7z"/>';
         const LEAF_COLORS = ['#D9531E', '#E8871E', '#C0392B', '#B5651D', '#E3A72F', 'var(--primary-pink)'];
 
         // Drift presets: each returns the CSS variables (and optional markup) for one falling item
@@ -311,6 +458,33 @@
                         '--leaf-color': pick(LEAF_COLORS)
                     },
                     html: LEAF_SHAPES[i % LEAF_SHAPES.length]
+                })
+            },
+            hearts: {
+                count: [16, 9],
+                className: 'fall-leaf',
+                item: () => ({
+                    vars: {
+                        '--fall-dur': rand(15, 24) + 's', '--delay': rand(0, 18) + 's',
+                        '--size': rand(12, 22) + 'px', '--sway': rand(16, 40) + 'px', '--sway-dur': rand(3, 5) + 's',
+                        '--rot-start': rand(-20, 0) + 'deg', '--rot-end': rand(5, 25) + 'deg', '--flip': '0deg',
+                        '--leaf-color': pick(['rgb(var(--c-primary))', 'rgb(var(--c-primary-light))', '#FFFFFF'])
+                    },
+                    html: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="' + HEART_PATH + '"/></svg>'
+                })
+            },
+            shamrocks: {
+                count: [16, 9],
+                className: 'fall-leaf',
+                item: () => ({
+                    vars: {
+                        '--fall-dur': rand(14, 22) + 's', '--delay': rand(0, 18) + 's',
+                        '--size': rand(20, 32) + 'px', '--sway': rand(18, 46) + 'px', '--sway-dur': rand(2.6, 4.4) + 's',
+                        '--rot-start': rand(-60, 0) + 'deg', '--rot-end': rand(30, 110) + 'deg', '--flip': '40deg',
+                        // bright clover greens: the deep emerald disappears on the dark hero
+                        '--leaf-color': pick(['rgb(var(--c-primary-light))', 'var(--neon-glow, #7CFFA0)', '#B9F5CF'])
+                    },
+                    html: '<svg viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor">' + SHAMROCK_FILL + '</g></svg>'
                 })
             },
             confetti: {
@@ -366,7 +540,7 @@
             // Soft firework blooms in the hero's upper corners, behind the content. Trauma-aware by design:
             // no flash frame, no sound, slow ease-out blooms that drift down and fade, at most two at once.
             // Paused whenever the hero is off-screen, hidden by the decorations toggle, or the tab is hidden.
-            fireworks() {
+            fireworks({ colors } = {}) {
                 if (!hero) return;
                 const canvas = document.createElement('canvas');
                 canvas.className = 'theme-layer theme-fireworks';
@@ -375,7 +549,7 @@
                 const dpr = Math.min(window.devicePixelRatio || 1, 2);
                 const css = getComputedStyle(root);
                 const token = name => 'rgb(' + css.getPropertyValue(name).trim().split(/\s+/).join(',') + ')';
-                const COLORS = [token('--c-primary'), token('--c-primary-light'), token('--c-secondary'), '#FFFFFF'];
+                const COLORS = colors || [token('--c-primary'), token('--c-primary-light'), token('--c-secondary'), '#FFFFFF'];
                 let W = 0, H = 0, bursts = [], visible = false, running = false, nextAt = 0, last = 0;
 
                 const size = () => {
@@ -512,18 +686,39 @@
             ornament.setAttribute('aria-hidden', 'true');
             if (theme.ornamentText) {
                 ornament.className = 'theme-ornament theme-ornament-text';
+                const withIcon = Boolean(theme.ornament);
                 [].concat(theme.ornamentText(today)).forEach((line, n, lines) => {
                     const span = document.createElement('span');
-                    span.className = 'sign-line' + (lines.length > 1 && n < lines.length - 1 ? ' sign-line-small' : '');
+                    // the last line is the sign's headline unless artwork follows it
+                    span.className = 'sign-line' + (withIcon || n < lines.length - 1 ? ' sign-line-small' : '');
                     span.textContent = line;
                     ornament.appendChild(span);
                 });
+                if (withIcon) {
+                    const icon = document.createElement('span');
+                    icon.className = 'sign-icon';
+                    icon.innerHTML = '<svg viewBox="0 0 24 24">' + ORNAMENTS[theme.ornament] + '</svg>';
+                    ornament.appendChild(icon);
+                }
             } else {
                 ornament.className = 'theme-ornament';
                 ornament.innerHTML = '<svg viewBox="0 0 24 24">' + ORNAMENTS[theme.ornament] + '</svg>';
             }
             title.classList.add('has-ornament');
             title.appendChild(ornament);
+            if (theme.ornamentText) {
+                // A text sign sits above the title (anchored by its bottom edge); give the title enough
+                // room above it for the whole sign plus clearance under the fixed nav
+                const fit = () => {
+                    title.style.marginTop = '';
+                    const overhang = title.getBoundingClientRect().top - ornament.getBoundingClientRect().top;
+                    const base = parseFloat(getComputedStyle(title).marginTop) || 0;
+                    title.style.marginTop = Math.max(base, overhang + 20) + 'px';
+                };
+                fit();
+                if (document.fonts) document.fonts.ready.then(fit);
+                window.addEventListener('resize', fit);
+            }
         }
 
         // ---------- Message: one line under the hero call to action ----------

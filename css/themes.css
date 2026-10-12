@@ -134,6 +134,29 @@
             margin-bottom: 0.2em;
         }
 
+        /* Artwork on a text sign (e.g. Thanksgiving's turkey under "Happy Thanksgiving") */
+        .theme-ornament-text .sign-icon {
+            display: block;
+            width: 2.8em;
+            height: 2.8em;
+            margin: 0.15em auto 0;
+            filter:
+                drop-shadow(0 0 2px var(--theme-accent))
+                drop-shadow(0 0 8px var(--theme-accent))
+                drop-shadow(0 0 18px var(--theme-accent));
+        }
+
+        .theme-ornament-text .sign-icon svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
         /* Lights up once like a neon tube, then holds steady */
         @keyframes ornament-ignite {
             0%       { opacity: 0; }

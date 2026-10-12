@@ -53,6 +53,7 @@ test.describe('reduced motion', () => {
 
 // Visual review captures: npm run shots → test-results/shots/
 test('@shots hero of every theme', async ({ page }, info) => {
+    test.setTimeout(180000); // ~4s per theme
     for (const id of ['none', ...await themeIds(page)]) {
         await page.goto(`/index.html?theme=${id}`);
         await page.waitForTimeout(3500);
