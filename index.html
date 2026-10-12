@@ -73,6 +73,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/mind-val-v2.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <!-- Seasonal & holiday themes: applies the theme palette before first paint -->
+    <script src="js/themes.js"></script>
 
 
     <!-- Structured Data (JSON-LD) for AI Crawlers & Search Engines.
@@ -998,6 +1001,14 @@
 
     <!-- Location Section -->
     <section id="location" class="section-modern">
+        <svg class="location-waves" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <defs><filter id="wave-shadow"><feDropShadow dx="0" dy="-6" stdDeviation="9"/></filter></defs>
+            <path class="wave-1" filter="url(#wave-shadow)" d="M0,140 C310,72 650,212 960,140 C1155,95 1320,182 1440,118 L1440,700 L0,700 Z"/>
+            <path class="wave-2" filter="url(#wave-shadow)" d="M0,250 C280,182 610,322 900,248 C1115,193 1300,298 1440,228 L1440,700 L0,700 Z"/>
+            <path class="wave-3" filter="url(#wave-shadow)" d="M0,362 C260,295 545,428 840,358 C1060,298 1290,410 1440,340 L1440,700 L0,700 Z"/>
+            <path class="wave-4" filter="url(#wave-shadow)" d="M0,468 C280,400 555,535 855,462 C1068,404 1298,515 1440,445 L1440,700 L0,700 Z"/>
+            <path class="wave-5" d="M0,568 C240,500 538,635 840,560 C1065,495 1300,615 1440,545 L1440,700 L0,700 Z"/>
+        </svg>
         <div class="section-header" data-aos="fade-up">
             <span class="section-badge">Office Location</span>
             <h2 class="section-title">Downtown Nashua, New Hampshire</h2>
@@ -1468,80 +1479,8 @@
             });
         })();
 
-        // Seasonal effect — leaves Sep–Nov, snow Dec–Feb, nothing Mar–Aug.
-        // Preview any time with ?effect=leaves, ?effect=snow or ?effect=none
-        (function () {
-            const param = new URLSearchParams(window.location.search).get('effect');
-            const month = new Date().getMonth(); // 0 = Jan
-            const seasonal = month >= 8 && month <= 10 ? 'leaves'
-                : (month === 11 || month <= 1) ? 'snow'
-                : 'none';
-            const effect = ['leaves', 'snow', 'none'].includes(param) ? param : seasonal;
-            if (effect === 'none') return;
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-            const leafShapes = [
-                // Rounded leaf with center vein
-                '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.5C6.5 5.5 4 10 4 14.2 4 18.8 7.6 22 12 22s8-3.2 8-7.8C20 10 17.5 5.5 12 1.5z"/><path d="M12 5v17" stroke="rgba(0,0,0,0.18)" stroke-width="1" fill="none"/></svg>',
-                // Slender leaf with stem
-                '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5C11 3.5 4.5 8.5 4.5 15.5c0 1.6.4 2.9 1 4C14 19.5 20.5 13 20.5 3.5z"/><path d="M3 21c4-5 9-10 15-15" stroke="rgba(0,0,0,0.18)" stroke-width="1" fill="none"/></svg>'
-            ];
-            const leafColors = ['#D9531E', '#E8871E', '#C0392B', '#B5651D', '#E3A72F', 'var(--primary-pink)'];
-            const mobile = window.innerWidth < 768;
-            const rand = (min, max) => min + Math.random() * (max - min);
-
-            const configs = {
-                leaves: {
-                    count: mobile ? 7 : 14,
-                    build(item, inner, i) {
-                        item.style.setProperty('--fall-dur', rand(12, 22) + 's');
-                        item.style.setProperty('--delay', rand(0, 18) + 's');
-                        item.style.setProperty('--size', rand(16, 30) + 'px');
-                        item.style.setProperty('--sway', rand(20, 60) + 'px');
-                        item.style.setProperty('--sway-dur', rand(2.5, 4.5) + 's');
-                        item.style.setProperty('--rot-start', rand(-60, 0) + 'deg');
-                        item.style.setProperty('--rot-end', rand(30, 120) + 'deg');
-                        item.style.setProperty('--flip', '55deg');
-                        item.style.setProperty('--leaf-color', leafColors[Math.floor(Math.random() * leafColors.length)]);
-                        inner.innerHTML = leafShapes[i % leafShapes.length];
-                    }
-                },
-                snow: {
-                    count: mobile ? 25 : 50,
-                    build(item) {
-                        item.style.setProperty('--fall-dur', rand(10, 20) + 's');
-                        item.style.setProperty('--delay', rand(0, 15) + 's');
-                        item.style.setProperty('--size', rand(3, 8) + 'px');
-                        item.style.setProperty('--sway', rand(10, 35) + 'px');
-                        item.style.setProperty('--sway-dur', rand(3, 6) + 's');
-                        item.style.setProperty('--rot-start', '0deg');
-                        item.style.setProperty('--rot-end', '0deg');
-                        item.style.setProperty('--flip', '0deg');
-                        item.style.setProperty('--opacity', rand(0.5, 0.95).toFixed(2));
-                    }
-                }
-            };
-            const config = configs[effect];
-
-            const layer = document.createElement('div');
-            layer.className = 'seasonal-effect';
-            layer.setAttribute('aria-hidden', 'true');
-
-            for (let i = 0; i < config.count; i++) {
-                const item = document.createElement('div');
-                item.className = 'fall-item ' + (effect === 'leaves' ? 'fall-leaf' : 'fall-snow');
-                item.style.setProperty('--x', rand(0, 100) + 'vw');
-
-                const inner = document.createElement('span');
-                inner.className = 'fall-item-inner';
-                config.build(item, inner, i);
-                item.appendChild(inner);
-                layer.appendChild(item);
-            }
-
-            document.body.appendChild(layer);
-        })();
     </script>
+
 </body>
 
 </html>

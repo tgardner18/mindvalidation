@@ -1,0 +1,436 @@
+        /*
+         * Seasonal & holiday theme takeovers — paired with js/themes.js.
+         * The script sets html[data-theme="<id>"] and --theme-accent; theme-specific overrides go at the bottom.
+         */
+
+        /* ---------- Shared: full-page drifting effects (leaves, snow, ...) ---------- */
+        .theme-drift {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 999; /* below the fixed nav */
+        }
+
+        .fall-item {
+            position: absolute;
+            top: -60px;
+            left: var(--x);
+            animation: seasonal-fall var(--fall-dur) linear var(--delay) infinite;
+            will-change: transform;
+        }
+
+        .fall-item-inner {
+            display: block;
+            width: var(--size);
+            height: var(--size);
+            animation: seasonal-sway var(--sway-dur) ease-in-out infinite alternate;
+            will-change: transform;
+        }
+
+        .fall-leaf .fall-item-inner {
+            color: var(--leaf-color);
+            opacity: 0.85;
+        }
+
+        .fall-leaf svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
+        }
+
+        .fall-snow .fall-item-inner {
+            border-radius: 50%;
+            background: #fff;
+            opacity: var(--opacity);
+            /* faint indigo edge keeps flakes visible over white sections */
+            box-shadow: 0 0 2px rgba(2, 8, 135, 0.35), 0 0 6px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes seasonal-fall {
+            to { transform: translateY(calc(100vh + 120px)); }
+        }
+
+        @keyframes seasonal-sway {
+            from { transform: translateX(calc(var(--sway) * -1)) rotate(var(--rot-start)) rotateX(0deg); }
+            to   { transform: translateX(var(--sway)) rotate(var(--rot-end)) rotateX(var(--flip)); }
+        }
+
+        /* ---------- Shared: hero ornament (neon icon on the title) ---------- */
+        .hero-main-title.has-ornament {
+            display: inline-block;
+            position: relative;
+            margin-top: 2.5rem; /* keeps the ornament clear of the fixed nav */
+        }
+
+        .theme-ornament {
+            position: absolute;
+            top: -0.32em;
+            right: -0.7em;
+            width: 0.72em;
+            height: 0.72em;
+            color: #fff;
+            transform: rotate(12deg);
+            pointer-events: none;
+            filter:
+                drop-shadow(0 0 2px var(--theme-accent))
+                drop-shadow(0 0 8px var(--theme-accent))
+                drop-shadow(0 0 22px var(--theme-accent));
+            animation: ornament-ignite 2.4s ease-out 0.8s both;
+        }
+
+        .theme-ornament svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Lights up once like a neon tube, then holds steady */
+        @keyframes ornament-ignite {
+            0%       { opacity: 0; }
+            10%      { opacity: 0.8; }
+            14%      { opacity: 0.15; }
+            22%      { opacity: 0.9; }
+            26%      { opacity: 0.4; }
+            40%, 100% { opacity: 1; }
+        }
+
+        /* Narrow screens: the title wraps, so the ornament hangs centred above it */
+        @media (max-width: 768px) {
+            .hero-main-title.has-ornament {
+                margin-top: 0.55em;
+            }
+
+            .theme-ornament {
+                top: -0.75em;
+                right: auto;
+                left: 50%;
+                width: 0.62em;
+                height: 0.62em;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ---------- Shared: theme message (under the hero call to action) ---------- */
+        .theme-message {
+            max-width: 46ch;
+            margin: 1.75rem auto 0;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 0.98rem;
+            line-height: 1.6;
+            text-wrap: balance;
+        }
+
+        .theme-message-cta {
+            color: rgb(var(--c-primary-light));
+            font-weight: 600;
+            white-space: nowrap;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.3em;
+            text-decoration-color: rgb(var(--c-primary-light) / 0.45);
+            transition: text-decoration-color 0.2s ease, color 0.2s ease;
+        }
+
+        .theme-message-cta:hover,
+        .theme-message-cta:focus-visible {
+            color: #fff;
+            text-decoration-color: currentColor;
+        }
+
+        .theme-message-cta i {
+            font-size: 0.8em;
+            margin-left: 0.2em;
+        }
+
+        /* ---------- Shared: footer cobwebs ---------- */
+        .theme-cobweb {
+            position: absolute;
+            top: 0;
+            width: clamp(120px, 16vw, 210px);
+            aspect-ratio: 1;
+            pointer-events: none;
+            z-index: 0;
+            color: color-mix(in srgb, rgb(var(--c-primary-light)) 35%, #fff);
+            opacity: 0.22;
+        }
+
+        .modern-footer > .footer-inner,
+        .modern-footer > .footer-bottom {
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-cobweb-left { left: 0; }
+        .theme-cobweb-right { right: 0; transform: scaleX(-1); }
+
+        .theme-cobweb svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 0.9;
+            vector-effect: non-scaling-stroke;
+        }
+
+        /* ---------- Shared: footer snowman ---------- */
+        .theme-snowman {
+            position: absolute;
+            right: clamp(0.5rem, 4vw, 3rem);
+            bottom: 0;
+            width: clamp(72px, 8vw, 108px);
+            pointer-events: none;
+        }
+
+        .theme-snowman svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            overflow: visible;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .theme-snowman .body {
+            stroke: #fff;
+            stroke-width: 1.6;
+            filter: drop-shadow(0 0 2px rgb(var(--c-secondary))) drop-shadow(0 0 8px rgb(var(--c-secondary) / 0.6));
+        }
+
+        .theme-snowman .dots {
+            stroke-width: 2.6;
+        }
+
+        .theme-snowman .nose {
+            stroke: #F7902E;
+            stroke-width: 1.6;
+            filter: drop-shadow(0 0 4px #F7902E);
+        }
+
+        .theme-snowman .scarf {
+            stroke: rgb(var(--c-primary-light));
+            stroke-width: 2.4;
+            filter: drop-shadow(0 0 5px rgb(var(--c-primary)));
+        }
+
+        .theme-snowman .drift {
+            fill: rgba(255, 255, 255, 0.1);
+        }
+
+        .modern-footer > .footer-inner:has(.theme-snowman) {
+            padding-bottom: clamp(5.5rem, 9vw, 7.5rem); /* room for the snowman under the columns */
+        }
+
+        @media (max-width: 768px) {
+            .theme-snowman {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .modern-footer > .footer-inner:has(.theme-snowman) {
+                padding-bottom: 9rem;
+            }
+        }
+
+        /* ---------- Shared: string lights hanging from the nav ---------- */
+        .theme-lights {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: calc(100% - 1px); /* overlap the nav edge by a hair so the strand reads as attached */
+            height: 26px;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .theme-lights svg {
+            display: block;
+        }
+
+        .theme-lights .wire {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.34);
+            stroke-width: 1.1;
+        }
+
+        .theme-lights .bulb-cap,
+        .theme-lights .clip {
+            fill: #3a3a3a;
+        }
+
+        .theme-lights .bulb {
+            filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 8px currentColor);
+            /* slow, staggered breathing — never a flash */
+            animation: bulb-glow 3.6s ease-in-out calc(var(--i) * -0.7s) infinite alternate;
+        }
+
+        .theme-lights .bulb ellipse { fill: currentColor; }
+        .theme-lights .bulb-0 { color: var(--neon-glow, rgb(var(--c-primary-light))); }
+        .theme-lights .bulb-1 { color: rgb(var(--c-primary-light)); }
+        .theme-lights .bulb-2 { color: rgb(var(--c-secondary)); }
+        .theme-lights .bulb-3 { color: #FFF4DE; }
+
+        @keyframes bulb-glow {
+            from { opacity: 0.6; }
+            to   { opacity: 1; }
+        }
+
+        .decor-hidden .theme-lights {
+            display: none;
+        }
+
+        /* The strand hangs below the nav, so the hero title needs extra clearance for its ornament */
+        .has-lights .hero-main-title.has-ornament {
+            margin-top: 3.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .has-lights .hero-main-title.has-ornament {
+                margin-top: calc(0.55em + 1.5rem);
+            }
+        }
+
+        /* ---------- Shared: visitor toggle to hide animated decorations ---------- */
+        .theme-toggle {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1001;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(20, 20, 26, 0.88);
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease, bottom 0.4s ease;
+        }
+
+        .theme-toggle:hover,
+        .theme-toggle:focus-visible {
+            color: #fff;
+            border-color: var(--theme-accent, var(--primary-pink));
+        }
+
+        .sticky-bar-active .theme-toggle {
+            bottom: 5rem;
+        }
+
+        .decor-hidden .theme-layer {
+            display: none;
+        }
+
+        /* ---------- Shared: bats crossing the hero ---------- */
+        .theme-bats {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0; /* above the aurora, behind the hero content */
+        }
+
+        .bat {
+            position: absolute;
+            left: 0;
+            top: var(--y);
+            animation: bat-fly var(--dur) linear var(--delay) infinite;
+            animation-direction: var(--dir);
+            animation-fill-mode: backwards;
+            will-change: transform;
+        }
+
+        .bat-bob {
+            display: block;
+            animation: bat-bob var(--bob) ease-in-out infinite alternate;
+        }
+
+        .bat-face {
+            display: block;
+        }
+
+        .bat-rtl {
+            transform: scaleX(-1);
+        }
+
+        .bat svg {
+            display: block;
+            width: var(--size);
+            height: auto;
+            fill: #140d0a;
+            /* ember rim so the silhouette reads against the black hero */
+            filter:
+                drop-shadow(0 0 1px rgb(var(--c-primary-light) / 0.9))
+                drop-shadow(0 0 10px rgb(var(--c-primary-light) / 0.45));
+            transform-origin: 50% 40%;
+            animation: bat-flap 0.7s ease-in-out infinite alternate;
+        }
+
+        @keyframes bat-fly {
+            from { transform: translateX(-80px); }
+            to   { transform: translateX(calc(100vw + 80px)); }
+        }
+
+        @keyframes bat-bob {
+            from { transform: translateY(-10px); }
+            to   { transform: translateY(10px); }
+        }
+
+        @keyframes bat-flap {
+            from { transform: scaleY(1); }
+            to   { transform: scaleY(0.6); }
+        }
+
+        /* Reduced motion: no ambient animation (static accents and message still apply) */
+        @media (prefers-reduced-motion: reduce) {
+            .theme-layer,
+            .theme-toggle { display: none; }
+            .theme-ornament { animation: none; }
+        }
+
+        /* ==========================================================
+           Theme overrides
+           ========================================================== */
+
+        /* ---------- Shared: skinned themes ---------- */
+
+        /* The logo artwork is brand pink/teal; during a skin the footer shows it as a white mark */
+        html[data-skin] .footer-logo {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Small accent text on light tints uses the deep primary so it clears 4.5:1 */
+        html[data-skin] .credential-badge,
+        html[data-skin] .cert-date,
+        html[data-skin] .about-owner-label {
+            color: rgb(var(--c-primary-deep));
+        }
+
+        html[data-skin] .yoga-pill {
+            background: linear-gradient(to bottom, rgb(var(--c-primary-deep)), #000000);
+        }
+
+        /* Keep the copyright line clear of the decorations toggle and scroll-to-top button on phones */
+        @media (max-width: 768px) {
+            .has-decor-toggle .footer-bottom {
+                padding-bottom: 5.5rem;
+            }
+        }
+
+        /* Halloween — the primary aurora blobs burn brighter than the text-safe primary */
+        html[data-theme="halloween"] .aurora-blob-1,
+        html[data-theme="halloween"] .aurora-blob-4 {
+            background: radial-gradient(circle, #FF7A1A 0%, transparent 70%);
+        }

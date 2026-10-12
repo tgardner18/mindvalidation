@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Theme Previews | Mind Validation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #141414;
+            --panel: #1e1e24;
+            --line: rgba(255, 255, 255, 0.1);
+            --text: rgba(255, 255, 255, 0.88);
+            --muted: rgba(255, 255, 255, 0.55);
+            --pink: #F30090;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Poppins', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 1.5rem clamp(1rem, 3vw, 2rem) 3rem;
+        }
+        h1 { font-size: 1.4rem; margin: 0 0 0.25rem; }
+        .intro { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.9rem; max-width: 70ch; }
+        code { background: rgba(255, 255, 255, 0.08); padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.85em; }
+
+        /* Timeline */
+        .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; }
+        .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .panel-head h2 { font-size: 1rem; margin: 0; }
+        .timeline-scroll { overflow-x: auto; }
+        .timeline { min-width: 720px; display: grid; grid-template-columns: 170px 1fr; row-gap: 6px; font-size: 0.8rem; }
+        .months { display: grid; grid-template-columns: repeat(12, 1fr); color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+        .track { position: relative; height: 22px; background: rgba(255, 255, 255, 0.03); border-radius: 6px; }
+        .bar { position: absolute; top: 3px; bottom: 3px; border-radius: 4px; min-width: 4px; opacity: 0.85; }
+        .today { position: absolute; top: -4px; bottom: -4px; width: 2px; background: #fff; opacity: 0.6; }
+        .row-label { padding-right: 0.75rem; align-self: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Controls */
+        .controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+        button, select, input[type="date"] {
+            font: inherit; font-size: 0.85rem; color: var(--text);
+            background: rgba(255, 255, 255, 0.06); border: 1px solid var(--line);
+            border-radius: 50px; padding: 0.45rem 0.95rem; cursor: pointer;
+        }
+        input[type="date"] { color-scheme: dark; border-radius: 10px; }
+        button:hover { border-color: rgba(255, 255, 255, 0.35); }
+        button[aria-pressed="true"] { background: var(--pink); border-color: var(--pink); color: #fff; }
+        .swatch { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+        .sep { width: 1px; height: 24px; background: var(--line); margin: 0 0.25rem; }
+        .status { color: var(--muted); font-size: 0.85rem; margin-top: 0.75rem; }
+        .status a { color: #fff; }
+
+        /* Palette & readability */
+        .palette { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .chip { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--muted);
+                background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 10px; padding: 0.35rem 0.6rem 0.35rem 0.35rem; }
+        .chip i { width: 22px; height: 22px; border-radius: 6px; display: block; border: 1px solid rgba(255, 255, 255, 0.15); }
+        .chip.same { opacity: 0.45; }
+        .skin-note { color: var(--muted); font-size: 0.85rem; margin: 0 0 0.75rem; }
+
+        /* Preview */
+        .stage { display: flex; justify-content: center; background: #000; border-radius: 16px; border: 1px solid var(--line); overflow: hidden; }
+        .stage iframe { border: 0; width: 100%; height: 80vh; background: #000; transition: width 0.3s ease; }
+        .stage.phone iframe { width: 390px; max-width: 100%; height: 844px; max-height: 80vh; }
+    </style>
+</head>
+<body>
+    <h1>Theme previews</h1>
+    <p class="intro">
+        Every seasonal and holiday theme, when it runs, and a live preview. On the real site you can use
+        <code>?theme=&lt;id&gt;</code> to force a theme, <code>?theme=none</code> for the plain site, or
+        <code>?date=YYYY-MM-DD</code> to see what would show on a given day.
+    </p>
+
+    <section class="panel" aria-labelledby="calendarTitle">
+        <div class="panel-head">
+            <h2 id="calendarTitle">Calendar</h2>
+            <label>Year <select id="year"></select></label>
+        </div>
+        <div class="timeline-scroll"><div class="timeline" id="timeline"></div></div>
+    </section>
+
+    <section class="panel" aria-labelledby="previewTitle">
+        <div class="panel-head">
+            <h2 id="previewTitle">Preview</h2>
+            <div class="controls">
+                <button type="button" data-device="desktop" aria-pressed="true">Desktop</button>
+                <button type="button" data-device="phone" aria-pressed="false">Phone</button>
+            </div>
+        </div>
+        <div class="controls" id="themeButtons"></div>
+        <div class="controls" style="margin-top: 0.75rem;">
+            <label for="simDate">Simulate date</label>
+            <input type="date" id="simDate" />
+            <button type="button" id="simGo">Show that day</button>
+        </div>
+        <p class="status" id="status"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="paletteTitle">
+        <div class="panel-head"><h2 id="paletteTitle">Palette</h2></div>
+        <p class="skin-note" id="skinNote"></p>
+        <div class="palette" id="palette"></div>
+    </section>
+
+    <div class="stage" id="stage"><iframe id="frame" title="Site preview"></iframe></div>
+
+    <script src="../js/themes.js" data-no-apply></script>
+    <script>
+        (function () {
+            const { themes, resolve, brand, accentOf } = window.MVThemes;
+            const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+            const fmt = d => MONTHS[d.getMonth()] + ' ' + d.getDate();
+            const frame = document.getElementById('frame');
+            const status = document.getElementById('status');
+
+            // ----- Calendar -----
+            const yearSelect = document.getElementById('year');
+            for (let y = today.getFullYear() - 1; y <= today.getFullYear() + 2; y++) {
+                yearSelect.add(new Option(y, y, false, y === today.getFullYear()));
+            }
+
+            function renderTimeline(year) {
+                const tl = document.getElementById('timeline');
+                const yStart = new Date(year, 0, 1), yEnd = new Date(year + 1, 0, 1);
+                const span = yEnd - yStart;
+                tl.innerHTML = '<div></div><div class="months">' + MONTHS.map(m => '<span>' + m + '</span>').join('') + '</div>';
+
+                themes.forEach(theme => {
+                    const label = document.createElement('div');
+                    label.className = 'row-label';
+                    const windows = [year - 1, year].map(y => theme.window(y))
+                        .filter(([s, e]) => e >= yStart && s < yEnd);
+                    label.innerHTML = '<span class="swatch" style="background:' + accentOf(theme) + '"></span>' + theme.name;
+                    label.title = windows.map(([s, e]) => fmt(s) + ' – ' + fmt(e)).join(', ');
+
+                    const track = document.createElement('div');
+                    track.className = 'track';
+                    windows.forEach(([s, e]) => {
+                        const from = Math.max(s, yStart), to = Math.min(new Date(e.getFullYear(), e.getMonth(), e.getDate() + 1), yEnd);
+                        const bar = document.createElement('div');
+                        bar.className = 'bar';
+                        bar.style.left = ((from - yStart) / span * 100) + '%';
+                        bar.style.width = ((to - from) / span * 100) + '%';
+                        bar.style.background = accentOf(theme);
+                        bar.title = theme.name + ': ' + fmt(s) + ' – ' + fmt(e);
+                        track.appendChild(bar);
+                    });
+                    if (year === today.getFullYear()) {
+                        const mark = document.createElement('div');
+                        mark.className = 'today';
+                        mark.style.left = ((today - yStart) / span * 100) + '%';
+                        mark.title = 'Today';
+                        track.appendChild(mark);
+                    }
+                    tl.append(label, track);
+                });
+            }
+            yearSelect.addEventListener('change', () => renderTimeline(+yearSelect.value));
+            renderTimeline(today.getFullYear());
+
+            // ----- Palette -----
+            const ROLE_LABELS = {
+                primary: 'Primary', primaryLight: 'Primary light', primaryDeep: 'Primary deep', primaryDark: 'Primary dark',
+                button: 'Button', buttonDeep: 'Button end', neon: 'Neon glow',
+                secondary: 'Secondary', secondaryMid: 'Secondary mid', secondarySoft: 'Secondary soft', secondaryDark: 'Secondary dark', secondaryInk: 'Secondary ink',
+                tertiary: 'Tertiary', tertiaryDeep: 'Tertiary deep'
+            };
+            function renderPalette(theme) {
+                const palette = (theme && theme.palette) || {};
+                const skin = theme && theme.palette ? (theme.skin === 'full' ? 'Full skin' : 'Accent skin') : 'Brand colours (no skin)';
+                document.getElementById('skinNote').textContent = (theme ? theme.name + ': ' : 'Plain site: ') + skin +
+                    '. Faded swatches are inherited from the brand palette.';
+                document.getElementById('palette').innerHTML = Object.keys(ROLE_LABELS).map(role => {
+                    const own = role in palette, hex = own ? palette[role] : brand[role];
+                    return '<span class="chip' + (own ? '' : ' same') + '"><i style="background:' + hex + '"></i>' + ROLE_LABELS[role] + '<br>' + hex + '</span>';
+                }).join('');
+            }
+
+            // ----- Preview -----
+            const buttons = document.getElementById('themeButtons');
+            const choices = [{ id: '', name: 'Auto (today)' }].concat(themes, [{ id: 'none', name: 'None (plain site)' }]);
+
+            function show(query, label) {
+                const url = '../index.html' + query;
+                frame.src = url;
+                status.innerHTML = 'Showing <strong></strong> · <a target="_blank" rel="noopener">open in new tab</a>';
+                status.querySelector('strong').textContent = label;
+                status.querySelector('a').href = url;
+                buttons.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.query === query)));
+            }
+
+            choices.forEach(c => {
+                const b = document.createElement('button');
+                b.type = 'button';
+                b.dataset.query = c.id ? '?theme=' + c.id : '';
+                b.innerHTML = (c.window ? '<span class="swatch" style="background:' + accentOf(c) + '"></span>' : '') + c.name;
+                b.addEventListener('click', () => {
+                    const auto = resolve(today);
+                    renderPalette(c.id === 'none' ? null : (c.id ? c : auto));
+                    show(b.dataset.query, c.id ? c.name : 'Auto: ' + (auto ? auto.name : 'no theme today'));
+                });
+                buttons.appendChild(b);
+            });
+
+            const simDate = document.getElementById('simDate');
+            simDate.value = iso(today);
+            document.getElementById('simGo').addEventListener('click', () => {
+                if (!simDate.value) return;
+                const [y, m, d] = simDate.value.split('-').map(Number);
+                const t = resolve(new Date(y, m - 1, d));
+                renderPalette(t);
+                show('?date=' + simDate.value, simDate.value + ' → ' + (t ? t.name : 'no theme'));
+            });
+
+            document.querySelectorAll('[data-device]').forEach(b => b.addEventListener('click', () => {
+                document.getElementById('stage').classList.toggle('phone', b.dataset.device === 'phone');
+                document.querySelectorAll('[data-device]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+            }));
+
+            buttons.querySelector('button').click();
+        })();
+    </script>
+</body>
+</html>
