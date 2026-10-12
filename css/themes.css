@@ -40,6 +40,13 @@
             filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
         }
 
+        .fall-confetti .fall-item-inner {
+            height: calc(var(--size) * var(--shape, 0.5));
+            border-radius: 1px;
+            background: var(--leaf-color);
+            opacity: 0.85;
+        }
+
         .fall-snow .fall-item-inner {
             border-radius: 50%;
             background: #fff;
@@ -91,6 +98,42 @@
             stroke-linejoin: round;
         }
 
+        /* Text variant (e.g. the New Year's year): Tilt Neon with its full glow stack, never bare */
+        /* Anchored by its bottom edge so a multi-line sign always sits above the title, never on it */
+        .theme-ornament-text {
+            width: auto;
+            height: auto;
+            top: auto;
+            bottom: calc(100% - 0.1em);
+            right: -0.6em;
+            font-size: 0.34em;
+            line-height: 1;
+            letter-spacing: 0.06em;
+            transform: rotate(-8deg);
+            filter: none;
+            text-shadow:
+                0 0 4px var(--theme-accent),
+                0 0 12px var(--theme-accent),
+                0 0 28px var(--theme-accent),
+                0 0 48px var(--theme-accent);
+        }
+
+        .hero-main-title.has-ornament:has(.theme-ornament-text) {
+            margin-top: 4.5rem;
+        }
+
+        .theme-ornament-text .sign-line {
+            display: block;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .theme-ornament-text .sign-line-small {
+            font-size: 0.5em;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.2em;
+        }
+
         /* Lights up once like a neon tube, then holds steady */
         @keyframes ornament-ignite {
             0%       { opacity: 0; }
@@ -114,6 +157,19 @@
                 width: 0.62em;
                 height: 0.62em;
                 transform: translateX(-50%);
+            }
+
+            .theme-ornament-text {
+                width: auto;
+                height: auto;
+                top: auto;
+                bottom: calc(100% + 0.1em);
+                font-size: 0.5em;
+                transform: translateX(-50%) rotate(-4deg);
+            }
+
+            .hero-main-title.has-ornament:has(.theme-ornament-text) {
+                margin-top: 1.6em;
             }
         }
 
@@ -246,8 +302,8 @@
             position: absolute;
             left: 0;
             right: 0;
-            top: calc(100% - 1px); /* overlap the nav edge by a hair so the strand reads as attached */
-            height: 26px;
+            top: calc(100% - 1px); /* the wire sits on the nav's bottom border */
+            height: 22px;
             overflow: hidden;
             pointer-events: none;
         }
@@ -258,12 +314,11 @@
 
         .theme-lights .wire {
             fill: none;
-            stroke: rgba(255, 255, 255, 0.34);
-            stroke-width: 1.1;
+            stroke: rgba(255, 255, 255, 0.38);
+            stroke-width: 1.5;
         }
 
-        .theme-lights .bulb-cap,
-        .theme-lights .clip {
+        .theme-lights .bulb-cap {
             fill: #3a3a3a;
         }
 
@@ -331,6 +386,16 @@
 
         .decor-hidden .theme-layer {
             display: none;
+        }
+
+        /* ---------- Shared: firework blooms in the hero ---------- */
+        .theme-fireworks {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0; /* above the aurora, behind the hero content */
         }
 
         /* ---------- Shared: bats crossing the hero ---------- */

@@ -7,6 +7,8 @@
  *   accent    colour for the ornament, message, favicon and toggle when there's no palette
  *   effects   ambient animation (drifting leaves/snow/etc., bats in the hero)
  *   ornament  small neon icon on the hero title (stroke-only SVG paths, 24×24 grid)
+ *   ornamentText  a neon text sign in the ornament's place instead (fn of the active date → line or lines)
+ *   icon      favicon artwork when it differs from the ornament
  *   message   one line of seasonal copy under the hero CTA
  *   cobwebs   corner webs in the footer
  *   lights    a strand of neon string lights hanging from the nav (static under reduced motion)
@@ -114,7 +116,11 @@
             '<path d="M12 1.8l.75 1.55 1.7.25-1.23 1.2.29 1.7L12 5.7l-1.51.8.29-1.7-1.23-1.2 1.7-.25z"/>' +
             '<path d="M12 7.6L7.6 12.4h2.3L6.4 16.6h2.9L5.2 21h13.6l-4.1-4.4h2.9l-3.5-4.2h2.3z"/>' +
             '<path d="M11 21v1.6h2V21"/>' +
-            '<path d="M9.6 15.1c1.5.5 3.2.2 4.6-.8M8.3 19.2c2.4.7 5 .3 7.2-1.1"/>'
+            '<path d="M9.6 15.1c1.5.5 3.2.2 4.6-.8M8.3 19.2c2.4.7 5 .3 7.2-1.1"/>',
+        sparkle:
+            '<path d="M12 3v5M12 16v5M3 12h5M16 12h5"/>' +
+            '<path d="M12 8.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/>' +
+            '<path d="M6 6l1.8 1.8M16.2 16.2L18 18M18 6l-1.8 1.8M7.8 16.2L6 18"/>'
     };
 
     // ---------- Theme registry ----------
@@ -173,13 +179,30 @@
                 tertiary: '#8A5A00', tertiaryDeep: '#4A3000',
                 neon: '#FFD27A'
             },
-            window: y => [day(y, 11, 18), day(y, 11, 26)], // Dec 18 – 26
+            window: y => [day(y, 11, 12), day(y, 11, 27)], // Dec 12 – 27
             effects: [{ type: 'drift', preset: 'snow' }],
             ornament: 'tree',
             lights: true,
             snowman: true,
             message: {
                 text: 'The holidays can hold a lot at once. You don\u2019t have to carry it alone.',
+                cta: 'Schedule intake'
+            }
+        },
+        {
+            id: 'newyear',
+            name: 'New Year',
+            priority: 10,
+            // Stays in the everyday brand colours: the pink neon sign is the charge, the teal
+            // "Happy New Year" sign the counterpoint
+            accent: '#A0DED1',
+            window: y => [day(y, 11, 30), day(y + 1, 0, 2)], // Dec 30 – Jan 2
+            effects: [{ type: 'drift', preset: 'confetti' }, { type: 'fireworks' }],
+            // The year being welcomed: this year in January, otherwise the coming one (Dec 30–31, and previews)
+            ornamentText: date => ['Happy New Year', String(date.getMonth() === 0 ? date.getFullYear() : date.getFullYear() + 1)],
+            icon: 'sparkle',
+            message: {
+                text: 'A new year doesn\u2019t need a new you. Just a next step.',
                 cta: 'Schedule intake'
             }
         }
@@ -290,6 +313,19 @@
                     html: LEAF_SHAPES[i % LEAF_SHAPES.length]
                 })
             },
+            confetti: {
+                count: [26, 14],
+                className: 'fall-confetti',
+                item: () => ({
+                    vars: {
+                        '--fall-dur': rand(14, 24) + 's', '--delay': rand(0, 16) + 's',
+                        '--size': rand(8, 13) + 'px', '--shape': rand(0.45, 1).toFixed(2),
+                        '--sway': rand(14, 40) + 'px', '--sway-dur': rand(2.4, 4) + 's',
+                        '--rot-start': rand(-90, 0) + 'deg', '--rot-end': rand(60, 180) + 'deg', '--flip': '70deg',
+                        '--leaf-color': pick(['rgb(var(--c-primary))', 'rgb(var(--c-primary-light))', 'rgb(var(--c-secondary))', '#FFFFFF'])
+                    }
+                })
+            },
             snow: {
                 count: [50, 25],
                 className: 'fall-snow',
@@ -327,6 +363,122 @@
             },
 
             // A few bats crossing the hero slowly, behind the content
+            // Soft firework blooms in the hero's upper corners, behind the content. Trauma-aware by design:
+            // no flash frame, no sound, slow ease-out blooms that drift down and fade, at most two at once.
+            // Paused whenever the hero is off-screen, hidden by the decorations toggle, or the tab is hidden.
+            fireworks() {
+                if (!hero) return;
+                const canvas = document.createElement('canvas');
+                canvas.className = 'theme-layer theme-fireworks';
+                hero.insertBefore(canvas, hero.querySelector('.hero-content'));
+                const ctx = canvas.getContext('2d');
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const css = getComputedStyle(root);
+                const token = name => 'rgb(' + css.getPropertyValue(name).trim().split(/\s+/).join(',') + ')';
+                const COLORS = [token('--c-primary'), token('--c-primary-light'), token('--c-secondary'), '#FFFFFF'];
+                let W = 0, H = 0, bursts = [], visible = false, running = false, nextAt = 0, last = 0;
+
+                const size = () => {
+                    W = canvas.clientWidth; H = canvas.clientHeight;
+                    canvas.width = W * dpr; canvas.height = H * dpr;
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    measureZones();
+                };
+
+                // Bursts open in the free space either side of the title; where the title fills the width
+                // (phones, small tablets) they sit behind it at reduced strength so the text stays readable
+                let zones = [], strength = 1;
+                const measureZones = () => {
+                    const heroBox = hero.getBoundingClientRect(), titleEl = hero.querySelector('.hero-main-title');
+                    const tb = titleEl ? titleEl.getBoundingClientRect() : { left: W / 2, right: W / 2 };
+                    const left = [60, tb.left - heroBox.left - 90], right = [tb.right - heroBox.left + 90, W - 60];
+                    zones = [left, right].filter(([a, b]) => b - a >= 160); // room for a whole bloom
+                    strength = zones.length ? 1 : 0.6;
+                    if (!zones.length) zones = [[W * 0.15, W * 0.85]];
+                };
+
+                const launch = now => {
+                    const [zx0, zx1] = pick(zones);
+                    const x = rand(zx0, zx1);
+                    const y = rand(130, Math.min(H * 0.45, 360)); // the band above the service cards
+                    const color = pick(COLORS);
+                    const n = mobile ? 40 : 72;
+                    const sparks = [];
+                    for (let i = 0; i < n; i++) {
+                        const a = (Math.PI * 2 * i) / n + rand(-0.06, 0.06);
+                        const speed = rand(0.72, 1) * (mobile ? 100 : 130);
+                        sparks.push({ vx: Math.cos(a) * speed, vy: Math.sin(a) * speed });
+                    }
+                    bursts.push({ x, y, startY: Math.min(H, 760), color, sparks, born: now });
+                };
+
+                const RISE = 0.9, BLOOM = 2.6; // seconds
+                const ease = p => 1 - Math.pow(1 - p, 3);
+
+                const frame = now => {
+                    if (!running) return;
+                    const t = now / 1000;
+                    ctx.clearRect(0, 0, W, H);
+                    ctx.globalCompositeOperation = 'lighter';
+                    if (t >= nextAt && bursts.length < 2) { launch(t); nextAt = t + rand(2.2, 3.8); }
+                    bursts = bursts.filter(b => t - b.born < RISE + BLOOM);
+                    bursts.forEach(b => {
+                        const age = t - b.born;
+                        ctx.fillStyle = b.color;
+                        ctx.strokeStyle = b.color;
+                        ctx.shadowColor = b.color;
+                        ctx.lineCap = 'round';
+                        if (age < RISE) {
+                            // a faint rising streak
+                            const p = ease(age / RISE), y = b.startY + (b.y - b.startY) * p;
+                            ctx.globalAlpha = 0.55;
+                            ctx.shadowBlur = 6;
+                            ctx.lineWidth = 2;
+                            ctx.beginPath(); ctx.moveTo(b.x, y); ctx.lineTo(b.x, y + 16); ctx.stroke();
+                            return;
+                        }
+                        const p = (age - RISE) / BLOOM;
+                        const at = q => ease(Math.min(Math.max(q, 0) * 1.4, 1));
+                        const spread = at(p), tail = at(p - 0.07);
+                        const fall = 26 * p * p; // gentle gravity
+                        ctx.globalAlpha = Math.max(0, strength * Math.pow(1 - p, 1.3));
+                        ctx.shadowBlur = 12;
+                        ctx.lineWidth = mobile ? 2 : 2.6;
+                        ctx.beginPath();
+                        b.sparks.forEach(s => {
+                            // each spark is a short streak from where it was a moment ago
+                            ctx.moveTo(b.x + s.vx * tail, b.y + s.vy * tail + fall * 0.8);
+                            ctx.lineTo(b.x + s.vx * spread, b.y + s.vy * spread + fall);
+                        });
+                        ctx.stroke();
+                        // small bright tips: sparkle without a flash
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.globalAlpha *= 0.75;
+                        ctx.beginPath();
+                        b.sparks.forEach(s => {
+                            const tx = b.x + s.vx * spread, ty = b.y + s.vy * spread + fall;
+                            ctx.moveTo(tx + 1.4, ty);
+                            ctx.arc(tx, ty, 1.4, 0, Math.PI * 2);
+                        });
+                        ctx.fill();
+                    });
+                    ctx.globalAlpha = 1;
+                    ctx.shadowBlur = 0;
+                    last = requestAnimationFrame(frame);
+                };
+
+                const update = () => {
+                    const shouldRun = visible && !document.hidden && !root.classList.contains('decor-hidden');
+                    if (shouldRun && !running) { running = true; size(); last = requestAnimationFrame(frame); }
+                    if (!shouldRun && running) { running = false; cancelAnimationFrame(last); ctx.clearRect(0, 0, W, H); bursts = []; }
+                };
+                new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); }).observe(hero);
+                if (document.fonts) document.fonts.ready.then(() => { if (W) measureZones(); });
+                document.addEventListener('visibilitychange', update);
+                new MutationObserver(update).observe(root, { attributes: true, attributeFilter: ['class'] });
+                window.addEventListener('resize', () => { if (running) size(); });
+            },
+
             bats() {
                 if (!hero) return;
                 const bat = '<svg viewBox="0 0 24 12" aria-hidden="true"><path d="M12 4.2c.5-1.1 1.2-1.8 1.8-2-.1.8.1 1.5.5 2.1C15.8 2.8 18.8 1.7 24 2.1c-2 1.2-3 3-3 5-1.4-.8-3-.6-4 .6-.6-1-1.8-1.4-3-1-.6.8-1.2 1.6-2 2.4-.8-.8-1.4-1.6-2-2.4-1.2-.4-2.4 0-3 1-1-1.2-2.6-1.4-4-.6 0-2-1-3.8-3-5 5.2-.4 8.2.7 9.7 2.2.4-.6.6-1.3.5-2.1.6.2 1.3.9 1.8 2z"/></svg>';
@@ -355,11 +507,21 @@
 
         // ---------- Hero ornament ----------
         const title = document.querySelector('.hero-main-title');
-        if (title && theme.ornament) {
+        if (title && (theme.ornament || theme.ornamentText)) {
             const ornament = document.createElement('span');
-            ornament.className = 'theme-ornament';
             ornament.setAttribute('aria-hidden', 'true');
-            ornament.innerHTML = '<svg viewBox="0 0 24 24">' + ORNAMENTS[theme.ornament] + '</svg>';
+            if (theme.ornamentText) {
+                ornament.className = 'theme-ornament theme-ornament-text';
+                [].concat(theme.ornamentText(today)).forEach((line, n, lines) => {
+                    const span = document.createElement('span');
+                    span.className = 'sign-line' + (lines.length > 1 && n < lines.length - 1 ? ' sign-line-small' : '');
+                    span.textContent = line;
+                    ornament.appendChild(span);
+                });
+            } else {
+                ornament.className = 'theme-ornament';
+                ornament.innerHTML = '<svg viewBox="0 0 24 24">' + ORNAMENTS[theme.ornament] + '</svg>';
+            }
             title.classList.add('has-ornament');
             title.appendChild(ornament);
         }
@@ -426,21 +588,18 @@
             const strand = document.createElement('div');
             strand.className = 'theme-lights';
             strand.setAttribute('aria-hidden', 'true');
-            const SPAN = 64, H = 26;
+            const SPAN = 56, H = 22;
             const draw = () => {
                 const w = Math.ceil(window.innerWidth / SPAN) * SPAN;
-                // The wire is pinned flush to the nav's bottom edge with a small clip at each attachment point
-                let wire = 'M0,0.5', bulbs = '', clips = '';
-                for (let x = 0, k = 0; x < w; x += SPAN, k++) {
-                    wire += ' Q' + (x + SPAN / 2) + ',12 ' + (x + SPAN) + ',0.5';
-                    clips += '<rect class="clip" x="' + (x - 1.5) + '" y="0" width="3" height="2.4" rx="0.6"/>';
-                    const cx = x + SPAN / 2;
+                // The wire runs straight along the nav's bottom border; each bulb hangs directly off it
+                let bulbs = '';
+                for (let x = SPAN / 2, k = 0; x < w; x += SPAN, k++) {
                     bulbs += '<g class="bulb bulb-' + (k % 4) + '" style="--i:' + k + '">' +
-                        '<rect x="' + (cx - 1.6) + '" y="5" width="3.2" height="3" rx="0.8" class="bulb-cap"/>' +
-                        '<ellipse cx="' + cx + '" cy="12.5" rx="3.2" ry="4.6"/></g>';
+                        '<rect x="' + (x - 2.1) + '" y="0.5" width="4.2" height="3.6" rx="1" class="bulb-cap"/>' +
+                        '<ellipse cx="' + x + '" cy="9.6" rx="4" ry="5.8"/></g>';
                 }
                 strand.innerHTML = '<svg width="' + w + '" height="' + H + '" viewBox="0 0 ' + w + ' ' + H + '">' +
-                    '<path class="wire" d="' + wire + '"/>' + clips + bulbs + '</svg>';
+                    '<path class="wire" d="M0,0.75 H' + w + '"/>' + bulbs + '</svg>';
             };
             draw();
             let resizeTimer;
@@ -450,11 +609,12 @@
         }
 
         // ---------- Favicon (ornament on a dark tile, in the accent colour) ----------
-        if (theme.ornament) {
+        const faviconArt = ORNAMENTS[theme.icon || theme.ornament];
+        if (faviconArt) {
             const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' +
                 '<rect width="24" height="24" rx="6" fill="#141414"/>' +
                 '<g transform="translate(2.4 2.4) scale(0.8)" fill="none" stroke="' + accent + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
-                ORNAMENTS[theme.ornament] + '</g></svg>';
+                faviconArt + '</g></svg>';
             const icon = document.createElement('link');
             icon.rel = 'icon';
             icon.type = 'image/svg+xml';

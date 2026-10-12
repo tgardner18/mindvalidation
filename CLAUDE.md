@@ -9,7 +9,7 @@ Static single-page website for Mind Validation — a therapy and yoga practice i
 There is no build system or bundler. `package.json` exists only for dev tooling (Playwright); nothing is built or deployed from it. To preview locally, open `index.html` in a browser or run a simple local server:
 
 ```bash
-python3 -m http.server 8000
+python3 dev/serve.py        # or: npm run serve — no-cache, so CSS/JS edits show on refresh
 # then open http://localhost:8000
 ```
 

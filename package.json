@@ -3,7 +3,7 @@
   "private": true,
   "description": "Static site \u2014 this file only holds dev tooling (Playwright tests). Nothing here is built or deployed.",
   "scripts": {
-    "serve": "python3 -m http.server 8000",
+    "serve": "python3 dev/serve.py 8000",
     "test": "node dev/test-themes.js && playwright test",
     "test:themes": "node dev/test-themes.js",
     "test:browser": "playwright test",

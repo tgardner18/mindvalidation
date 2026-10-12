@@ -6,7 +6,7 @@ require(require('path').join(__dirname, '..', 'js', 'themes.js'));
 const { resolve } = window.MVThemes;
 const cases = {
   '2026-08-31': null, '2026-09-01': 'fall', '2026-10-26': 'fall', '2026-10-27': 'halloween',
-  '2026-11-01': 'halloween', '2026-11-02': 'fall', '2026-11-30': 'fall', '2026-12-01': 'winter', '2026-12-17': 'winter', '2026-12-18': 'holidays', '2026-12-26': 'holidays', '2026-12-27': 'winter',
+  '2026-11-01': 'halloween', '2026-11-02': 'fall', '2026-11-30': 'fall', '2026-12-01': 'winter', '2026-12-11': 'winter', '2026-12-12': 'holidays', '2026-12-27': 'holidays', '2026-12-28': 'winter', '2026-12-29': 'winter', '2026-12-30': 'newyear', '2027-01-01': 'newyear', '2027-01-02': 'newyear', '2027-01-03': 'winter',
   '2027-01-15': 'winter', '2027-02-28': 'winter', '2028-02-29': 'winter', '2027-03-01': null, '2026-06-15': null
 };
 let fail = 0;
